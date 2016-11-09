@@ -14,12 +14,12 @@ export class ImageUploadComponent{
 
     for (var i = 0; i < files.length; i++) {
 
-      var img = document.createElement("img");
+      var img = document.createElement('img');
       img.src = window.URL.createObjectURL(files[i]);
 
       var reader = new FileReader();
 
-      reader.addEventListener("load", (event: any) => {
+      reader.addEventListener('load', (event: any) => {
         img.src = event.target.result;
 
 
@@ -36,7 +36,7 @@ export class ImageUploadComponent{
 
 
   resize (img, MAX_WIDTH:number = 86, MAX_HEIGHT:number = 86) {
-    var canvas = document.createElement("canvas");
+    var canvas = document.createElement('canvas');
 
     var width = img.width;
     var height = img.height;
@@ -51,7 +51,7 @@ export class ImageUploadComponent{
 
     canvas.width = width;
     canvas.height = height;
-    var ctx = canvas.getContext("2d");
+    var ctx = canvas.getContext('2d');
 
     ctx.drawImage(img, 0, 0, width, height);
 
