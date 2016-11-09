@@ -33,7 +33,7 @@ export class ImageUploadComponent{
   }
 
 
-  resize (img, MAX_WIDTH:number = 900, MAX_HEIGHT:number = 900){
+  resize (img, MAX_WIDTH:number = 86, MAX_HEIGHT:number = 86) {
     var canvas = document.createElement("canvas");
 
     console.log("Size Before: " + img.src.length + " bytes");
