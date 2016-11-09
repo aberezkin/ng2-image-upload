@@ -10,3 +10,7 @@
   border: black solid 1px;
   padding: 5px;
 }
+
+.file-is-over {
+  border: black dashed 1px;
+}

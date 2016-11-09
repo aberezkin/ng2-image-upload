@@ -8,6 +8,7 @@ import { Component } from '@angular/core';
 export class ImageUploadComponent{
   file_srcs: string[] = [];
 
+  private isFileOver:boolean = false;
 
   fileChange(input){
 
@@ -62,5 +63,9 @@ export class ImageUploadComponent{
     // IMPORTANT: 'jpeg' NOT 'jpg'
     console.log("Size After:  " + dataUrl.length  + " bytes");
     return dataUrl
+  }
+
+  fileOver(isOver) {
+    this.isFileOver = isOver;
   }
 }

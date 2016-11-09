@@ -1,4 +1,8 @@
-<div fileDrop class="file-upload">
+<div class="file-upload"
+     fileDrop
+     (isFileOver)="fileOver($event)"
+     [ngClass]="{'file-is-over': isFileOver}"
+>
   <input type="file" multiple (change)="fileChange(input)" #input />
 </div>
 
