@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'image-upload',
@@ -10,7 +10,7 @@ export class ImageUploadComponent{
 
 
   fileChange(input){
-    
+
     for (var i = 0; i < input.files.length; i++) {
       // Create an img element and add the image file data to it
       var img = document.createElement("img");
@@ -18,7 +18,6 @@ export class ImageUploadComponent{
 
       var reader = new FileReader();
 
-      // Add an event listener to deal with the file when the reader is complete
       reader.addEventListener("load", (event: any) => {
         img.src = event.target.result;
 
