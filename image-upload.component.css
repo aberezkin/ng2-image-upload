@@ -1,0 +1,6 @@
+.image-container { }
+
+.image-container > .image {
+  float: left;
+  display: inline;
+}
