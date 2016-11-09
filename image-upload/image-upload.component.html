@@ -1,8 +1,9 @@
 <div>
   <input type="file" multiple (change)="fileChange(input)" #input />
 </div>
+
 <div class="image-container">
   <div class="image" *ngFor="let file_src of file_srcs">
-    <img [src]="file_src" alt=""/>
+    <img [src]="file_src" />
   </div>
 </div>

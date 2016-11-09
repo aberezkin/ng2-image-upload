@@ -3,4 +3,5 @@
 .image-container > .image {
   float: left;
   display: inline;
+  margin: 5px;
 }
