@@ -4,6 +4,7 @@
   "description": "An angular component that uploads images using native browser upload or drag-n-drop.",
   "main": "index.js",
   "scripts": {
+    "build": "rm -rf lib && tsc -p src",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
