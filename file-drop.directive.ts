@@ -6,6 +6,8 @@ import {Directive, HostListener, Output, EventEmitter} from '@angular/core';
 export class FileDropDirective {
   @Output()
   private isFileOver: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Output()
+  private fileDrop: EventEmitter<FileList> = new EventEmitter<FileList>();
 
   @HostListener('dragover', ['$event'])
   public onDragOver(event: any) {
@@ -33,9 +35,9 @@ export class FileDropDirective {
       return;
     }
 
-
-    this.isFileOver.emit(false);
     event.preventDefault();
+    this.isFileOver.emit(false);
+    this.fileDrop.emit(dataTransfer.files);
   }
 
 

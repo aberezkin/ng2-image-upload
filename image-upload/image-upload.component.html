@@ -1,13 +1,14 @@
 <div class="file-upload"
      fileDrop
      (isFileOver)="fileOver($event)"
+     (fileDrop)="fileChange($event)"
      [ngClass]="{'file-is-over': isFileOver}"
 >
-  <input type="file" multiple (change)="fileChange(input)" #input />
+  <input type="file" multiple (change)="fileChange(input.files)" #input />
 </div>
 
 <div class="image-container">
-  <div class="image" *ngFor="let file_src of file_srcs">
+  <div class="image" *ngFor="let file_src of file_sources">
     <img [src]="file_src" />
   </div>
 </div>
