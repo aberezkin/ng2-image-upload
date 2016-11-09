@@ -9,28 +9,55 @@ export class FileDropDirective {
 
   @HostListener('dragover', ['$event'])
   public onDragOver(event: any) {
-    event.preventDefault();
+    let dataTransfer = this.getDataTransfer(event);
 
+    if (!this.hasFiles(dataTransfer.types)) {
+      return;
+    }
+
+    dataTransfer.dropEffect = 'copy';
+    event.preventDefault();
     this.isFileOver.emit(true);
-    console.log('There is a drag over this element');
   }
 
   @HostListener('dragleave', ['$event'])
   public onDragLeave(event: any) {
-
-
     this.isFileOver.emit(false);
-    console.log('Drag leaved this element')
   }
 
   @HostListener('drop', ['$event'])
   public onDrop(event: any) {
-    console.log('There is a drop over this element');
+    let dataTransfer = this.getDataTransfer(event);
+
+    if (!this.hasFiles(dataTransfer.types)) {
+      return;
+    }
+
 
     this.isFileOver.emit(false);
     event.preventDefault();
   }
 
+
+  private getDataTransfer(event: any): DataTransfer {
+    return event.dataTransfer ? event.dataTransfer : event.originalEvent.dataTransfer;
+  }
+
+  private hasFiles(types: any):boolean {
+    if (!types) {
+      return false;
+    }
+
+    if (types.indexOf) {
+      return types.indexOf('Files') !== -1;
+    }
+
+    if (types.contains) {
+      return types.contains('Files');
+    }
+
+    return false;
+  }
 
 
 }
