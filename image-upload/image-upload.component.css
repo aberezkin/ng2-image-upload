@@ -5,3 +5,8 @@
   display: inline;
   margin: 5px;
 }
+
+.file-upload {
+  border: black solid 1px;
+  padding: 5px;
+}
