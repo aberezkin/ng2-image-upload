@@ -1,10 +1,13 @@
-.image-container {
-}
-
 .image-container > .image {
   float: left;
   display: inline;
   margin: 5px;
+}
+
+.hr-inline-group:after {
+  display: table;
+  clear: both;
+  content: "";
 }
 
 .file-upload {
@@ -14,40 +17,35 @@
   font-family: sans-serif;
   font-size: 1.25em;
   font-weight: 700;
+  border: #d0d0d0 dotted 2px;
 }
 
 .file-is-over {
-  outline: #bfbfbf dashed 3px;
+  border-color: #444444;
 }
 
-.inputfile {
-  position: relative;
-  overflow: hidden;
-  margin: 5px;
-  background-color: #30bf5a;
-  padding: 3px;
-  border-radius: 3px;
-  color: white;
-  display: inline-block;
-  float: left;
-}
-
-.inputfile input.upload {
-  position: absolute;
-  top: 0;
-  right: 0;
-  margin: 0;
-  padding: 0;
-  font-size: 20px;
-  cursor: pointer;
-  opacity: 0;
-  filter: alpha(opacity=0);
-}
 
 .drag-box-message {
   float: left;
   display: inline-block;
-  padding-top: 3px;
-  padding-bottom: 3px;
-  color: #8e918d;
+  margin-left: 10px;
+  padding: 5px 0 5px 0;
+  color: #a9a9a9;
+}
+
+
+label.upload-button input[type=file]{
+  display: none;
+  position: fixed;
+  top: -99999px;
+}
+
+.upload-button {
+  cursor: pointer;
+  background-color: #30bf5a;
+  padding: 5px 10px 5px 10px;
+  border-radius: 5px;
+  color: white;
+  display: inline-block;
+  float: left;
 }
