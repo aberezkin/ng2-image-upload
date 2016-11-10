@@ -3,8 +3,6 @@
   border-radius: 5px;
   border: #d0d0d0 dotted 2px;
   font-family: sans-serif;
-  font-size: 1.25em;
-  font-weight: 700;
 }
 
 .foreground {
@@ -59,8 +57,9 @@
   float: left;
   display: inline-block;
   margin-left: 10px;
-  padding: 5px 0 5px 0;
-  color: #a9a9a9;
+  padding-top: 8px;
+  color: #9b9b9b;
+  font-weight: 600;
 }
 
 
@@ -76,6 +75,9 @@ label.upload-button input[type=file]{
   padding: 5px 10px 5px 10px;
   border-radius: 5px;
   color: white;
+  font-size: 1.25em;
+  font-weight: 600;
+  text-transform: uppercase;
   display: inline-block;
   float: left;
 }

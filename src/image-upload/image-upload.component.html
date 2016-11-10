@@ -9,14 +9,12 @@
   </div>
   <div class="file-upload hr-inline-group"
        [ngClass]="{'flat-bottom': file_sources.length > 0}">
-    <div>
       <label class="upload-button">
         <span>{{buttonMessage}}</span>
         <input type="file" multiple (change)="fileChange(input.files)" #input>
       </label>
 
       <div class="drag-box-message">{{dragBoxMessage}}</div>
-    </div>
   </div>
 
   <div class="image-container hr-inline-group">
