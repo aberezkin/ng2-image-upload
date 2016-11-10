@@ -3,12 +3,15 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'image-upload',
   templateUrl: 'image-upload.component.html',
-  styleUrls: ['image-upload.component.css']
+  styleUrls: ['image-upload.component.css'],
 })
 export class ImageUploadComponent{
   file_sources: string[] = [];
 
   private isFileOver:boolean = false;
+
+  private buttonMessage: string = "Upload files!";
+  private dragBoxMessage: string = "Drag your files here!";
 
   fileChange(files) {
 
