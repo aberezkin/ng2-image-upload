@@ -11,7 +11,8 @@ export class ImageUploadComponent{
   private isFileOver:boolean = false;
 
   private buttonMessage: string = "Upload files!";
-  private dragBoxMessage: string = "Drag your files here!";
+  private dragBoxMessage: string = "Drop your files here!";
+  private dropMessage: string = "Release mouse to upload";
 
   fileChange(files) {
 

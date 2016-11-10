@@ -1,9 +1,14 @@
-<div>
+<div class="image-upload"
+  fileDrop
+  (isFileOver)="fileOver($event)"
+  (fileDrop)="fileChange($event)"
+  [ngClass]="{'file-is-over': isFileOver}"
+>
+  <div class="foreground" *ngIf="isFileOver">
+    <div>{{dropMessage}}</div>
+  </div>
   <div class="file-upload hr-inline-group"
-       fileDrop
-       (isFileOver)="fileOver($event)"
-       (fileDrop)="fileChange($event)"
-       [ngClass]="{'file-is-over': isFileOver}">
+       [ngClass]="{'flat-bottom': file_sources.length > 0}">
     <div>
       <label class="upload-button">
         <span>{{buttonMessage}}</span>
@@ -14,7 +19,7 @@
     </div>
   </div>
 
-  <div class="image-container">
+  <div class="image-container hr-inline-group">
     <div class="image" *ngFor="let file_src of file_sources">
       <img [src]="file_src" />
     </div>
