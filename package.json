@@ -29,5 +29,8 @@
   "bugs": {
     "url": "https://github.com/aberezkin/image-upload/issues"
   },
-  "homepage": "https://github.com/aberezkin/image-upload#readme"
+  "homepage": "https://github.com/aberezkin/image-upload#readme",
+  "dependencies": {
+    "@angular/core": "^2.1.2"
+  }
 }
