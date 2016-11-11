@@ -1,24 +1,27 @@
 <div class="image-upload"
-  fileDrop
-  (isFileOver)="fileOver($event)"
-  (fileDrop)="fileChange($event)"
-  [ngClass]="{'file-is-over': isFileOver}"
->
+     fileDrop
+     [accept]="['image/*']"
+     (isFileOver)="fileOver($event)"
+     (fileDrop)="fileChange($event)">
   <div class="foreground" *ngIf="isFileOver">
     <div>{{dropMessage}}</div>
   </div>
   <div class="file-upload hr-inline-group">
-      <label class="upload-button">
-        <span>{{buttonMessage}}</span>
-        <input type="file" multiple (change)="fileChange(input.files)" #input>
-      </label>
+    <label class="upload-button">
+      <span>{{buttonMessage}}</span>
+      <input
+        type="file"
+        accept="image/*"
+        multiple (change)="fileChange(input.files)"
+        #input>
+    </label>
 
-      <div class="drag-box-message">{{dragBoxMessage}}</div>
+    <div class="drag-box-message">{{dragBoxMessage}}</div>
   </div>
 
   <div class="image-container hr-inline-group">
     <div class="image" *ngFor="let file_src of file_sources">
-      <img [src]="file_src" />
+      <img [src]="file_src"/>
     </div>
   </div>
 </div>

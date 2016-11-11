@@ -1,9 +1,11 @@
-import {Directive, HostListener, Output, EventEmitter} from '@angular/core';
+import {Directive, HostListener, Output, EventEmitter, Input} from '@angular/core';
 
 @Directive({
   selector: '[fileDrop]'
 })
 export class FileDropDirective {
+  @Input() accept: string[];
+
   @Output()
   private isFileOver: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Output()
@@ -36,10 +38,35 @@ export class FileDropDirective {
     }
 
     event.preventDefault();
+
+    let files = this.filterFiles(dataTransfer.files);
+
+    event.preventDefault();
     this.isFileOver.emit(false);
-    this.fileDrop.emit(dataTransfer.files);
+    this.fileDrop.emit(files);
   }
 
+  private filterFiles(files: FileList): any {
+    if (!this.accept || this.accept.length === 0) {
+      return files;
+    }
+
+    let acceptedFiles: File[] = [];
+    for(var i = 0; i < files.length; i++) {
+      for (var j = 0; j < this.accept.length; j++) {
+        if (this.matchRule(this.accept[j], files[i].type)) {
+          acceptedFiles.push(files[i]);
+          break;
+        }
+      }
+    }
+
+    return acceptedFiles;
+  }
+
+  private matchRule(rule: string, candidate: string) {
+    return new RegExp("^" + rule.split("*").join(".*") + "$").test(candidate);
+  }
 
   private getDataTransfer(event: any): DataTransfer {
     return event.dataTransfer ? event.dataTransfer : event.originalEvent.dataTransfer;
