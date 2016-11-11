@@ -84,8 +84,3 @@ label.upload-button input[type=file]{
   display: inline-block;
   float: left;
 }
-
-.flat-bottom {
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
-}
