@@ -34,21 +34,6 @@
   border-color: var(--active-color);
 }
 
-.image-container {
-  background-color: #f8f8f8;
-  border-radius: 0 0 5px 5px;
-}
-
-.image-container > .image {
-  float: left;
-  display: inline;
-  margin: 5px;
-  width: 86px;
-  height: 86px;
-  background: center center no-repeat;
-  background-size: contain;
-}
-
 .hr-inline-group:after {
   display: table;
   clear: both;
@@ -69,7 +54,6 @@
   font-weight: 600;
 }
 
-
 label.upload-button input[type=file]{
   display: none;
   position: fixed;
@@ -87,4 +71,61 @@ label.upload-button input[type=file]{
   text-transform: uppercase;
   display: inline-block;
   float: left;
+}
+
+
+.image-container {
+  background-color: #f8f8f8;
+  border-radius: 0 0 5px 5px;
+}
+
+.image {
+  float: left;
+  display: inline;
+  margin: 5px;
+  width: 86px;
+  height: 86px;
+  background: center center no-repeat;
+  background-size: contain;
+}
+
+.x-mark {
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 2px;
+  float: right;
+  background-color: black;
+  opacity: .7;
+  color: white;
+  margin: 2px;
+}
+
+.close {
+  width: 20px;
+  height: 20px;
+  opacity: .7;
+  position: relative;
+  padding-right: 3px;
+}
+.x-mark:hover .close {
+  opacity: 1;
+}
+.close:before, .close:after {
+  border-radius: 2px;
+  position: absolute;
+  content: '';
+  height: 16px;
+  width: 3px;
+  top: 2px;
+  background-color: #FFFFFF;
+}
+
+.close:before {
+  transform: rotate(45deg);
+}
+
+.close:after {
+  transform: rotate(-45deg);
 }

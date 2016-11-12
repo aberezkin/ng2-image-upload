@@ -24,9 +24,10 @@
       class="image"
       *ngFor="let file of files"
       [ngStyle]="{'background-image': 'url('+ file.src +')'}"
-      (click)="deleteFile(file)"
     >
-      <!--TODO: SEPARATE BUTTON FOR FILE DELETION -->
+      <div *ngIf="!isFileOver" class="x-mark" (click)="deleteFile(file)">
+        <span class="close"></span>
+      </div>
     </div>
   </div>
 </div>
