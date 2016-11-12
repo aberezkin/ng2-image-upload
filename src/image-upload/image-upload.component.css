@@ -31,7 +31,8 @@
 }
 
 .file-is-over {
-  border-color: var(--active-color);
+  border: var(--active-color) solid 2px;
+  /*border-color: var(--active-color);*/
 }
 
 .hr-inline-group:after {
