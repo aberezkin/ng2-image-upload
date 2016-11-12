@@ -20,8 +20,9 @@
   </div>
 
   <div class="image-container hr-inline-group">
-    <div class="image" *ngFor="let file_src of file_sources">
-      <img [src]="file_src"/>
-    </div>
+    <div
+      class="image"
+      *ngFor="let file_src of file_sources"
+      [ngStyle]="{'background-image': 'url('+ file_src +')'}"></div>
   </div>
 </div>

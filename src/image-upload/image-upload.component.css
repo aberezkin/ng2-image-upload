@@ -43,6 +43,10 @@
   float: left;
   display: inline;
   margin: 5px;
+  width: 86px;
+  height: 86px;
+  background: center center no-repeat;
+  background-size: contain;
 }
 
 .hr-inline-group:after {
