@@ -22,7 +22,11 @@
   <div class="image-container hr-inline-group">
     <div
       class="image"
-      *ngFor="let file_src of file_sources"
-      [ngStyle]="{'background-image': 'url('+ file_src +')'}"></div>
+      *ngFor="let file of files"
+      [ngStyle]="{'background-image': 'url('+ file.src +')'}"
+      (click)="deleteFile(file)"
+    >
+      <!--TODO: SEPARATE BUTTON FOR FILE DELETION -->
+    </div>
   </div>
 </div>
