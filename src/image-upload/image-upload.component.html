@@ -24,6 +24,9 @@
       *ngFor="let file of files"
       [ngStyle]="{'background-image': 'url('+ file.src +')'}"
     >
+      <div *ngIf="file.pending" class="loading-overlay">
+        <div class="spinningCircle"></div>
+      </div>
       <div *ngIf="!file.pending" class="x-mark" (click)="deleteFile(file)">
         <span class="close"></span>
       </div>

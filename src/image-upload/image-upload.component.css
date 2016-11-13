@@ -57,12 +57,13 @@ label.upload-button input[type=file]{
 
 .image {
   float: left;
-  display: inline;
+  display: inline-block;
   margin: 5px;
   width: 86px;
   height: 86px;
   background: center center no-repeat;
   background-size: contain;
+  position: relative;
 }
 
 .x-mark {
@@ -104,4 +105,48 @@ label.upload-button input[type=file]{
 
 .close:after {
   transform: rotate(-45deg);
+}
+
+.loading-overlay {
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+  background-color: black;
+  opacity: .7;
+}
+
+.spinningCircle {
+  height: 30px;
+  width: 30px;
+  margin: auto;
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+  border-radius: 50%;
+  border: 3px solid rgba(255, 255, 255, 0);
+  border-top: 3px solid white;
+  border-right: 3px solid white;
+  -webkit-animation: spinner 2s infinite cubic-bezier(0.085, 0.625, 0.855, 0.360);
+  animation: spinner 2s infinite cubic-bezier(0.085, 0.625, 0.855, 0.360);
+}
+
+@-webkit-keyframes spinner {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes spinner {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+
+  }
 }
