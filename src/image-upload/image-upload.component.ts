@@ -1,5 +1,4 @@
 import {Component, Input} from '@angular/core';
-import {max} from "rxjs/operator/max";
 
 class FileHolder {
   constructor(public src: string, public file: File) { }
