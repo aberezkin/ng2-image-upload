@@ -24,7 +24,7 @@
       *ngFor="let file of files"
       [ngStyle]="{'background-image': 'url('+ file.src +')'}"
     >
-      <div class="x-mark" (click)="deleteFile(file)">
+      <div *ngIf="!file.pending" class="x-mark" (click)="deleteFile(file)">
         <span class="close"></span>
       </div>
     </div>
