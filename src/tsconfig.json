@@ -2,11 +2,15 @@
   "compilerOptions": {
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
+    "moduleResolution": "node",
     "target": "es5",
     "module": "commonjs",
     "removeComments": true,
     "sourceMap": true,
     "outDir": "../lib",
-    "declaration": true
+    "declaration": true,
+    "typeRoots": [
+      "../node_modules/@types"
+    ]
   }
 }
