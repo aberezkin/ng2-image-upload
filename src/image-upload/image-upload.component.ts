@@ -55,7 +55,7 @@ export class ImageUploadComponent {
 
   private uploadFiles(files, filesToUploadNum) {
     for (var i = 0; i < filesToUploadNum; i++) {
-      let file = files[i];
+      var file = files[i];
 
       let img = document.createElement('img');
       img.src = window.URL.createObjectURL(file);
