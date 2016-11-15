@@ -1,1 +1,1 @@
-export * from './lib/image-upload/image-upload.component';
+export {ImageUploadModule} from './lib/image-upload.module';
