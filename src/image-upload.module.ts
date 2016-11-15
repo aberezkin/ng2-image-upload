@@ -1,4 +1,4 @@
-import {NgModule} from "@angular/core";
+import {NgModule, ModuleWithProviders} from "@angular/core";
 import {ImageUploadComponent} from "./image-upload/image-upload.component";
 import {FileDropDirective} from "./file-drop.directive";
 import {CommonModule} from "@angular/common";
@@ -11,7 +11,13 @@ import {ImageService} from "./image.service";
     ImageUploadComponent,
     FileDropDirective
   ],
-  providers: [ ImageService ],
   exports: [ ImageUploadComponent ]
 })
-export class ImageUploadModule { }
+export class ImageUploadModule {
+  static forRoot(): ModuleWithProviders {
+    return {
+      ngModule: ImageUploadModule,
+      providers: [ ImageService ]
+    }
+  }
+}
