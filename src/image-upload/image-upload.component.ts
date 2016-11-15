@@ -93,7 +93,7 @@ export class ImageUploadComponent {
     }
   }
 
-  deleteFile(file: FileHolder): void {
+  private deleteFile(file: FileHolder): void {
     let index = this.files.indexOf(file);
     this.files.splice(index, 1);
     this.fileCounter--;
@@ -110,7 +110,7 @@ export class ImageUploadComponent {
   }
 
 
-  get value():FileHolder[] {
+  get value(): any[] {
     return this.files;
   }
 }
