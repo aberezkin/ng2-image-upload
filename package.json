@@ -33,7 +33,9 @@
   "dependencies": {
     "@angular/common": "^2.1.2",
     "@angular/core": "^2.1.2",
-    "@types/core-js": "^0.9.34",
     "rxjs": "^5.0.0-rc.2"
+  },
+  "devDependencies": {
+    "@types/core-js": "^0.9.34"
   }
 }
