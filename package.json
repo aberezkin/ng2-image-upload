@@ -1,6 +1,6 @@
 {
   "name": "angular2-image-upload",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "An angular component that uploads images using native browser upload or drag-n-drop.",
   "main": "index.js",
   "scripts": {
