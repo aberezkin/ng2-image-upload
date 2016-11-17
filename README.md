@@ -24,11 +24,21 @@ Now you have `image-upload` declaration and you can use it in your html code.
 
 You can use bindings to configure this element for your needs.
 
+#### General customization
+
 `[max]="100"` - is the maximum number of pictures that can be uploaded through this element. Default is 100.
 
 `[url]="'example.com/images/upload'"` - this is the url which can handle POST queries with `multipart/form-data` Content-Type. The query has a single field called `image`.
 
 **Note:** images are sent individually one by one!
+
+#### Custom messages
+
+`[buttonCaption]="'Select Images'"` - that is a button caption. Default is "**Select Images**". Note that letters on the button are all caps.
+
+`[dropBoxMessage]="'Drop your images here!'"` - this is a message that is shown in drop area. Default is "**Drop your images here!**".
+
+#### Callbacks
 
 `(onFileUploadFinish)="imageUploaded($event)"`. If `[src]` is specified this event is fired when component gets a responce from the server, also in this case event has field `serverResponse` which contains object returned by the server. If `[src]` is not specified it's fired immediately after an image(s) dropped into file-drop zone of choosed in file browser. So what you can do, is not specify `[src]` to handle upload yourself, for exapmple send the image into firebase storage. To get file use `event.file`.
 
@@ -41,6 +51,8 @@ In the final state it should look something like this:
     <image-upload
       [max]="100"
       [url]="'example.com/images/upload'"
+      [buttonCaption]="'Select Images!'"
+      [dropBoxMessage]="'Drop your images here!'"
       (onFileUploadFinish)="imageUploaded($event)"
       (onRemove)="imageRemoved($event)"
       (isPending)="disableSendButton($event)"

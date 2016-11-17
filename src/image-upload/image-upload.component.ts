@@ -19,7 +19,7 @@ class FileHolder {
 >
   <div class="file-upload hr-inline-group">
     <label class="upload-button">
-      <span>{{buttonMessage}}</span>
+      <span>{{buttonCaption}}</span>
       <input
         type="file"
         accept="image/*"
@@ -27,7 +27,7 @@ class FileHolder {
         #input>
     </label>
 
-    <div class="drag-box-message">{{dragBoxMessage}}</div>
+    <div class="drag-box-message">{{dropBoxMessage}}</div>
   </div>
 
   <div class="image-container hr-inline-group">
@@ -231,9 +231,10 @@ export class ImageUploadComponent {
 
   private isFileOver:boolean = false;
 
-  private buttonMessage: string = "Select Files";
-  private dragBoxMessage: string = "Drop your files here!";
-  private dropMessage: string = "Release mouse to upload";
+  @Input()
+  private buttonCaption: string = "Select Images";
+  @Input()
+  private dropBoxMessage: string = "Drop your images here!";
 
   constructor(private imageService: ImageService) { }
 
