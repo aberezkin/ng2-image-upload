@@ -256,15 +256,18 @@ export class ImageUploadComponent {
   }
 
   private uploadFiles(files, filesToUploadNum) {
-    for (var i = 0; i < filesToUploadNum; i++) {
-      var file = files[i];
+    for (let i = 0; i < filesToUploadNum; i++) {
+      let file = files[i];
+
 
       let img = document.createElement('img');
       img.src = window.URL.createObjectURL(file);
 
-      var reader = new FileReader();
+      let reader = new FileReader();
       reader.addEventListener('load', (event: any) => {
         let fileHolder: FileHolder = new FileHolder(event.target.result, file);
+
+        fileHolder.serverResponse = `good boy: ${i}`;
 
         this.uploadSingleFile(fileHolder);
 
@@ -278,9 +281,8 @@ export class ImageUploadComponent {
   }
 
   private uploadSingleFile(fileHolder: FileHolder) {
-    this.pendingFilesCounter++;
-
     if (this.url) {
+      this.pendingFilesCounter++;
       fileHolder.pending = true;
       this.imageService.postImage(fileHolder.file).subscribe(response => {
         fileHolder.serverResponse = response;
