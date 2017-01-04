@@ -1,6 +1,10 @@
 import {Injectable} from "@angular/core";
 import {Observable} from "rxjs/Observable";
 
+export interface Header {
+  header: string;
+  value: string;
+}
 
 @Injectable()
 export class ImageService {
@@ -10,7 +14,7 @@ export class ImageService {
     this.url = url;
   }
 
-  public postImage(image: File) {
+  public postImage(image: File, headers?: Header[]) {
     this.checkUrl();
     return Observable.create(observer => {
       let formData: FormData = new FormData();
@@ -31,6 +35,11 @@ export class ImageService {
 
 
       xhr.open('POST', this.url, true);
+
+      if (headers)
+        for (let header of headers)
+          xhr.setRequestHeader(header.header, header.value);
+
       xhr.send(formData);
     });
   }
