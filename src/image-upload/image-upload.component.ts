@@ -1,5 +1,5 @@
 import {Component, Input, Output, EventEmitter} from '@angular/core';
-import {ImageService} from "../image.service";
+import {ImageService, Header} from "../image.service";
 
 class FileHolder {
   public serverResponse: any;
@@ -216,6 +216,7 @@ label.upload-button input[type=file] {
 export class ImageUploadComponent {
   @Input() max: number = 100;
   @Input() url: string;
+  @Input() headers: Header[];
 
   @Output()
   private isPending: EventEmitter<boolean> = new EventEmitter<boolean>();
@@ -284,7 +285,8 @@ export class ImageUploadComponent {
     if (this.url) {
       this.pendingFilesCounter++;
       fileHolder.pending = true;
-      this.imageService.postImage(fileHolder.file).subscribe(response => {
+
+      this.imageService.postImage(fileHolder.file, this.headers).subscribe(response => {
         fileHolder.serverResponse = response;
         this.onFileUploadFinish.emit(fileHolder);
         fileHolder.pending = false;
@@ -292,6 +294,7 @@ export class ImageUploadComponent {
           this.isPending.emit(false);
         }
       });
+
     } else {
       this.onFileUploadFinish.emit(fileHolder);
     }
