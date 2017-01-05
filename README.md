@@ -28,9 +28,22 @@ You can use bindings to configure this element for your needs.
 
 `[max]="100"` - is the maximum number of pictures that can be uploaded through this element. Default is 100.
 
-`[url]="'example.com/images/upload'"` - this is the url which can handle POST queries with `multipart/form-data` Content-Type. The query has a single field called `image`.
+`[url]="'example.com/images/upload'"` - this is the url which can handle POST queries with `multipart/form-data` 
+Content-Type. The query has a single field called `image`.
 
 **Note:** images are sent individually one by one!
+
+#### Custom headers
+
+If you need to send some headers with your request (for example `Authorization` headers), 
+you can use `[headers]` directive like this.
+
+    <image-upload [url]="'my-url.com'"
+      [headers]="[
+        {header: 'Authorization, value: 'MyToken'}
+      ]"></image-upload>
+
+**Note** that headers are sent only if you provide a url.
 
 #### Custom messages
 
@@ -51,6 +64,9 @@ In the final state it should look something like this:
     <image-upload
       [max]="100"
       [url]="'example.com/images/upload'"
+      [headers]="[
+        {header: 'Authorization, value: 'MyToken'}
+      ]"
       [buttonCaption]="'Select Images!'"
       [dropBoxMessage]="'Drop your images here!'"
       (onFileUploadFinish)="imageUploaded($event)"
