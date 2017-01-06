@@ -53,7 +53,7 @@ you can use `[headers]` directive like this.
 
 #### Callbacks
 
-`(onFileUploadFinish)="imageUploaded($event)"`. If `[src]` is specified this event is fired when component gets a responce from the server, also in this case event has field `serverResponse` which contains object returned by the server. If `[src]` is not specified it's fired immediately after an image(s) dropped into file-drop zone of choosed in file browser. So what you can do, is not specify `[src]` to handle upload yourself, for exapmple send the image into firebase storage. To get file use `event.file`.
+`(onFileUploadFinish)="imageUploaded($event)"`. If `[url]` is specified this event is fired when component gets a responce from the server, also in this case event has field `serverResponse` which contains object returned by the server. If `[url]` is not specified it's fired immediately after an image(s) dropped into file-drop zone of choosed in file browser. So what you can do, is not specify `[url]` to handle upload yourself, for exapmple send the image into firebase storage. To get file use `event.file`.
 
 `(onRemove)="imageRemoved($event)"` - this event is fired when remove button was clicked and the image preview was removed. *Note that this library doesn't handle deletion from server so you should do it yourself*. Event passed as the argument is the exact same object that was passed to the `(imageUploaded)` callback when image was added so you can access `serverResponse` to get a key to delete your image from server.
 
