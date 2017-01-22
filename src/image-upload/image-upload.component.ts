@@ -30,7 +30,7 @@ class FileHolder {
     <div class="drag-box-message">{{dropBoxMessage}}</div>
   </div>
 
-  <div class="image-container hr-inline-group">
+  <div *ngIf="preview" class="image-container hr-inline-group">
     <div
       class="image"
       *ngFor="let file of files"
@@ -217,6 +217,7 @@ export class ImageUploadComponent {
   @Input() max: number = 100;
   @Input() url: string;
   @Input() headers: Header[];
+  @Input() preview: boolean = true;
 
   @Output()
   private isPending: EventEmitter<boolean> = new EventEmitter<boolean>();

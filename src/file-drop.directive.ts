@@ -13,9 +13,9 @@ export class FileDropDirective {
 
   @HostListener('dragover', ['$event'])
   public onDragOver(event: any) {
-    let dataTransfer = this.getDataTransfer(event);
+    let dataTransfer = FileDropDirective.getDataTransfer(event);
 
-    if (!this.hasFiles(dataTransfer.types)) {
+    if (!FileDropDirective.hasFiles(dataTransfer.types)) {
       return;
     }
 
@@ -31,9 +31,9 @@ export class FileDropDirective {
 
   @HostListener('drop', ['$event'])
   public onDrop(event: any) {
-    let dataTransfer = this.getDataTransfer(event);
+    let dataTransfer = FileDropDirective.getDataTransfer(event);
 
-    if (!this.hasFiles(dataTransfer.types)) {
+    if (!FileDropDirective.hasFiles(dataTransfer.types)) {
       return;
     }
 
@@ -54,7 +54,7 @@ export class FileDropDirective {
     let acceptedFiles: File[] = [];
     for(var i = 0; i < files.length; i++) {
       for (var j = 0; j < this.accept.length; j++) {
-        if (this.matchRule(this.accept[j], files[i].type)) {
+        if (FileDropDirective.matchRule(this.accept[j], files[i].type)) {
           acceptedFiles.push(files[i]);
           break;
         }
@@ -64,15 +64,15 @@ export class FileDropDirective {
     return acceptedFiles;
   }
 
-  private matchRule(rule: string, candidate: string) {
+  private static matchRule(rule: string, candidate: string) {
     return new RegExp("^" + rule.split("*").join(".*") + "$").test(candidate);
   }
 
-  private getDataTransfer(event: any): DataTransfer {
+  private static getDataTransfer(event: any): DataTransfer {
     return event.dataTransfer ? event.dataTransfer : event.originalEvent.dataTransfer;
   }
 
-  private hasFiles(types: any):boolean {
+  private static hasFiles(types: any):boolean {
     if (!types) {
       return false;
     }

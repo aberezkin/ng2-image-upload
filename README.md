@@ -33,6 +33,8 @@ Content-Type. The query has a single field called `image`.
 
 **Note:** images are sent individually one by one!
 
+`[preview]="false"` - you can disable images preview.
+
 #### Custom headers
 
 If you need to send some headers with your request (for example `Authorization` headers), 
