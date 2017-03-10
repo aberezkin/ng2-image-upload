@@ -1,10 +1,10 @@
 import {Component, Input, Output, EventEmitter} from '@angular/core';
 import {ImageService, Header} from "../image.service";
 
-class FileHolder {
+export class FileHolder {
   public serverResponse: any;
   public pending: boolean = false;
-  constructor(private src: string, public file: File) { }
+  constructor(public src: string, public file: File) { }
 }
 
 @Component({
@@ -211,7 +211,7 @@ label.upload-button input[type=file] {
   }
 }
 `
-  ],
+  ]
 })
 export class ImageUploadComponent {
   @Input() max: number = 100;
@@ -220,11 +220,11 @@ export class ImageUploadComponent {
   @Input() preview: boolean = true;
 
   @Output()
-  private isPending: EventEmitter<boolean> = new EventEmitter<boolean>();
+  isPending: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Output()
-  private onFileUploadFinish: EventEmitter<FileHolder> = new EventEmitter<FileHolder>();
+  onFileUploadFinish: EventEmitter<FileHolder> = new EventEmitter<FileHolder>();
   @Output()
-  private onRemove: EventEmitter<FileHolder> = new EventEmitter<FileHolder>();
+  onRemove: EventEmitter<FileHolder> = new EventEmitter<FileHolder>();
 
   private files: FileHolder[] = [];
 
@@ -234,9 +234,9 @@ export class ImageUploadComponent {
   private isFileOver:boolean = false;
 
   @Input()
-  private buttonCaption: string = "Select Images";
+  buttonCaption: string = "Select Images";
   @Input()
-  private dropBoxMessage: string = "Drop your images here!";
+  dropBoxMessage: string = "Drop your images here!";
 
   constructor(private imageService: ImageService) { }
 
@@ -315,10 +315,5 @@ export class ImageUploadComponent {
 
   private countRemainingSlots() {
     return this.max - this.fileCounter;
-  }
-
-
-  get value(): any[] {
-    return this.files;
   }
 }

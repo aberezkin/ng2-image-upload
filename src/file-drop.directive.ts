@@ -7,9 +7,9 @@ export class FileDropDirective {
   @Input() accept: string[];
 
   @Output()
-  private isFileOver: EventEmitter<boolean> = new EventEmitter<boolean>();
+  isFileOver: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Output()
-  private fileDrop: EventEmitter<FileList> = new EventEmitter<FileList>();
+  fileDrop: EventEmitter<FileList> = new EventEmitter<FileList>();
 
   @HostListener('dragover', ['$event'])
   public onDragOver(event: any) {
@@ -25,7 +25,7 @@ export class FileDropDirective {
   }
 
   @HostListener('dragleave', ['$event'])
-  public onDragLeave(event: any) {
+  public onDragLeave() {
     this.isFileOver.emit(false);
   }
 
@@ -52,8 +52,8 @@ export class FileDropDirective {
     }
 
     let acceptedFiles: File[] = [];
-    for(var i = 0; i < files.length; i++) {
-      for (var j = 0; j < this.accept.length; j++) {
+    for(let i = 0; i < files.length; i++) {
+      for (let j = 0; j < this.accept.length; j++) {
         if (FileDropDirective.matchRule(this.accept[j], files[i].type)) {
           acceptedFiles.push(files[i]);
           break;
