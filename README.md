@@ -75,3 +75,8 @@ In the final state it should look something like this:
       (onRemove)="imageRemoved($event)"
       (isPending)="disableSendButton($event)"
     ></image-upload>
+
+# Contributors
+
+@aberezkin
+@UncleDave
