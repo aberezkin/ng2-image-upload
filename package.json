@@ -4,7 +4,7 @@
   "description": "An angular component that uploads images using native browser upload or drag-n-drop.",
   "main": "index.js",
   "scripts": {
-    "build": "rm -rf lib && tsc -p src",
+    "build": "rm -rf lib codegen && ngc -p src",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -31,11 +31,14 @@
   },
   "homepage": "https://github.com/aberezkin/image-upload#readme",
   "dependencies": {
-    "@angular/common": "^2.1.2",
-    "@angular/core": "^2.1.2",
+    "@angular/common": "^2.4.9",
+    "@angular/core": "^2.4.9",
     "rxjs": "^5.0.0-rc.2"
   },
   "devDependencies": {
-    "@types/core-js": "^0.9.34"
+    "@angular/compiler": "^2.4.9",
+    "@angular/compiler-cli": "^2.4.9",
+    "@types/core-js": "^0.9.34",
+    "typescript": "2.0.10"
   }
 }
