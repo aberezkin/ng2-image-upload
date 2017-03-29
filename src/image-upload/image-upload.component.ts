@@ -239,7 +239,7 @@ export class ImageUploadComponent {
   private fileCounter: number = 0;
   private pendingFilesCounter: number = 0;
 
-  private isFileOver: boolean = false;
+  isFileOver: boolean = false;
 
   @Input()
   buttonCaption: string = "Select Images";
