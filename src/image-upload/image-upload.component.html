@@ -7,22 +7,22 @@
 >
   <div class="file-upload hr-inline-group">
     <label class="upload-button">
-      <span>{{buttonMessage}}</span>
+      <span [innerText]="buttonCaption"></span>
       <input
-        type="file"
-        accept="image/*"
-        multiple (change)="fileChange(input.files)"
-        #input>
+              type="file"
+              accept="image/*"
+              multiple (change)="fileChange(input.files)"
+              #input>
     </label>
 
-    <div class="drag-box-message">{{dragBoxMessage}}</div>
+    <div class="drag-box-message" [innerText]="dropBoxMessage"></div>
   </div>
 
-  <div class="image-container hr-inline-group">
+  <div *ngIf="preview" class="image-container hr-inline-group">
     <div
-      class="image"
-      *ngFor="let file of files"
-      [ngStyle]="{'background-image': 'url('+ file.src +')'}"
+            class="image"
+            *ngFor="let file of files"
+            [ngStyle]="{'background-image': 'url('+ file.src +')'}"
     >
       <div *ngIf="file.pending" class="loading-overlay">
         <div class="spinningCircle"></div>

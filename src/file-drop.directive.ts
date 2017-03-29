@@ -12,7 +12,7 @@ export class FileDropDirective {
   fileDrop: EventEmitter<FileList> = new EventEmitter<FileList>();
 
   @HostListener('dragover', ['$event'])
-  public onDragOver(event: any) {
+  onDragOver(event: any) {
     let dataTransfer = FileDropDirective.getDataTransfer(event);
 
     if (!FileDropDirective.hasFiles(dataTransfer.types)) {
@@ -25,12 +25,12 @@ export class FileDropDirective {
   }
 
   @HostListener('dragleave', ['$event'])
-  public onDragLeave() {
+  onDragLeave() {
     this.isFileOver.emit(false);
   }
 
   @HostListener('drop', ['$event'])
-  public onDrop(event: any) {
+  onDrop(event: any) {
     let dataTransfer = FileDropDirective.getDataTransfer(event);
 
     if (!FileDropDirective.hasFiles(dataTransfer.types)) {
@@ -52,7 +52,7 @@ export class FileDropDirective {
     }
 
     let acceptedFiles: File[] = [];
-    for(let i = 0; i < files.length; i++) {
+    for (let i = 0; i < files.length; i++) {
       for (let j = 0; j < this.accept.length; j++) {
         if (FileDropDirective.matchRule(this.accept[j], files[i].type)) {
           acceptedFiles.push(files[i]);
@@ -72,7 +72,7 @@ export class FileDropDirective {
     return event.dataTransfer ? event.dataTransfer : event.originalEvent.dataTransfer;
   }
 
-  private static hasFiles(types: any):boolean {
+  private static hasFiles(types: any): boolean {
     if (!types) {
       return false;
     }
@@ -87,6 +87,4 @@ export class FileDropDirective {
 
     return false;
   }
-
-
 }

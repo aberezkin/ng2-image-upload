@@ -2,15 +2,17 @@ import {Component, Input, Output, EventEmitter} from '@angular/core';
 import {ImageService, Header} from "../image.service";
 
 export class FileHolder {
-  public serverResponse: any;
+  public serverResponse: { status: number, response: any };
   public pending: boolean = false;
-  constructor(public src: string, public file: File) { }
+
+  constructor(public src: string, public file: File) {
+  }
 }
 
 @Component({
   selector: 'image-upload',
   template: `
-<div class="image-upload"
+  <div class="image-upload"
      fileDrop
      [accept]="['image/*']"
      (isFileOver)="fileOver($event)"
@@ -19,7 +21,7 @@ export class FileHolder {
 >
   <div class="file-upload hr-inline-group">
     <label class="upload-button">
-      <span>{{buttonCaption}}</span>
+      <span [innerText]="buttonCaption"></span>
       <input
         type="file"
         accept="image/*"
@@ -27,7 +29,7 @@ export class FileHolder {
         #input>
     </label>
 
-    <div class="drag-box-message">{{dropBoxMessage}}</div>
+    <div class="drag-box-message" [innerText]="dropBoxMessage"></div>
   </div>
 
   <div *ngIf="preview" class="image-container hr-inline-group">
@@ -44,10 +46,8 @@ export class FileHolder {
       </div>
     </div>
   </div>
-</div>
-`,
-  styles: [
-    `
+</div>`,
+  styles: [`
 .image-upload {
   --common-radius: 3px;
   --active-color: #33CC99;
@@ -209,9 +209,7 @@ label.upload-button input[type=file] {
     transform: rotate(360deg);
 
   }
-}
-`
-  ]
+}`]
 })
 export class ImageUploadComponent {
   @Input() max: number = 100;
@@ -226,19 +224,20 @@ export class ImageUploadComponent {
   @Output()
   onRemove: EventEmitter<FileHolder> = new EventEmitter<FileHolder>();
 
-  private files: FileHolder[] = [];
+  files: FileHolder[] = [];
 
   private fileCounter: number = 0;
   private pendingFilesCounter: number = 0;
 
-  private isFileOver:boolean = false;
+  private isFileOver: boolean = false;
 
   @Input()
   buttonCaption: string = "Select Images";
   @Input()
   dropBoxMessage: string = "Drop your images here!";
 
-  constructor(private imageService: ImageService) { }
+  constructor(private imageService: ImageService) {
+  }
 
   ngOnInit() {
     this.imageService.setUrl(this.url);
@@ -257,10 +256,21 @@ export class ImageUploadComponent {
     this.uploadFiles(files, filesToUploadNum);
   }
 
+  deleteFile(file: FileHolder): void {
+    let index = this.files.indexOf(file);
+    this.files.splice(index, 1);
+    this.fileCounter--;
+
+    this.onRemove.emit(file);
+  }
+
+  fileOver(isOver) {
+    this.isFileOver = isOver;
+  }
+
   private uploadFiles(files, filesToUploadNum) {
     for (let i = 0; i < filesToUploadNum; i++) {
       let file = files[i];
-
 
       let img = document.createElement('img');
       img.src = window.URL.createObjectURL(file);
@@ -268,8 +278,6 @@ export class ImageUploadComponent {
       let reader = new FileReader();
       reader.addEventListener('load', (event: any) => {
         let fileHolder: FileHolder = new FileHolder(event.target.result, file);
-
-        fileHolder.serverResponse = `good boy: ${i}`;
 
         this.uploadSingleFile(fileHolder);
 
@@ -282,35 +290,34 @@ export class ImageUploadComponent {
     }
   }
 
+  private onResponse(response, fileHolder: FileHolder) {
+    fileHolder.serverResponse = response;
+    fileHolder.pending = false;
+
+    this.onFileUploadFinish.emit(fileHolder);
+
+    if (--this.pendingFilesCounter == 0) {
+      this.isPending.emit(false);
+    }
+  }
+
   private uploadSingleFile(fileHolder: FileHolder) {
     if (this.url) {
       this.pendingFilesCounter++;
       fileHolder.pending = true;
 
-      this.imageService.postImage(fileHolder.file, this.headers).subscribe(response => {
-        fileHolder.serverResponse = response;
-        this.onFileUploadFinish.emit(fileHolder);
-        fileHolder.pending = false;
-        if (--this.pendingFilesCounter == 0) {
-          this.isPending.emit(false);
-        }
-      });
-
+      this.imageService
+        .postImage(fileHolder.file, this.headers)
+        .subscribe(
+          response => this.onResponse(response, fileHolder),
+          error => {
+            this.onResponse(error, fileHolder);
+            this.deleteFile(fileHolder);
+          }
+        );
     } else {
       this.onFileUploadFinish.emit(fileHolder);
     }
-  }
-
-  private deleteFile(file: FileHolder): void {
-    let index = this.files.indexOf(file);
-    this.files.splice(index, 1);
-    this.fileCounter--;
-
-    this.onRemove.emit(file);
-  }
-
-  fileOver(isOver) {
-    this.isFileOver = isOver;
   }
 
   private countRemainingSlots() {

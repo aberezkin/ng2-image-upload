@@ -31,14 +31,15 @@
   },
   "homepage": "https://github.com/aberezkin/image-upload#readme",
   "dependencies": {
-    "@angular/common": "^2.4.9",
-    "@angular/core": "^2.4.9",
+    "@angular/common": "^4.0.0",
+    "@angular/core": "^4.0.0",
     "rxjs": "^5.0.0-rc.2"
   },
   "devDependencies": {
-    "@angular/compiler": "^2.4.9",
-    "@angular/compiler-cli": "^2.4.9",
+    "@angular/compiler": "^4.0.0",
+    "@angular/compiler-cli": "^4.0.0",
+    "@angular/language-service": "^4.0.0",
     "@types/core-js": "^0.9.34",
-    "typescript": "2.0.10"
+    "typescript": "2.1.5"
   }
 }
