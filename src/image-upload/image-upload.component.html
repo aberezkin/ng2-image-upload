@@ -9,20 +9,23 @@
     <label class="upload-button">
       <span [innerText]="buttonCaption"></span>
       <input
-              type="file"
-              accept="image/*"
-              multiple (change)="fileChange(input.files)"
-              #input>
+        type="file"
+        accept="image/*"
+        multiple (change)="fileChange(input.files)"
+        #input>
     </label>
 
     <div class="drag-box-message" [innerText]="dropBoxMessage"></div>
   </div>
 
+  <p class="file-too-large" *ngIf="showFileTooLargeMessage" [innerText]="fileTooLargeMessage">
+  </p>
+
   <div *ngIf="preview" class="image-container hr-inline-group">
     <div
-            class="image"
-            *ngFor="let file of files"
-            [ngStyle]="{'background-image': 'url('+ file.src +')'}"
+      class="image"
+      *ngFor="let file of files"
+      [ngStyle]="{'background-image': 'url('+ file.src +')'}"
     >
       <div *ngIf="file.pending" class="loading-overlay">
         <div class="spinningCircle"></div>

@@ -49,12 +49,12 @@ label.upload-button input[type=file] {
   display: inline-block;
   float: left;
 
-  -webkit-box-shadow: 2px 2px 4px 0px rgba(148,148,148,0.6);
-  -moz-box-shadow: 2px 2px 4px 0px rgba(148,148,148,0.6);
-  box-shadow: 2px 2px 4px 0px rgba(148,148,148,0.6);
+  -webkit-box-shadow: 2px 2px 4px 0px rgba(148, 148, 148, 0.6);
+  -moz-box-shadow: 2px 2px 4px 0px rgba(148, 148, 148, 0.6);
+  box-shadow: 2px 2px 4px 0px rgba(148, 148, 148, 0.6);
 }
 
-.upload-button:active span{
+.upload-button:active span {
   position: relative;
   display: block;
   top: 1px;
@@ -96,9 +96,11 @@ label.upload-button input[type=file] {
   position: relative;
   padding-right: 3px;
 }
+
 .x-mark:hover .close {
   opacity: 1;
 }
+
 .close:before, .close:after {
   border-radius: 2px;
   position: absolute;
@@ -119,7 +121,10 @@ label.upload-button input[type=file] {
 
 .loading-overlay {
   position: absolute;
-  top: 0; left: 0; bottom: 0; right: 0;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
   background-color: black;
   opacity: .7;
 }
@@ -129,13 +134,21 @@ label.upload-button input[type=file] {
   width: 30px;
   margin: auto;
   position: absolute;
-  top: 0; left: 0; bottom: 0; right: 0;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
   border-radius: 50%;
   border: 3px solid rgba(255, 255, 255, 0);
   border-top: 3px solid white;
   border-right: 3px solid white;
   -webkit-animation: spinner 2s infinite cubic-bezier(0.085, 0.625, 0.855, 0.360);
   animation: spinner 2s infinite cubic-bezier(0.085, 0.625, 0.855, 0.360);
+}
+
+.file-too-large {
+  color: red;
+  padding: 0 15px;
 }
 
 @-webkit-keyframes spinner {

@@ -31,6 +31,9 @@ export class FileHolder {
 
     <div class="drag-box-message" [innerText]="dropBoxMessage"></div>
   </div>
+  
+  <p class="file-too-large" *ngIf="showFileTooLargeMessage" [innerText]="fileTooLargeMessage">
+  </p>
 
   <div *ngIf="preview" class="image-container hr-inline-group">
     <div
@@ -188,6 +191,11 @@ label.upload-button input[type=file] {
   animation: spinner 2s infinite cubic-bezier(0.085, 0.625, 0.855, 0.360);
 }
 
+.file-too-large {
+  color: red;
+  padding: 0 15px;
+}
+
 @-webkit-keyframes spinner {
   0% {
     -webkit-transform: rotate(0deg);
@@ -216,6 +224,7 @@ export class ImageUploadComponent {
   @Input() url: string;
   @Input() headers: Header[];
   @Input() preview: boolean = true;
+  @Input() maxFileSize: number;
 
   @Output()
   isPending: EventEmitter<boolean> = new EventEmitter<boolean>();
@@ -225,6 +234,7 @@ export class ImageUploadComponent {
   onRemove: EventEmitter<FileHolder> = new EventEmitter<FileHolder>();
 
   files: FileHolder[] = [];
+  showFileTooLargeMessage: boolean = false;
 
   private fileCounter: number = 0;
   private pendingFilesCounter: number = 0;
@@ -235,15 +245,21 @@ export class ImageUploadComponent {
   buttonCaption: string = "Select Images";
   @Input()
   dropBoxMessage: string = "Drop your images here!";
+  @Input()
+  fileTooLargeMessage: string;
 
   constructor(private imageService: ImageService) {
   }
 
   ngOnInit() {
     this.imageService.setUrl(this.url);
+
+    if (!this.fileTooLargeMessage) {
+      this.fileTooLargeMessage = 'An image was too large and was not uploaded.' + (this.maxFileSize ? (' The maximum file size is ' + this.maxFileSize / 1024) + 'KiB.' : '');
+    }
   }
 
-  fileChange(files) {
+  fileChange(files: FileList) {
     let remainingSlots = this.countRemainingSlots();
     let filesToUploadNum = files.length > remainingSlots ? remainingSlots : files.length;
 
@@ -252,7 +268,7 @@ export class ImageUploadComponent {
     }
 
     this.fileCounter += filesToUploadNum;
-
+    this.showFileTooLargeMessage = false;
     this.uploadFiles(files, filesToUploadNum);
   }
 
@@ -268,9 +284,14 @@ export class ImageUploadComponent {
     this.isFileOver = isOver;
   }
 
-  private uploadFiles(files, filesToUploadNum) {
+  private uploadFiles(files: FileList, filesToUploadNum: number) {
     for (let i = 0; i < filesToUploadNum; i++) {
       let file = files[i];
+
+      if (this.maxFileSize && file.size > this.maxFileSize) {
+        this.showFileTooLargeMessage = true;
+        continue;
+      }
 
       let img = document.createElement('img');
       img.src = window.URL.createObjectURL(file);
