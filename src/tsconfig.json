@@ -3,7 +3,7 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "moduleResolution": "node",
-    "target": "es6",
+    "target": "es5",
     "module": "commonjs",
     "removeComments": true,
     "sourceMap": true,
@@ -11,6 +11,10 @@
     "declaration": true,
     "typeRoots": [
       "../node_modules/@types"
+    ],
+    "lib": [
+      "es2016",
+      "dom"
     ]
   },
   "angularCompilerOptions": {
