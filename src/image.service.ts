@@ -8,14 +8,11 @@ export interface Header {
 
 @Injectable()
 export class ImageService {
-  private url: string;
+  public postImage(url: string, image: File, headers?: Header[]) {
+    if (!url || url === '') {
+      throw new Error('Url is not set! Please set it before doing queries');
+    }
 
-  public setUrl(url: string) {
-    this.url = url;
-  }
-
-  public postImage(image: File, headers?: Header[]) {
-    this.checkUrl();
     return Observable.create(observer => {
       let formData: FormData = new FormData();
       let xhr: XMLHttpRequest = new XMLHttpRequest();
@@ -25,16 +22,15 @@ export class ImageService {
       xhr.onreadystatechange = () => {
         if (xhr.readyState === 4) {
           if (xhr.status === 200) {
-            observer.next(xhr.response);
+            observer.next({response: xhr.response, status: xhr.status});
             observer.complete();
           } else {
-            observer.error(xhr.response);
+            observer.error({response: xhr.response, status: xhr.status});
           }
         }
       };
 
-
-      xhr.open('POST', this.url, true);
+      xhr.open('POST', url, true);
 
       if (headers)
         for (let header of headers)
@@ -43,11 +39,4 @@ export class ImageService {
       xhr.send(formData);
     });
   }
-
-  private checkUrl() {
-    if (!this.url) {
-      throw new Error('Url is not set! Please use setUrl(url) method before doing queries');
-    }
-  }
-
 }

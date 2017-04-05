@@ -35,6 +35,8 @@ Content-Type. The query has a single field called `image`.
 
 `[preview]="false"` - you can disable images preview.
 
+`[maxFileSize]="1048576"` - the maximum file size that will be accepted, in bytes. No default (any size permitted).
+
 #### Custom headers
 
 If you need to send some headers with your request (for example `Authorization` headers), 
@@ -53,9 +55,11 @@ you can use `[headers]` directive like this.
 
 `[dropBoxMessage]="'Drop your images here!'"` - this is a message that is shown in drop area. Default is "**Drop your images here!**".
 
+`[fileTooLargeMessage]="'Image too large!'"` - message that is shown if the user selects/drops an image that exceeds `maxFileSize`. Default is "**An image was too large and was not uploaded. The maximum file size is x KiB.**".
+
 #### Callbacks
 
-`(onFileUploadFinish)="imageUploaded($event)"`. If `[url]` is specified this event is fired when component gets a responce from the server, also in this case event has field `serverResponse` which contains object returned by the server. If `[url]` is not specified it's fired immediately after an image(s) dropped into file-drop zone of choosed in file browser. So what you can do, is not specify `[url]` to handle upload yourself, for exapmple send the image into firebase storage. To get file use `event.file`.
+`(onFileUploadFinish)="imageUploaded($event)"`. If `[url]` is specified this event is fired when component gets a response from the server, also in this case event has field `serverResponse` which contains the status code and response from the server `{status, response}`. If `[url]` is not specified it's fired immediately after an image(s) dropped into file-drop zone of choosed in file browser. So what you can do, is not specify `[url]` to handle upload yourself, for exapmple send the image into firebase storage. To get file use `event.file`.
 
 `(onRemove)="imageRemoved($event)"` - this event is fired when remove button was clicked and the image preview was removed. *Note that this library doesn't handle deletion from server so you should do it yourself*. Event passed as the argument is the exact same object that was passed to the `(imageUploaded)` callback when image was added so you can access `serverResponse` to get a key to delete your image from server.
 
