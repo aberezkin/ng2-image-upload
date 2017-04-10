@@ -233,6 +233,8 @@ export class ImageUploadComponent implements OnInit {
   @Input() headers: Header[];
   @Input() preview: boolean = true;
   @Input() maxFileSize: number;
+  @Input() withCredentials: boolean = false;
+  @Input() partName: string;
 
   @Output()
   isPending: EventEmitter<boolean> = new EventEmitter<boolean>();
@@ -334,7 +336,7 @@ export class ImageUploadComponent implements OnInit {
       fileHolder.pending = true;
 
       this.imageService
-        .postImage(this.url, fileHolder.file, this.headers)
+        .postImage(this.url, fileHolder.file, this.headers, this.partName, this.withCredentials)
         .subscribe(
           response => this.onResponse(response, fileHolder),
           error => {

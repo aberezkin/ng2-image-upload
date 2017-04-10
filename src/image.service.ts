@@ -1,5 +1,7 @@
 import {Injectable} from "@angular/core";
+import {Http, RequestOptionsArgs, RequestOptions, Response} from "@angular/http";
 import {Observable} from "rxjs/Observable";
+
 
 export interface Header {
   header: string;
@@ -8,35 +10,30 @@ export interface Header {
 
 @Injectable()
 export class ImageService {
-  public postImage(url: string, image: File, headers?: Header[]) {
+
+  constructor(private http:Http) {}
+  public postImage(url: string, image: File, headers?: Header[], partName?: string, withCredentials?: boolean): Observable<Response> {
     if (!url || url === '') {
       throw new Error('Url is not set! Please set it before doing queries');
     }
 
-    return Observable.create(observer => {
-      let formData: FormData = new FormData();
-      let xhr: XMLHttpRequest = new XMLHttpRequest();
+    let options: RequestOptionsArgs = new RequestOptions();
+    if (withCredentials) {
+      options.withCredentials = withCredentials;
+    }
 
-      formData.append('image', image);
+    if (headers) {
+      for (let header of headers)
+        options.headers.append(header.header, header.value);
+    }
 
-      xhr.onreadystatechange = () => {
-        if (xhr.readyState === 4) {
-          if (xhr.status === 200) {
-            observer.next({response: xhr.response, status: xhr.status});
-            observer.complete();
-          } else {
-            observer.error({response: xhr.response, status: xhr.status});
-          }
-        }
-      };
+    let formData: FormData = new FormData();
 
-      xhr.open('POST', url, true);
+    if (!partName) {
+      partName = 'image';
+    }
+    formData.append(partName, image);
 
-      if (headers)
-        for (let header of headers)
-          xhr.setRequestHeader(header.header, header.value);
-
-      xhr.send(formData);
-    });
+    return this.http.post(url, formData, options);
   }
 }
