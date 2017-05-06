@@ -12,7 +12,7 @@ export interface Header {
 export class ImageService {
 
   constructor(private http:Http) {}
-  public postImage(url: string, image: File, headers?: Header[], partName?: string = 'image', withCredentials?: boolean): Observable<Response> {
+  public postImage(url: string, image: File, headers?: Header[], partName: string = 'image', withCredentials?: boolean): Observable<Response> {
     if (!url || url === '') {
       throw new Error('Url is not set! Please set it before doing queries');
     }
