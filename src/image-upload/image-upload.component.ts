@@ -252,9 +252,9 @@ export class ImageUploadComponent implements OnInit {
   isFileOver: boolean = false;
 
   @Input()
-  buttonCaption: string = "Select Images";
+  buttonCaption: string = 'Select Images';
   @Input()
-  dropBoxMessage: string = "Drop your images here!";
+  dropBoxMessage: string = 'Drop your images here!';
   @Input()
   fileTooLargeMessage: string;
 
