@@ -25,7 +25,7 @@ export class FileDropDirective {
   }
 
   @HostListener('dragleave', ['$event'])
-  onDragLeave() {
+  onDragLeave(event) {
     this.isFileOver.emit(false);
   }
 
