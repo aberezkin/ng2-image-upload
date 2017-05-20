@@ -28,6 +28,9 @@ export class FileHolder {
             multiple (change)="fileChange(input.files)"
             #input>
         </label>
+        <label *ngIf="fileCounter > 0" class="upload-button clear-button" (click)="deleteAll()">
+          <span [innerText]="'Clear'"></span>
+        </label>
 
         <div class="drag-box-message" [innerText]="dropBoxMessage"></div>
       </div>
@@ -90,6 +93,10 @@ export class FileHolder {
       position: fixed;
       top: -99999px;
     }
+
+    .clear-button{
+      background-color: #FF0000;
+    } 
 
     .upload-button {
       cursor: pointer;
@@ -286,6 +293,11 @@ export class ImageUploadComponent implements OnInit {
     this.fileCounter--;
 
     this.onRemove.emit(file);
+  }
+  
+  deleteAll() {
+    this.files = [];
+    this.fileCounter = 0;
   }
 
   fileOver(isOver) {

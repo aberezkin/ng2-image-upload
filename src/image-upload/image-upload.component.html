@@ -14,6 +14,9 @@
         multiple (change)="fileChange(input.files)"
         #input>
     </label>
+    <label *ngIf="fileCounter > 0" class="upload-button clear-button" (click)="deleteAll()">
+          <span [innerText]="'Clear'"></span>
+    </label>
 
     <div class="drag-box-message" [innerText]="dropBoxMessage"></div>
   </div>

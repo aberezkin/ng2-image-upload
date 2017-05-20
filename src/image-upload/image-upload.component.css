@@ -38,6 +38,10 @@ label.upload-button input[type=file] {
   top: -99999px;
 }
 
+.clear-button{
+    background-color: #FF0000;
+}
+    
 .upload-button {
   cursor: pointer;
   background-color: var(--active-color);
