@@ -32,17 +32,21 @@
   font-weight: 600;
 }
 
-label.upload-button input[type=file] {
+label.button input[type=file] {
   display: none;
   position: fixed;
   top: -99999px;
 }
 
-.clear-button{
-    background-color: #FF0000;
+.upload{
+  background-color: var(--active-color);  
 }
-    
-.upload-button {
+ 
+.clear{
+  background-color: #FF0000;  
+}
+
+.button {
   cursor: pointer;
   background-color: var(--active-color);
   padding: 10px;
@@ -58,7 +62,7 @@ label.upload-button input[type=file] {
   box-shadow: 2px 2px 4px 0px rgba(148, 148, 148, 0.6);
 }
 
-.upload-button:active span {
+.button:active span {
   position: relative;
   display: block;
   top: 1px;
