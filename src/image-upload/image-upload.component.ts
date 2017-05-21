@@ -20,13 +20,16 @@ export class FileHolder {
          [ngClass]="{'file-is-over': isFileOver}"
     >
       <div class="file-upload hr-inline-group">
-        <label class="upload-button">
+        <label class="upload button">
           <span [innerText]="buttonCaption"></span>
           <input
             type="file"
             accept="image/*"
             multiple (change)="fileChange(input.files)"
             #input>
+        </label>
+        <label *ngIf="fileCounter > 0" class="clear button" (click)="deleteAll()">
+          <span [innerText]="'Clear'"></span>
         </label>
 
         <div class="drag-box-message" [innerText]="dropBoxMessage"></div>
@@ -85,15 +88,18 @@ export class FileHolder {
       font-weight: 600;
     }
 
-    label.upload-button input[type=file] {
+    label.button input[type=file] {
       display: none;
       position: fixed;
       top: -99999px;
     }
 
-    .upload-button {
+    .clear{
+      background-color: #FF0000;
+    } 
+
+    .button {
       cursor: pointer;
-      background-color: var(--active-color);
       padding: 10px;
       color: white;
       font-size: 1.25em;
@@ -101,16 +107,19 @@ export class FileHolder {
       text-transform: uppercase;
       display: inline-block;
       float: left;
-
       -webkit-box-shadow: 2px 2px 4px 0px rgba(148, 148, 148, 0.6);
       -moz-box-shadow: 2px 2px 4px 0px rgba(148, 148, 148, 0.6);
       box-shadow: 2px 2px 4px 0px rgba(148, 148, 148, 0.6);
     }
 
-    .upload-button:active span {
+    .button:active span {
       position: relative;
       display: block;
       top: 1px;
+    }
+
+    .upload{
+      background-color: var(--active-color);
     }
 
     .image-container {
@@ -286,6 +295,11 @@ export class ImageUploadComponent implements OnInit {
     this.fileCounter--;
 
     this.onRemove.emit(file);
+  }
+  
+  deleteAll() {
+    this.files = [];
+    this.fileCounter = 0;
   }
 
   fileOver(isOver) {
