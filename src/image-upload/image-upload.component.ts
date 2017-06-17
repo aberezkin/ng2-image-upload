@@ -14,7 +14,7 @@ export class FileHolder {
   template: `
     <div class="image-upload"
          fileDrop
-         [accept]="['image/*']"
+         [accept]="supportedExtensions"
          (isFileOver)="fileOver($event)"
          (fileDrop)="fileChange($event)"
          [ngClass]="{'file-is-over': isFileOver}"
@@ -24,7 +24,7 @@ export class FileHolder {
           <span [innerText]="buttonCaption"></span>
           <input
             type="file"
-            accept="image/*"
+            [accept]="supportedExtensions"
             multiple (change)="fileChange(input.files)"
             #input>
         </label>
@@ -266,6 +266,8 @@ export class ImageUploadComponent implements OnInit {
   dropBoxMessage: string = 'Drop your images here!';
   @Input()
   fileTooLargeMessage: string;
+  @Input('extensions') 
+  supportedExtensions: string[] = ['image/*'];
 
   constructor(private imageService: ImageService) {
   }
@@ -273,6 +275,9 @@ export class ImageUploadComponent implements OnInit {
   ngOnInit() {
     if (!this.fileTooLargeMessage) {
       this.fileTooLargeMessage = 'An image was too large and was not uploaded.' + (this.maxFileSize ? (' The maximum file size is ' + this.maxFileSize / 1024) + 'KiB.' : '');
+    }
+    if (this.supportedExtensions) {      
+      this.supportedExtensions = this.supportedExtensions.map((ext) => 'image/' + ext);                
     }
   }
 
