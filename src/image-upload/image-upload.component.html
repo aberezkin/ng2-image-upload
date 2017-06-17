@@ -1,6 +1,6 @@
 <div class="image-upload"
      fileDrop
-     [accept]="['image/*']"
+     [accept]="supportedExtensions"    
      (isFileOver)="fileOver($event)"
      (fileDrop)="fileChange($event)"
      [ngClass]="{'file-is-over': isFileOver}"
@@ -10,7 +10,7 @@
       <span [innerText]="buttonCaption"></span>
       <input
         type="file"
-        accept="image/*"
+        [accept]="supportedExtensions"
         multiple (change)="fileChange(input.files)"
         #input>
     </label>
