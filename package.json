@@ -1,10 +1,10 @@
 {
   "name": "angular2-image-upload",
-  "version": "0.6.0",
+  "version": "0.6.3",
   "description": "An angular component that uploads images using native browser upload or drag-n-drop.",
   "main": "index.js",
   "scripts": {
-    "build": "rm -rf lib codegen && ngc -p src",
+    "build": "rm -rf lib codegen .tmp && gulp build && ngc -p tsconfig.json",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -31,19 +31,21 @@
   },
   "homepage": "https://github.com/aberezkin/image-upload#readme",
   "peerDependencies": {
-    "@angular/core": "^2.4.9 || ^4.0.0",
     "@angular/common": "^2.4.9 || ^4.0.0",
+    "@angular/core": "^2.4.9 || ^4.0.0",
     "@angular/http": "^2.4.9 || ^4.0.0",
     "rxjs": "^5.0.0-rc.2"
   },
   "devDependencies": {
-    "@angular/core": "^4.0.0",
     "@angular/common": "^4.0.0",
     "@angular/compiler": "^4.0.0",
     "@angular/compiler-cli": "^4.0.0",
-    "@angular/language-service": "^4.0.0",
+    "@angular/core": "^4.0.0",
     "@angular/http": "^4.0.0",
+    "@angular/language-service": "^4.0.0",
     "@types/core-js": "^0.9.34",
+    "gulp": "^3.9.1",
+    "gulp-inline-ng2-template": "^4.0.0",
     "rxjs": "^5.0.0-rc.2",
     "typescript": "2.1.5"
   }

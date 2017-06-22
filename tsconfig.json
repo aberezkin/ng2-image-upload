@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "moduleResolution": "node",
+    "target": "es5",
+    "module": "es2015",
+    "removeComments": true,
+    "sourceMap": false,
+    "outDir": "lib",
+    "declaration": true,
+    "lib": [
+      "es2016",
+      "dom"
+    ]
+  },
+  "angularCompilerOptions": {
+    "genDir": ".tmp/ngc"
+  },
+  "include": [
+    ".tmp/**/*"
+  ]
+}

@@ -1,6 +1,7 @@
 lib/
 node_modules/
 .idea/
-codegen/
 npm-debug.log
 *.tgz
+.tmp/
+yarn.lock
