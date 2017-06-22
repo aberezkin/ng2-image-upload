@@ -32,15 +32,18 @@
   font-weight: 600;
 }
 
-label.upload-button input[type=file] {
+label.button input[type=file] {
   display: none;
   position: fixed;
   top: -99999px;
 }
 
-.upload-button {
+.clear {
+  background-color: #FF0000;
+}
+
+.button {
   cursor: pointer;
-  background-color: var(--active-color);
   padding: 10px;
   color: white;
   font-size: 1.25em;
@@ -48,16 +51,19 @@ label.upload-button input[type=file] {
   text-transform: uppercase;
   display: inline-block;
   float: left;
-
   -webkit-box-shadow: 2px 2px 4px 0px rgba(148, 148, 148, 0.6);
   -moz-box-shadow: 2px 2px 4px 0px rgba(148, 148, 148, 0.6);
   box-shadow: 2px 2px 4px 0px rgba(148, 148, 148, 0.6);
 }
 
-.upload-button:active span {
+.button:active span {
   position: relative;
   display: block;
   top: 1px;
+}
+
+.upload {
+  background-color: var(--active-color);
 }
 
 .image-container {

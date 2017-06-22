@@ -44,6 +44,8 @@ export class ImageUploadComponent implements OnInit {
   dropBoxMessage: string = 'Drop your images here!';
   @Input()
   fileTooLargeMessage: string;
+  @Input('extensions')
+  supportedExtensions: string[] = ['image/*'];
 
   constructor(private imageService: ImageService) {
   }
@@ -51,6 +53,9 @@ export class ImageUploadComponent implements OnInit {
   ngOnInit() {
     if (!this.fileTooLargeMessage) {
       this.fileTooLargeMessage = 'An image was too large and was not uploaded.' + (this.maxFileSize ? (' The maximum file size is ' + this.maxFileSize / 1024) + 'KiB.' : '');
+    }
+    if (this.supportedExtensions) {
+      this.supportedExtensions = this.supportedExtensions.map((ext) => 'image/' + ext);
     }
   }
 
@@ -73,6 +78,11 @@ export class ImageUploadComponent implements OnInit {
     this.fileCounter--;
 
     this.onRemove.emit(file);
+  }
+
+  deleteAll() {
+    this.files = [];
+    this.fileCounter = 0;
   }
 
   fileOver(isOver) {

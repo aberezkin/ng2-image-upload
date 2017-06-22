@@ -37,6 +37,8 @@ Content-Type. The query has a single field called `image`.
 
 `[maxFileSize]="1048576"` - the maximum file size that will be accepted, in bytes. No default (any size permitted).
 
+`[extensions]="['jpg','png','gif']"` - upload images with specific extensions. Default all extensions `image/*` is allowed.
+
 #### Custom headers
 
 If you need to send some headers with your request (for example `Authorization` headers), 
@@ -75,6 +77,7 @@ In the final state it should look something like this:
       ]"
       [buttonCaption]="'Select Images!'"
       [dropBoxMessage]="'Drop your images here!'"
+      [extensions]="['jpg','png','gif']"
       (onFileUploadFinish)="imageUploaded($event)"
       (onRemove)="imageRemoved($event)"
       (isPending)="disableSendButton($event)"
