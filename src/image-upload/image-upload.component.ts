@@ -32,8 +32,8 @@ export class ImageUploadComponent implements OnInit {
 
   files: FileHolder[] = [];
   showFileTooLargeMessage: boolean = false;
-
-  private fileCounter: number = 0;
+  fileCounter: number = 0;
+  
   private pendingFilesCounter: number = 0;
 
   isFileOver: boolean = false;
