@@ -4,10 +4,10 @@
     "experimentalDecorators": true,
     "moduleResolution": "node",
     "target": "es5",
-    "module": "es2015",
+    "module": "commonjs",
     "removeComments": true,
-    "sourceMap": false,
-    "outDir": "lib",
+    "sourceMap": true,
+    "outDir": "../lib",
     "declaration": true,
     "lib": [
       "es2016",
@@ -15,9 +15,9 @@
     ]
   },
   "angularCompilerOptions": {
-    "genDir": ".tmp/ngc"
+    "genDir": "../.tmp/ngc"
   },
   "include": [
-    ".tmp/**/*"
+    "../.tmp/**/*"
   ]
 }
