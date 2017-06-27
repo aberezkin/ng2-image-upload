@@ -8,3 +8,5 @@ package-lock.json
 yarn.lock
 src/tsconfig.json
 .npmignore
+demo/
+docs/

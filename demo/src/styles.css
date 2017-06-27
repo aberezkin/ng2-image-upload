@@ -1,0 +1,14 @@
+h1.root-loading {
+  visibility: visible !important;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.github-star-button {
+  position: fixed;
+  top: 0;
+  right: 0;
+  margin: 10px;
+}

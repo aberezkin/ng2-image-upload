@@ -4,8 +4,11 @@
   "description": "An angular component that uploads images using native browser upload or drag-n-drop.",
   "main": "index.js",
   "scripts": {
-    "build": "rm -rf lib codegen .tmp && gulp build && ngc -p src/tsconfig.json",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "rm -rf lib .tmp && gulp build",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "install:demo": "cd demo && npm i && npm prune",
+    "demo": "cd demo && npm start",
+    "build:demo": "cd demo && npm run build"
   },
   "repository": {
     "type": "git",
@@ -44,8 +47,9 @@
     "@angular/http": "^4.0.0",
     "@angular/language-service": "^4.0.0",
     "@types/core-js": "^0.9.34",
-    "gulp": "^3.9.1",
+    "gulp": "github:gulpjs/gulp#4.0",
     "gulp-inline-ng2-template": "^4.0.0",
+    "gulp-ngc": "^0.3.2",
     "rxjs": "^5.0.0-rc.2",
     "typescript": "2.1.5"
   }
