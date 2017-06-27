@@ -10,4 +10,8 @@ gulp.task('inline-templates', () => {
     .pipe(gulp.dest('.tmp'));
 });
 
-gulp.task('build', gulp.series(['inline-templates', 'ngc']));
+gulp.task('copy-to-demo', () => {
+  return gulp.src('lib/**/*').pipe(gulp.dest('demo/src/lib'));
+});
+
+gulp.task('build', gulp.series(['inline-templates', 'ngc', 'copy-to-demo']));
