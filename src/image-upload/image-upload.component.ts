@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { Header, ImageService } from '../image.service';
 
 export class FileHolder {
@@ -33,9 +33,6 @@ export class ImageUploadComponent implements OnInit {
   files: FileHolder[] = [];
   showFileTooLargeMessage: boolean = false;
   fileCounter: number = 0;
-  
-  private pendingFilesCounter: number = 0;
-
   isFileOver: boolean = false;
 
   @Input()
@@ -46,6 +43,10 @@ export class ImageUploadComponent implements OnInit {
   fileTooLargeMessage: string;
   @Input('extensions')
   supportedExtensions: string[] = ['image/*'];
+
+  private pendingFilesCounter: number = 0;
+  @ViewChild('input')
+  private inputElement: ElementRef;
 
   constructor(private imageService: ImageService) {
   }
@@ -76,6 +77,7 @@ export class ImageUploadComponent implements OnInit {
     let index = this.files.indexOf(file);
     this.files.splice(index, 1);
     this.fileCounter--;
+    this.inputElement.nativeElement.value = '';
 
     this.onRemove.emit(file);
   }
@@ -83,6 +85,7 @@ export class ImageUploadComponent implements OnInit {
   deleteAll() {
     this.files = [];
     this.fileCounter = 0;
+    this.inputElement.nativeElement.value = '';
   }
 
   fileOver(isOver) {
