@@ -3,14 +3,18 @@ import { BrowserModule } from '@angular/platform-browser';
 import { ImageUploadModule } from '../lib/image-upload.module';
 
 import { AppComponent } from './app.component';
+import { BasicExampleComponent } from './basic/basic.component';
+import { FilterExampleComponent } from './filter/filter.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    BasicExampleComponent,
+    FilterExampleComponent
   ],
   imports: [
     BrowserModule,
-    ImageUploadModule
+    ImageUploadModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

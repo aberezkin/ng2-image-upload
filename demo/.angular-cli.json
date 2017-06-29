@@ -20,6 +20,8 @@
       "prefix": "app",
       "styles": [
         "../node_modules/bootstrap/dist/css/bootstrap.css",
+        "../node_modules/prismjs/themes/prism.css",
+        "../node_modules/prismjs/themes/prism-okaidia.css",
         "styles.css"
       ],
       "scripts": [],

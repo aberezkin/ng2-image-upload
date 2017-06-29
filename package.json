@@ -4,7 +4,7 @@
   "description": "An angular component that uploads images using native browser upload or drag-n-drop.",
   "main": "index.js",
   "scripts": {
-    "build": "rm -rf lib .tmp && gulp build",
+    "build": "rm -rf lib .tmp demo/src/lib && gulp build",
     "test": "echo \"Error: no test specified\" && exit 1",
     "install:demo": "cd demo && npm i && npm prune",
     "demo": "cd demo && npm start",
