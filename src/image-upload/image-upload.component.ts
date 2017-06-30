@@ -82,6 +82,8 @@ export class ImageUploadComponent implements OnInit {
   }
 
   deleteAll() {
+    this.files.forEach(f => this.onRemove.emit(f));
+
     this.files = [];
     this.fileCounter = 0;
     this.inputElement.nativeElement.value = '';
