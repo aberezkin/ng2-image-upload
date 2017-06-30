@@ -42,7 +42,7 @@ export class ImageUploadComponent implements OnInit {
   @Input()
   fileTooLargeMessage: string;
   @Input('extensions')
-  supportedExtensions: string[] = ['image/*'];
+  supportedExtensions: string[];
 
   private pendingFilesCounter: number = 0;
   @ViewChild('input')
@@ -55,9 +55,8 @@ export class ImageUploadComponent implements OnInit {
     if (!this.fileTooLargeMessage) {
       this.fileTooLargeMessage = 'An image was too large and was not uploaded.' + (this.maxFileSize ? (' The maximum file size is ' + this.maxFileSize / 1024) + 'KiB.' : '');
     }
-    if (this.supportedExtensions) {
-      this.supportedExtensions = this.supportedExtensions.map((ext) => 'image/' + ext);
-    }
+
+    this.supportedExtensions = this.supportedExtensions ? this.supportedExtensions.map((ext) => 'image/' + ext) : ['image/*'];
   }
 
   fileChange(files: FileList) {
