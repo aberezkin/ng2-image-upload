@@ -1,6 +1,6 @@
 import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 
-import { Header, ImageService } from '../image.service';
+import { ImageService } from './image.service';
 
 export class FileHolder {
   public pending: boolean = false;

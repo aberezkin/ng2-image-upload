@@ -4,7 +4,7 @@ import { HttpModule } from '@angular/http';
 
 import { FileDropDirective } from './file-drop.directive';
 import { ImageUploadComponent } from './image-upload/image-upload.component';
-import { ImageService } from './image.service';
+import { ImageService } from './image-upload/image.service';
 
 @NgModule({
   imports: [CommonModule, HttpModule],

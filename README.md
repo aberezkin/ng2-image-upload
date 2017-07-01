@@ -45,7 +45,8 @@ Content-Type. The query has a single field called `image`.
 If you need to send some headers with your request (for example `Authorization` headers), 
 you can use `[headers]` directive like this.
 
-    <image-upload [url]="'my-url.com'"
+    <image-upload 
+      [url]="'my-url.com'"
       [headers]="[{Authorization: 'MyToken'}]">
     </image-upload>
 
@@ -65,7 +66,7 @@ you can use `[headers]` directive like this.
 
 `(remove)="imageRemoved($event)"` - this event is fired when remove or clear button was clicked and the image preview was removed. *Note that this library doesn't handle deletion from server so you should do it yourself*. Event passed as the argument is the exact same object that was passed to the `(imageUploaded)` callback when image was added so you can access `serverResponse` to get a key to delete your image from server.
 
-`(uploadStateChange)="disableSendButton($event)"` - this event is fired when image upload state was changed. Event is just a boolean that represents the image upload state. Image upload state is `true` when and only when component awaits the response from the server, and `false` otherwise. You can use it, for example, to disable send button in your form until all images are uploaded.
+`(uploadStateChange)="disableSendButton($event)"` - this event is fired when image upload state was changed. Event is just a boolean that represents the uploading state. Image upload state is `true` when and only when component awaits the response from the server, and `false` otherwise. You can use it, for example, to disable send button in your form until all images are uploaded.
 
 In the final state it should look something like this:
 
