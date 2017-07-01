@@ -6,7 +6,7 @@
   "scripts": {
     "build": "rm -rf lib .tmp demo/src/lib && gulp build",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "install:demo": "cd demo && npm i && npm prune",
+    "install:demo": "cd demo && yarn",
     "demo": "cd demo && npm start",
     "build:demo": "cd demo && npm run build"
   },
