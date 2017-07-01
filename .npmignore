@@ -10,3 +10,4 @@ src/tsconfig.json
 .npmignore
 demo/
 docs/
+.travis.yml

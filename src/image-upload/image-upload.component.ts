@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { Header, ImageService } from '../image.service';
 
 export class FileHolder {
@@ -33,9 +33,6 @@ export class ImageUploadComponent implements OnInit {
   files: FileHolder[] = [];
   showFileTooLargeMessage: boolean = false;
   fileCounter: number = 0;
-  
-  private pendingFilesCounter: number = 0;
-
   isFileOver: boolean = false;
 
   @Input()
@@ -45,7 +42,11 @@ export class ImageUploadComponent implements OnInit {
   @Input()
   fileTooLargeMessage: string;
   @Input('extensions')
-  supportedExtensions: string[] = ['image/*'];
+  supportedExtensions: string[];
+
+  private pendingFilesCounter: number = 0;
+  @ViewChild('input')
+  private inputElement: ElementRef;
 
   constructor(private imageService: ImageService) {
   }
@@ -54,9 +55,8 @@ export class ImageUploadComponent implements OnInit {
     if (!this.fileTooLargeMessage) {
       this.fileTooLargeMessage = 'An image was too large and was not uploaded.' + (this.maxFileSize ? (' The maximum file size is ' + this.maxFileSize / 1024) + 'KiB.' : '');
     }
-    if (this.supportedExtensions) {
-      this.supportedExtensions = this.supportedExtensions.map((ext) => 'image/' + ext);
-    }
+
+    this.supportedExtensions = this.supportedExtensions ? this.supportedExtensions.map((ext) => 'image/' + ext) : ['image/*'];
   }
 
   fileChange(files: FileList) {
@@ -76,13 +76,17 @@ export class ImageUploadComponent implements OnInit {
     let index = this.files.indexOf(file);
     this.files.splice(index, 1);
     this.fileCounter--;
+    this.inputElement.nativeElement.value = '';
 
     this.onRemove.emit(file);
   }
 
   deleteAll() {
+    this.files.forEach(f => this.onRemove.emit(f));
+
     this.files = [];
     this.fileCounter = 0;
+    this.inputElement.nativeElement.value = '';
   }
 
   fileOver(isOver) {
