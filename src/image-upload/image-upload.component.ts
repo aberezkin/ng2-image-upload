@@ -24,11 +24,11 @@ export class ImageUploadComponent implements OnInit {
   @Input() partName: string;
 
   @Output()
-  isPending: EventEmitter<boolean> = new EventEmitter<boolean>();
+  uploadStateChange: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Output()
-  onFileUploadFinish: EventEmitter<FileHolder> = new EventEmitter<FileHolder>();
+  uploadFinish: EventEmitter<FileHolder> = new EventEmitter<FileHolder>();
   @Output()
-  onRemove: EventEmitter<FileHolder> = new EventEmitter<FileHolder>();
+  remove: EventEmitter<FileHolder> = new EventEmitter<FileHolder>();
 
   files: FileHolder[] = [];
   showFileTooLargeMessage: boolean = false;
@@ -64,7 +64,7 @@ export class ImageUploadComponent implements OnInit {
     let filesToUploadNum = files.length > remainingSlots ? remainingSlots : files.length;
 
     if (this.url && filesToUploadNum != 0) {
-      this.isPending.emit(true);
+      this.uploadStateChange.emit(true);
     }
 
     this.fileCounter += filesToUploadNum;
@@ -78,11 +78,11 @@ export class ImageUploadComponent implements OnInit {
     this.fileCounter--;
     this.inputElement.nativeElement.value = '';
 
-    this.onRemove.emit(file);
+    this.remove.emit(file);
   }
 
   deleteAll() {
-    this.files.forEach(f => this.onRemove.emit(f));
+    this.files.forEach(f => this.remove.emit(f));
 
     this.files = [];
     this.fileCounter = 0;
@@ -124,10 +124,10 @@ export class ImageUploadComponent implements OnInit {
     fileHolder.serverResponse = response;
     fileHolder.pending = false;
 
-    this.onFileUploadFinish.emit(fileHolder);
+    this.uploadFinish.emit(fileHolder);
 
     if (--this.pendingFilesCounter == 0) {
-      this.isPending.emit(false);
+      this.uploadStateChange.emit(false);
     }
   }
 
@@ -146,7 +146,7 @@ export class ImageUploadComponent implements OnInit {
           }
         );
     } else {
-      this.onFileUploadFinish.emit(fileHolder);
+      this.uploadFinish.emit(fileHolder);
     }
   }
 
