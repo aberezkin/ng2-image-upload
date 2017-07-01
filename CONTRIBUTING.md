@@ -22,12 +22,12 @@ It's worth noting that if you're working on a branch you don't have to care abou
 
 `development` should be merged into `master` via pull request.
 
-On `master` run: `npm run release` to generate the changelog and bump the version.
+On `master` run: `npm run release` build the project, build the demo, generate the changelog, and bump the version.
 
 If unsure of the output run `npm run release -- --dry-run` for a preview.
 
 If something goes wrong revert the automatic commit produced by `release` with: `git reset HEAD~1`
 
-If all is well at this stage run `npm run publish` to build the project, push the new changelog, version, tag and publish to npm.
+If all is well at this stage run `npm run publish` to push the new changelog, version, tag and publish to npm.
 
 After release make sure to merge `master` back into `development` - no pull request required.
