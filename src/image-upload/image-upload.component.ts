@@ -1,12 +1,13 @@
 import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+
 import { Header, ImageService } from '../image.service';
 
 export class FileHolder {
-  public serverResponse: { status: number, response: any };
   public pending: boolean = false;
+  public serverResponse: { status: number, response: any };
 
-  constructor(public src: string, public file: File) {
-  }
+    constructor(public src: string, public file: File) {}
+
 }
 
 @Component({
@@ -15,38 +16,30 @@ export class FileHolder {
   styleUrls: ['./image-upload.component.css']
 })
 export class ImageUploadComponent implements OnInit {
-  @Input() max: number = 100;
-  @Input() url: string;
-  @Input() headers: Header[];
-  @Input() preview: boolean = true;
-  @Input() maxFileSize: number;
-  @Input() withCredentials: boolean = false;
-  @Input() partName: string;
-
-  @Output()
-  uploadStateChange: EventEmitter<boolean> = new EventEmitter<boolean>();
-  @Output()
-  uploadFinish: EventEmitter<FileHolder> = new EventEmitter<FileHolder>();
-  @Output()
-  remove: EventEmitter<FileHolder> = new EventEmitter<FileHolder>();
 
   files: FileHolder[] = [];
-  showFileTooLargeMessage: boolean = false;
   fileCounter: number = 0;
   isFileOver: boolean = false;
+  showFileTooLargeMessage: boolean = false;
 
-  @Input()
-  buttonCaption: string = 'Select Images';
-  @Input()
-  dropBoxMessage: string = 'Drop your images here!';
-  @Input()
-  fileTooLargeMessage: string;
-  @Input('extensions')
-  supportedExtensions: string[];
+  @Input() buttonCaption: string = 'Select Images';
+  @Input() dropBoxMessage: string = 'Drop your images here!';
+  @Input() fileTooLargeMessage: string;
+  @Input() headers: Header[];
+  @Input() max: number = 100;
+  @Input() maxFileSize: number;
+  @Input() preview: boolean = true;
+  @Input() partName: string;
+  @Input('extensions') supportedExtensions: string[];
+  @Input() url: string;
+  @Input() withCredentials: boolean = false;
+  @Output() remove: EventEmitter<FileHolder> = new EventEmitter<FileHolder>();
+  @Output() uploadStateChange: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Output() uploadFinish: EventEmitter<FileHolder> = new EventEmitter<FileHolder>();
 
-  private pendingFilesCounter: number = 0;
   @ViewChild('input')
   private inputElement: ElementRef;
+  private pendingFilesCounter: number = 0;
 
   constructor(private imageService: ImageService) {
   }
@@ -55,8 +48,22 @@ export class ImageUploadComponent implements OnInit {
     if (!this.fileTooLargeMessage) {
       this.fileTooLargeMessage = 'An image was too large and was not uploaded.' + (this.maxFileSize ? (' The maximum file size is ' + this.maxFileSize / 1024) + 'KiB.' : '');
     }
-
     this.supportedExtensions = this.supportedExtensions ? this.supportedExtensions.map((ext) => 'image/' + ext) : ['image/*'];
+  }
+
+  deleteAll() {
+    this.files.forEach(f => this.remove.emit(f));
+    this.files = [];
+    this.fileCounter = 0;
+    this.inputElement.nativeElement.value = '';
+  }
+
+  deleteFile(file: FileHolder): void {
+    let index = this.files.indexOf(file);
+    this.files.splice(index, 1);
+    this.fileCounter--;
+    this.inputElement.nativeElement.value = '';
+    this.remove.emit(file);
   }
 
   fileChange(files: FileList) {
@@ -72,25 +79,23 @@ export class ImageUploadComponent implements OnInit {
     this.uploadFiles(files, filesToUploadNum);
   }
 
-  deleteFile(file: FileHolder): void {
-    let index = this.files.indexOf(file);
-    this.files.splice(index, 1);
-    this.fileCounter--;
-    this.inputElement.nativeElement.value = '';
-
-    this.remove.emit(file);
-  }
-
-  deleteAll() {
-    this.files.forEach(f => this.remove.emit(f));
-
-    this.files = [];
-    this.fileCounter = 0;
-    this.inputElement.nativeElement.value = '';
-  }
-
   fileOver(isOver) {
     this.isFileOver = isOver;
+  }
+
+  private countRemainingSlots() {
+    return this.max - this.fileCounter;
+  }
+
+  private onResponse(response, fileHolder: FileHolder) {
+    fileHolder.serverResponse = response;
+    fileHolder.pending = false;
+
+    this.uploadFinish.emit(fileHolder);
+
+    if (--this.pendingFilesCounter == 0) {
+      this.uploadStateChange.emit(false);
+    }
   }
 
   private uploadFiles(files: FileList, filesToUploadNum: number) {
@@ -120,17 +125,6 @@ export class ImageUploadComponent implements OnInit {
     }
   }
 
-  private onResponse(response, fileHolder: FileHolder) {
-    fileHolder.serverResponse = response;
-    fileHolder.pending = false;
-
-    this.uploadFinish.emit(fileHolder);
-
-    if (--this.pendingFilesCounter == 0) {
-      this.uploadStateChange.emit(false);
-    }
-  }
-
   private uploadSingleFile(fileHolder: FileHolder) {
     if (this.url) {
       this.pendingFilesCounter++;
@@ -139,18 +133,14 @@ export class ImageUploadComponent implements OnInit {
       this.imageService
         .postImage(this.url, fileHolder.file, this.headers, this.partName, this.withCredentials)
         .subscribe(
-          response => this.onResponse(response, fileHolder),
-          error => {
-            this.onResponse(error, fileHolder);
-            this.deleteFile(fileHolder);
-          }
+        response => this.onResponse(response, fileHolder),
+        error => {
+          this.onResponse(error, fileHolder);
+          this.deleteFile(fileHolder);
+        }
         );
     } else {
       this.uploadFinish.emit(fileHolder);
     }
-  }
-
-  private countRemainingSlots() {
-    return this.max - this.fileCounter;
   }
 }

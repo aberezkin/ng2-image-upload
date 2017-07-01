@@ -1,33 +1,12 @@
-import {Directive, HostListener, Output, EventEmitter, Input} from '@angular/core';
+import { Directive, EventEmitter, HostListener, Input, Output } from '@angular/core';
 
 @Directive({
   selector: '[fileDrop]'
 })
 export class FileDropDirective {
   @Input() accept: string[];
-
-  @Output()
-  isFileOver: EventEmitter<boolean> = new EventEmitter<boolean>();
-  @Output()
-  fileDrop: EventEmitter<FileList> = new EventEmitter<FileList>();
-
-  @HostListener('dragover', ['$event'])
-  onDragOver(event: any) {
-    let dataTransfer = FileDropDirective.getDataTransfer(event);
-
-    if (!FileDropDirective.hasFiles(dataTransfer.types)) {
-      return;
-    }
-
-    dataTransfer.dropEffect = 'copy';
-    event.preventDefault();
-    this.isFileOver.emit(true);
-  }
-
-  @HostListener('dragleave', ['$event'])
-  onDragLeave(event) {
-    this.isFileOver.emit(false);
-  }
+  @Output() isFileOver: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Output() fileDrop: EventEmitter<FileList> = new EventEmitter<FileList>();
 
   @HostListener('drop', ['$event'])
   onDrop(event: any) {
@@ -44,6 +23,24 @@ export class FileDropDirective {
     event.preventDefault();
     this.isFileOver.emit(false);
     this.fileDrop.emit(files);
+  }
+
+  @HostListener('dragleave', ['$event'])
+  onDragLeave(event) {
+    this.isFileOver.emit(false);
+  }
+
+  @HostListener('dragover', ['$event'])
+  onDragOver(event: any) {
+    let dataTransfer = FileDropDirective.getDataTransfer(event);
+
+    if (!FileDropDirective.hasFiles(dataTransfer.types)) {
+      return;
+    }
+
+    dataTransfer.dropEffect = 'copy';
+    event.preventDefault();
+    this.isFileOver.emit(true);
   }
 
   private filterFiles(files: FileList): any {
@@ -64,10 +61,6 @@ export class FileDropDirective {
     return acceptedFiles;
   }
 
-  private static matchRule(rule: string, candidate: string) {
-    return new RegExp("^" + rule.split("*").join(".*") + "$").test(candidate);
-  }
-
   private static getDataTransfer(event: any): DataTransfer {
     return event.dataTransfer ? event.dataTransfer : event.originalEvent.dataTransfer;
   }
@@ -86,5 +79,9 @@ export class FileDropDirective {
     }
 
     return false;
+  }
+
+  private static matchRule(rule: string, candidate: string) {
+    return new RegExp("^" + rule.split("*").join(".*") + "$").test(candidate);
   }
 }

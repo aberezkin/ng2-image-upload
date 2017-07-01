@@ -17,12 +17,10 @@
     <label *ngIf="fileCounter > 0" class="clear button" (click)="deleteAll()">
       <span [innerText]="'Clear'"></span>
     </label>
-
     <div class="drag-box-message" [innerText]="dropBoxMessage"></div>
   </div>
 
-  <p class="file-too-large" *ngIf="showFileTooLargeMessage" [innerText]="fileTooLargeMessage">
-  </p>
+  <p class="file-too-large" *ngIf="showFileTooLargeMessage" [innerText]="fileTooLargeMessage"></p>
 
   <div *ngIf="preview" class="image-container hr-inline-group">
     <div

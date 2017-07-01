@@ -1,6 +1,6 @@
-import {Injectable} from '@angular/core';
-import {Http, RequestOptionsArgs, RequestOptions, Response, Headers} from '@angular/http';
-import {Observable} from 'rxjs/Observable';
+import { Injectable } from '@angular/core';
+import { Headers, Http, RequestOptions, RequestOptionsArgs, Response } from '@angular/http';
+import { Observable } from 'rxjs/Observable';
 
 export interface Header {
   header: string;
@@ -10,10 +10,11 @@ export interface Header {
 @Injectable()
 export class ImageService {
 
-  constructor(private http: Http) {
-  }
+  constructor(private http: Http) { }
 
-  public postImage(url: string, image: File, headers?: Header[], partName: string = 'image', withCredentials?: boolean): Observable<Response> {
+  public postImage(url: string, image: File, headers?: Header[], partName: string = 'image',
+    withCredentials?: boolean): Observable<Response> {
+
     if (!url || url === '') {
       throw new Error('Url is not set! Please set it before doing queries');
     }
