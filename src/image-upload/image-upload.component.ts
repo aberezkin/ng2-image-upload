@@ -5,9 +5,7 @@ import { Header, ImageService } from '../image.service';
 export class FileHolder {
   public pending: boolean = false;
   public serverResponse: { status: number, response: any };
-
-    constructor(public src: string, public file: File) {}
-
+  constructor(public src: string, public file: File) { }
 }
 
 @Component({
@@ -25,7 +23,7 @@ export class ImageUploadComponent implements OnInit {
   @Input() buttonCaption: string = 'Select Images';
   @Input() dropBoxMessage: string = 'Drop your images here!';
   @Input() fileTooLargeMessage: string;
-  @Input() headers: Header[];
+  @Input() headers: any;
   @Input() max: number = 100;
   @Input() maxFileSize: number;
   @Input() preview: boolean = true;
@@ -41,8 +39,7 @@ export class ImageUploadComponent implements OnInit {
   private inputElement: ElementRef;
   private pendingFilesCounter: number = 0;
 
-  constructor(private imageService: ImageService) {
-  }
+  constructor(private imageService: ImageService) { }
 
   ngOnInit() {
     if (!this.fileTooLargeMessage) {
@@ -79,13 +76,9 @@ export class ImageUploadComponent implements OnInit {
     this.uploadFiles(files, filesToUploadNum);
   }
 
-  fileOver(isOver) {
-    this.isFileOver = isOver;
-  }
+  fileOver = (isOver) => this.isFileOver = isOver;
 
-  private countRemainingSlots() {
-    return this.max - this.fileCounter;
-  }
+  private countRemainingSlots = () => this.max - this.fileCounter;
 
   private onResponse(response, fileHolder: FileHolder) {
     fileHolder.serverResponse = response;
@@ -113,14 +106,9 @@ export class ImageUploadComponent implements OnInit {
       let reader = new FileReader();
       reader.addEventListener('load', (event: any) => {
         let fileHolder: FileHolder = new FileHolder(event.target.result, file);
-
         this.uploadSingleFile(fileHolder);
-
         this.files.push(fileHolder);
-
       }, false);
-
-
       reader.readAsDataURL(file);
     }
   }
@@ -137,8 +125,7 @@ export class ImageUploadComponent implements OnInit {
         error => {
           this.onResponse(error, fileHolder);
           this.deleteFile(fileHolder);
-        }
-        );
+        });
     } else {
       this.uploadFinish.emit(fileHolder);
     }

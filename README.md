@@ -1,7 +1,7 @@
 # Image Upload Module
 [![Build Status](https://travis-ci.org/aberezkin/ng2-image-upload.svg?branch=master)](https://travis-ci.org/aberezkin/ng2-image-upload)
 
-This angular 2 library provides a light-weight component that handles file-drop, image previewing and image uploading.
+This angular library provides a light-weight component that handles file-drop, image previewing and image uploading.
 
 ### Install
 
@@ -46,9 +46,8 @@ If you need to send some headers with your request (for example `Authorization` 
 you can use `[headers]` directive like this.
 
     <image-upload [url]="'my-url.com'"
-      [headers]="[
-        {header: 'Authorization', value: 'MyToken'}
-      ]"></image-upload>
+      [headers]="[{Authorization: 'MyToken'}]">
+    </image-upload>
 
 **Note** that headers are sent only if you provide a url.
 
@@ -73,9 +72,7 @@ In the final state it should look something like this:
     <image-upload
       [max]="100"
       [url]="'example.com/images/upload'"
-      [headers]="[
-        {header: 'Authorization', value: 'MyToken'}
-      ]"
+      [headers]="[{Authorization: 'MyToken'}]"
       [buttonCaption]="'Select Images!'"
       [dropBoxMessage]="'Drop your images here!'"
       [extensions]="['jpg','png','gif']"
