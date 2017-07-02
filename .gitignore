@@ -4,4 +4,4 @@ node_modules/
 npm-debug.log
 *.tgz
 .tmp/
-package-lock.json
+yarn.lock
