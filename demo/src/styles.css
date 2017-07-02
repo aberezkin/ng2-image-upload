@@ -12,3 +12,11 @@ h1.root-loading {
   right: 0;
   margin: 10px;
 }
+
+.jumbotron {
+  margin-bottom: 1rem;
+}
+
+.token.operator {
+  background: none !important;
+}

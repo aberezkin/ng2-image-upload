@@ -3,3 +3,15 @@
 <image-upload url="https://httpbin.org/status/200"></image-upload>
 
 <pre><code class="language-markup"><![CDATA[<image-upload url="https://httpbin.org/status/200"></image-upload>]]></code></pre>
+
+<h5 class="mb-3 mt-3">With headers</h5>
+
+<image-upload url="https://httpbin.org/status/200" [headers]="myHeaders"></image-upload>
+
+<pre><code class="language-markup"><![CDATA[<image-upload url="https://httpbin.org/status/200" [headers]="myHeaders"></image-upload>]]></code></pre>
+
+<pre><code class="language-typescript"><![CDATA[myHeaders: Header[] = [
+    { header: 'ThisLibrary', value: 'COOL' },
+    { header: 'FriesWithThat', value: 'YES' }
+];]]>
+</code></pre>

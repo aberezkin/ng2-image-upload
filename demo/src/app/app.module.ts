@@ -5,12 +5,16 @@ import { ImageUploadModule } from '../lib/image-upload.module';
 import { AppComponent } from './app.component';
 import { BasicExampleComponent } from './basic/basic.component';
 import { FilterExampleComponent } from './filter/filter.component';
+import { CustomiseComponent } from './customise/customise.component';
+import { EventsComponent } from './events/events.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     BasicExampleComponent,
-    FilterExampleComponent
+    FilterExampleComponent,
+    CustomiseComponent,
+    EventsComponent
   ],
   imports: [
     BrowserModule,
