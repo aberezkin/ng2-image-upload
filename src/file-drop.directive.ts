@@ -5,7 +5,7 @@ import { Directive, EventEmitter, HostListener, Input, Output } from '@angular/c
 })
 export class FileDropDirective {
   @Input() accept: string[];
-  @Output() isFileOver: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Output() fileOver: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Output() fileDrop: EventEmitter<FileList> = new EventEmitter<FileList>();
 
   @HostListener('drop', ['$event'])
@@ -21,13 +21,13 @@ export class FileDropDirective {
     let files = this.filterFiles(dataTransfer.files);
 
     event.preventDefault();
-    this.isFileOver.emit(false);
+    this.fileOver.emit(false);
     this.fileDrop.emit(files);
   }
 
   @HostListener('dragleave', ['$event'])
   onDragLeave(event) {
-    this.isFileOver.emit(false);
+    this.fileOver.emit(false);
   }
 
   @HostListener('dragover', ['$event'])
@@ -40,7 +40,7 @@ export class FileDropDirective {
 
     dataTransfer.dropEffect = 'copy';
     event.preventDefault();
-    this.isFileOver.emit(true);
+    this.fileOver.emit(true);
   }
 
   private filterFiles(files: FileList): any {

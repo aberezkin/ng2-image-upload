@@ -17,7 +17,7 @@ export class ImageUploadComponent implements OnInit {
 
   files: FileHolder[] = [];
   fileCounter: number = 0;
-  isFileOver: boolean = false;
+  fileOver: boolean = false;
   showFileTooLargeMessage: boolean = false;
 
   @Input() buttonCaption: string = 'Select Images';
@@ -31,9 +31,9 @@ export class ImageUploadComponent implements OnInit {
   @Input('extensions') supportedExtensions: string[];
   @Input() url: string;
   @Input() withCredentials: boolean = false;
-  @Output() remove: EventEmitter<FileHolder> = new EventEmitter<FileHolder>();
-  @Output() uploadStateChange: EventEmitter<boolean> = new EventEmitter<boolean>();
-  @Output() uploadFinish: EventEmitter<FileHolder> = new EventEmitter<FileHolder>();
+  @Output() removed: EventEmitter<FileHolder> = new EventEmitter<FileHolder>();
+  @Output() uploadStateChanged: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Output() uploadFinished: EventEmitter<FileHolder> = new EventEmitter<FileHolder>();
 
   @ViewChild('input')
   private inputElement: ElementRef;
@@ -49,7 +49,7 @@ export class ImageUploadComponent implements OnInit {
   }
 
   deleteAll() {
-    this.files.forEach(f => this.remove.emit(f));
+    this.files.forEach(f => this.removed.emit(f));
     this.files = [];
     this.fileCounter = 0;
     this.inputElement.nativeElement.value = '';
@@ -60,15 +60,15 @@ export class ImageUploadComponent implements OnInit {
     this.files.splice(index, 1);
     this.fileCounter--;
     this.inputElement.nativeElement.value = '';
-    this.remove.emit(file);
+    this.removed.emit(file);
   }
 
-  fileChange(files: FileList) {
+  onFileChange(files: FileList) {
     let remainingSlots = this.countRemainingSlots();
     let filesToUploadNum = files.length > remainingSlots ? remainingSlots : files.length;
 
     if (this.url && filesToUploadNum != 0) {
-      this.uploadStateChange.emit(true);
+      this.uploadStateChanged.emit(true);
     }
 
     this.fileCounter += filesToUploadNum;
@@ -76,7 +76,7 @@ export class ImageUploadComponent implements OnInit {
     this.uploadFiles(files, filesToUploadNum);
   }
 
-  fileOver = (isOver) => this.isFileOver = isOver;
+  onFileOver = (isOver) => this.fileOver = isOver;
 
   private countRemainingSlots = () => this.max - this.fileCounter;
 
@@ -84,10 +84,10 @@ export class ImageUploadComponent implements OnInit {
     fileHolder.serverResponse = response;
     fileHolder.pending = false;
 
-    this.uploadFinish.emit(fileHolder);
+    this.uploadFinished.emit(fileHolder);
 
     if (--this.pendingFilesCounter == 0) {
-      this.uploadStateChange.emit(false);
+      this.uploadStateChanged.emit(false);
     }
   }
 
@@ -127,7 +127,7 @@ export class ImageUploadComponent implements OnInit {
           this.deleteFile(fileHolder);
         });
     } else {
-      this.uploadFinish.emit(fileHolder);
+      this.uploadFinished.emit(fileHolder);
     }
   }
 }
