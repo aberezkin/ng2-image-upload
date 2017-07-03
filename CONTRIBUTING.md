@@ -22,7 +22,7 @@ It's worth noting that if you're working on a branch you don't have to care abou
 
 `development` should be merged into `master` via pull request.
 
-On `master` run: `npm run release` build the project, build the demo, generate the changelog, and bump the version.
+On `master` run: `npm run release` to build the project, build the demo, generate the changelog, and bump the version.
 
 If unsure of the output run `npm run release -- --dry-run` for a preview.
 
