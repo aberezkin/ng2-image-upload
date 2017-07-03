@@ -1,13 +1,13 @@
 {
   "name": "angular2-image-upload",
-  "version": "0.6.4",
+  "version": "0.6.5",
   "description": "An angular component that uploads images using native browser upload or drag-n-drop.",
   "main": "index.js",
   "scripts": {
     "build": "rm -rf lib codegen .tmp && gulp build && ngc -p src/tsconfig.json",
     "test": "echo \"Error: no test specified\" && exit 1",
     "release": "standard-version",
-    "publish": "git push --follow-tags origin master && npm publish"
+    "publish": "git push --follow-tags origin master && npm run build && npm publish"
   },
   "repository": {
     "type": "git",
