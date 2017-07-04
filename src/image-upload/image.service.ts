@@ -2,12 +2,16 @@ import { Injectable } from '@angular/core';
 import { Headers, Http, RequestOptions, RequestOptionsArgs, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 
+export interface Header {
+    [name: string]: any;
+}
+
 @Injectable()
 export class ImageService {
 
   constructor(private http: Http) { }
 
-  public postImage(url: string, image: File, headers?: any[], partName: string = 'image',
+  public postImage(url: string, image: File, headers?: Header[], partName: string = 'image',
     withCredentials?: boolean): Observable<Response> {
 
     if (!url || url === '') {
