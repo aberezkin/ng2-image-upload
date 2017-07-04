@@ -3,6 +3,8 @@
 
 This angular library provides a light-weight component that handles file-drop, image previewing and image uploading.
 
+### [Demo](https://aberezkin.github.io/ng2-image-upload/)
+
 ### Install
 
 `npm install angular2-image-upload --save`
