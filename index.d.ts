@@ -1,1 +1,1 @@
-export {ImageUploadModule} from './lib/image-upload.module';
+export { ImageUploadModule } from './lib/image-upload.module';

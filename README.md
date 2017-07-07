@@ -1,7 +1,7 @@
 # Image Upload Module
 [![Build Status](https://travis-ci.org/aberezkin/ng2-image-upload.svg?branch=master)](https://travis-ci.org/aberezkin/ng2-image-upload)
 
-This angular 2 library provides a light-weight component that handles file-drop, image previewing and image uploading.
+This angular library provides a light-weight component that handles file-drop, image previewing and image uploading.
 
 ### [Demo](https://aberezkin.github.io/ng2-image-upload/)
 
@@ -47,10 +47,10 @@ Content-Type. The query has a single field called `image`.
 If you need to send some headers with your request (for example `Authorization` headers), 
 you can use `[headers]` directive like this.
 
-    <image-upload [url]="'my-url.com'"
-      [headers]="[
-        {header: 'Authorization', value: 'MyToken'}
-      ]"></image-upload>
+    <image-upload 
+      [url]="'my-url.com'"
+      [headers]="{Authorization: 'MyToken'}">
+    </image-upload>
 
 **Note** that headers are sent only if you provide a url.
 
@@ -62,29 +62,27 @@ you can use `[headers]` directive like this.
 
 `[fileTooLargeMessage]="'Image too large!'"` - message that is shown if the user selects/drops an image that exceeds `maxFileSize`. Default is "**An image was too large and was not uploaded. The maximum file size is x KiB.**".
 
-#### Callbacks
+#### Events
 
-`(onFileUploadFinish)="imageUploaded($event)"`. If `[url]` is specified this event is fired when component gets a response from the server, also in this case event has field `serverResponse` which contains the status code and response from the server `{status, response}`. If `[url]` is not specified it's fired immediately after an image(s) dropped into file-drop zone of choosed in file browser. So what you can do, is not specify `[url]` to handle upload yourself, for exapmple send the image into firebase storage. To get file use `event.file`.
+`(uploadFinished)="onUploadFinished($event)"`. If `[url]` is specified this event is fired when component gets a response from the server, also in this case event has field `serverResponse` which contains the status code and response from the server `{status, response}`. If `[url]` is not specified it's fired immediately after an image(s) dropped into file-drop zone of choosed in file browser. So what you can do, is not specify `[url]` to handle upload yourself, for exapmple send the image into firebase storage. To get file use `event.file`.
 
-`(onRemove)="imageRemoved($event)"` - this event is fired when remove button was clicked and the image preview was removed. *Note that this library doesn't handle deletion from server so you should do it yourself*. Event passed as the argument is the exact same object that was passed to the `(imageUploaded)` callback when image was added so you can access `serverResponse` to get a key to delete your image from server.
+`(removed)="onRemoved($event)"` - this event is fired when remove or clear button was clicked and the image preview was removed. *Note that this library doesn't handle deletion from server so you should do it yourself*. Event passed as the argument is the exact same object that was passed to the `(imageUploaded)` callback when image was added so you can access `serverResponse` to get a key to delete your image from server.
 
-`(isPending)="disableSendButton($event)"` - this event is fired when pending state was changed. Event is just a boolean that represents the pending state. Pending state is `true` when and only when component avaits a response from the server, and `false` othervise. You can use it, for example, to disable send button in your form until all images are uploaded.
+`(uploadStateChanged)="onUploadStateChanged($event)"` - this event is fired when image upload state was changed. Event is just a boolean that represents the uploading state. Image upload state is `true` when and only when component awaits the response from the server, and `false` otherwise. You can use it, for example, to disable send button in your form until all images are uploaded.
 
 In the final state it should look something like this:
 
     <image-upload
       [max]="100"
       [url]="'example.com/images/upload'"
-      [headers]="[
-        {header: 'Authorization', value: 'MyToken'}
-      ]"
+      [headers]="{Authorization: 'MyToken'}"
       [buttonCaption]="'Select Images!'"
       [dropBoxMessage]="'Drop your images here!'"
       [extensions]="['jpg','png','gif']"
-      (onFileUploadFinish)="imageUploaded($event)"
-      (onRemove)="imageRemoved($event)"
-      (isPending)="disableSendButton($event)"
-    ></image-upload>
+      (removed)="onRemoved($event)"
+      (uploadFinished)="onUploadFinished($event)"
+      (uploadStateChanged)="onUploadStateChanged($event)">
+    </image-upload>
 
 # Contributors
 
