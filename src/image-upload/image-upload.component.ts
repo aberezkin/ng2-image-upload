@@ -24,6 +24,7 @@ export class ImageUploadComponent implements OnInit {
   showFileTooLargeMessage: boolean = false;
 
   @Input() buttonCaption: string = 'Select Images';
+  @Input() clearButtonCaption: string = 'Clear';
   @Input() dropBoxMessage: string = 'Drop your images here!';
   @Input() fileTooLargeMessage: string;
   @Input() headers: Headers | { [name: string]: any };
