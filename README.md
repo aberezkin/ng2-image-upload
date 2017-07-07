@@ -79,8 +79,8 @@ In the final state it should look something like this:
       [buttonCaption]="'Select Images!'"
       [dropBoxMessage]="'Drop your images here!'"
       [extensions]="['jpg','png','gif']"
-      (uploadFinished)="onUploadFinished($event)"
       (removed)="onRemoved($event)"
+      (uploadFinished)="onUploadFinished($event)"
       (uploadStateChanged)="onUploadStateChanged($event)">
     </image-upload>
 
