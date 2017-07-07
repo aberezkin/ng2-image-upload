@@ -6,7 +6,7 @@
   "scripts": {
     "build": "rm -rf lib .tmp demo/src/lib && gulp build",
     "release": "npm run build && npm run build:demo && git add docs && standard-version --commit-all",
-    "publish": "git push --follow-tags origin master && npm run build && npm publish",
+    "publish": "git push --follow-tags origin master && npm publish",
     "install:demo": "cd demo && yarn",
     "demo": "cd demo && npm start",
     "build:demo": "cd demo && npm run build"
