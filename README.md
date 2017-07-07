@@ -49,7 +49,7 @@ you can use `[headers]` directive like this.
 
     <image-upload 
       [url]="'my-url.com'"
-      [headers]="[{Authorization: 'MyToken'}]">
+      [headers]="{Authorization: 'MyToken'}">
     </image-upload>
 
 **Note** that headers are sent only if you provide a url.
@@ -75,7 +75,7 @@ In the final state it should look something like this:
     <image-upload
       [max]="100"
       [url]="'example.com/images/upload'"
-      [headers]="[{Authorization: 'MyToken'}]"
+      [headers]="{Authorization: 'MyToken'}"
       [buttonCaption]="'Select Images!'"
       [dropBoxMessage]="'Drop your images here!'"
       [extensions]="['jpg','png','gif']"
