@@ -2,16 +2,14 @@ import { Injectable } from '@angular/core';
 import { Headers, Http, RequestOptions, RequestOptionsArgs, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 
-export interface Header {
-    [name: string]: any;
-}
+export {Headers}
 
 @Injectable()
 export class ImageService {
 
   constructor(private http: Http) { }
 
-  public postImage(url: string, image: File, headers?: Header[], partName: string = 'image',
+  public postImage(url: string, image: File, headers?: Headers, partName: string = 'image',
     withCredentials?: boolean): Observable<Response> {
 
     if (!url || url === '') {
@@ -24,16 +22,9 @@ export class ImageService {
     }
 
     if (headers) {
-      options.headers = new Headers();
-      for (let header of headers) {
-        let key = Object.keys(header)[0];
-        options.headers.append(key, header[key]);
-      }
+      options.headers = new Headers(headers);
     }
 
-    let formData: FormData = new FormData();
-    formData.append(partName, image);
-
-    return this.http.post(url, formData, options);
+    return this.http.post(url, new FormData().append(partName, image), options);
   }
 }

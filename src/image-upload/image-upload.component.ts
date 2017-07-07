@@ -1,6 +1,6 @@
 import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 
-import { Header, ImageService } from './image.service';
+import { Headers, ImageService } from './image.service';
 
 export class FileHolder {
   public pending: boolean = false;
@@ -23,7 +23,7 @@ export class ImageUploadComponent implements OnInit {
   @Input() buttonCaption: string = 'Select Images';
   @Input() dropBoxMessage: string = 'Drop your images here!';
   @Input() fileTooLargeMessage: string;
-  @Input() headers: Header[];
+  @Input() headers: Headers;
   @Input() max: number = 100;
   @Input() maxFileSize: number;
   @Input() preview: boolean = true;
