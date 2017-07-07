@@ -10,6 +10,8 @@
 
 <pre><code class="language-markup"><![CDATA[<image-upload url="https://httpbin.org/status/200" [headers]="myHeaders"></image-upload>]]></code></pre>
 
-<pre><code class="language-typescript"><![CDATA[myHeader: Headers 
-    = new Headers({ 'Authorization': 'MyToken' });]]>
+<pre><code class="language-typescript"><![CDATA[myHeaders: { [name: string]: any } = {
+  'Authorization': 'MyToken',
+  'Another Header': 'AnotherValue'
+};]]>
 </code></pre>
