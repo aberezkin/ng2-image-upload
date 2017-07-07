@@ -1,27 +1,27 @@
 <h4 class="mb-3">Events</h4>
 
 <image-upload url="https://httpbin.org/status/200"
-              (onFileUploadFinish)="imageFinishedUploading($event)"
-              (onRemove)="imageRemoved($event)"
-              (isPending)="uploadStateChange($event)">
+              (removed)="onRemoved($event)"
+              (uploadFinished)="onUploadFinished($event)"              
+              (uploadStateChanged)="onUploadStateChanged($event)">
 </image-upload>
 
 <pre><code class="language-markup"><![CDATA[<image-upload
   url="https://httpbin.org/status/200"
-  (onFileUploadFinish)="imageFinishedUploading($event)"
-  (onRemove)="imageRemoved($event)"
-  (isPending)="uploadStateChange($event)">
+  (removed)="onRemoved($event)"
+  (uploadFinished)="onUploadFinished($event)"  
+  (uploadStateChanged)="onUploadStateChanged($event)">
 </image-upload>]]></code></pre>
 
 <pre><code class="language-typescript"><![CDATA[imageFinishedUploading(file: FileHolder) {
   console.log(JSON.stringify(file.serverResponse));
 }
 
-imageRemoved(file: FileHolder) {
+onRemoved(file: FileHolder) {
   // do some stuff with the removed file.
 }
 
-uploadStateChange(state: boolean) {
+onUploadStateChanged(state: boolean) {
   console.log(JSON.stringify(state));
 }]]>
 </code></pre>
