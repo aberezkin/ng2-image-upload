@@ -15,7 +15,7 @@
         #input>
     </label>
     <label *ngIf="fileCounter > 0" class="clear button" (click)="deleteAll()">
-      <span [innerText]="'Clear'"></span>
+      <span [innerText]="clearButtonCaption"></span>
     </label>
     <div class="drag-box-message" [innerText]="dropBoxMessage"></div>
   </div>

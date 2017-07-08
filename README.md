@@ -62,6 +62,8 @@ you can use `[headers]` directive like this.
 
 `[fileTooLargeMessage]="'Image too large!'"` - message that is shown if the user selects/drops an image that exceeds `maxFileSize`. Default is "**An image was too large and was not uploaded. The maximum file size is x KiB.**".
 
+`[clearButtonCaption]="'Clear'"` - Text shown on the "Clear" button. Default is "**Clear**".
+
 #### Events
 
 `(uploadFinished)="onUploadFinished($event)"`. If `[url]` is specified this event is fired when component gets a response from the server, also in this case event has field `serverResponse` which contains the status code and response from the server `{status, response}`. If `[url]` is not specified it's fired immediately after an image(s) dropped into file-drop zone of choosed in file browser. So what you can do, is not specify `[url]` to handle upload yourself, for exapmple send the image into firebase storage. To get file use `event.file`.
