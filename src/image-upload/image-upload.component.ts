@@ -1,5 +1,6 @@
 import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { Headers } from '@angular/http';
+import { UploadMetadata } from './before-upload.interface';
 
 import { ImageService } from './image.service';
 
@@ -23,6 +24,7 @@ export class ImageUploadComponent implements OnInit {
   fileOver: boolean = false;
   showFileTooLargeMessage: boolean = false;
 
+  @Input() beforeUpload: (UploadMetadata) => UploadMetadata | Promise<UploadMetadata> = data => data;
   @Input() buttonCaption: string = 'Select Images';
   @Input() clearButtonCaption: string = 'Clear';
   @Input() dropBoxMessage: string = 'Drop your images here!';
@@ -96,30 +98,40 @@ export class ImageUploadComponent implements OnInit {
     }
   }
 
-  private uploadFiles(files: FileList, filesToUploadNum: number) {
+  private async uploadFiles(files: FileList, filesToUploadNum: number) {
     for (let i = 0; i < filesToUploadNum; i++) {
-      let file = files[i];
+      const file = files[i];
 
       if (this.maxFileSize && file.size > this.maxFileSize) {
+        this.fileCounter--;
+        this.inputElement.nativeElement.value = '';
         this.showFileTooLargeMessage = true;
         continue;
       }
 
-      let img = document.createElement('img');
-      img.src = window.URL.createObjectURL(file);
+      const beforeUploadResult: UploadMetadata = await this.beforeUpload({ file, url: this.url, abort: false });
 
-      let reader = new FileReader();
+      if (beforeUploadResult.abort) {
+        this.fileCounter--;
+        this.inputElement.nativeElement.value = '';
+        continue;
+      }
+
+      const img = document.createElement('img');
+      img.src = window.URL.createObjectURL(beforeUploadResult.file);
+
+      const reader = new FileReader();
       reader.addEventListener('load', (event: any) => {
-        let fileHolder: FileHolder = new FileHolder(event.target.result, file);
-        this.uploadSingleFile(fileHolder);
+        const fileHolder: FileHolder = new FileHolder(event.target.result, beforeUploadResult.file);
+        this.uploadSingleFile(fileHolder, beforeUploadResult.url);
         this.files.push(fileHolder);
       }, false);
-      reader.readAsDataURL(file);
+      reader.readAsDataURL(beforeUploadResult.file);
     }
   }
 
-  private uploadSingleFile(fileHolder: FileHolder) {
-    if (this.url) {
+  private uploadSingleFile(fileHolder: FileHolder, url = this.url) {
+    if (url) {
       this.pendingFilesCounter++;
       fileHolder.pending = true;
 
