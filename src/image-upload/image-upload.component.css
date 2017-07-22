@@ -6,6 +6,7 @@
     border: #d0d0d0 dashed 1px;
     font-family: sans-serif;
     position: relative;
+    color: #9b9b9b;
 }
 
 .img-ul-file-is-over {
@@ -22,8 +23,7 @@
     padding: 16px;
 }
 
-.img-ul-drag-box-msg {
-    color: #9b9b9b;
+.img-ul-drag-box-msg {    
     display: inline-block;
     font-weight: 600;
     margin-left: 12px;
