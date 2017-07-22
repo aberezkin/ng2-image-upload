@@ -1,9 +1,10 @@
-<div class="img-ul"
+<div
      fileDrop
      [accept]="supportedExtensions"
      (fileOver)="onFileOver($event)"
      (fileDrop)="onFileChange($event)"
-     [ngClass]="{'img-ul-file-is-over': fileOver}"
+     [ngClass]="klass"
+     [ngClass]="{'img-ul-file-is-over': fileOver}"     
      [ngStyle]="style?.layout"
 >
   <div class="img-ul-file-upload img-ul-hr-inline-group">    
