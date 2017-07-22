@@ -1,33 +1,33 @@
 .img-ul {
-  --common-radius: 3px;
   --active-color: #3C9;
-  position: relative;
-  border-radius: var(--common-radius);
-  border: #d0d0d0 dashed 1px;
-  font-family: sans-serif;
+--common-radius: 3px;
+border-radius: var(--common-radius);
+border: #d0d0d0 dashed 1px;
+font-family: sans-serif;
+position: relative;
 }
 
 .img-ul-file-is-over {
   border: var(--active-color) solid;
 }
 
-.img-ul-hr-inline-group:after {
-  display: table;
+.img-ul-hr-inline-group:after {  
   clear: both;
   content: "";
+  display: table;
 }
 
-.img-ul-file-upload {
-  padding: 16px;
+.img-ul-file-upload {  
   background-color: #f8f8f8;
+  padding: 16px;
 }
 
 .img-ul-drag-box-msg {
-  display: inline-block;
-  margin-left: 12px;
-  padding-top: 14px;
   color: #9b9b9b;
-  font-weight: 600;
+display: inline-block;
+font-weight: 600;
+margin-left: 12px;
+padding-top: 14px;
 }
 
 label.img-ul-button input[type=file] {
@@ -45,22 +45,22 @@ label.img-ul-button input[type=file] {
 }
 
 .img-ul-button {
-  cursor: pointer;
-  padding: 10px;
-  color: #FFF;
-  font-size: 1.25em;
-  font-weight: 500;
-  text-transform: uppercase;
-  display: inline-block;
-  float: left;
-  -webkit-box-shadow: 2px 2px 4px 0 rgba(148, 148, 148, 0.6);
-  -moz-box-shadow: 2px 2px 4px 0 rgba(148, 148, 148, 0.6);
-  box-shadow: 2px 2px 4px 0 rgba(148, 148, 148, 0.6);
+ -moz-box-shadow: 2px 2px 4px 0 rgba(148, 148, 148, 0.6);
+-webkit-box-shadow: 2px 2px 4px 0 rgba(148, 148, 148, 0.6);
+box-shadow: 2px 2px 4px 0 rgba(148, 148, 148, 0.6);
+color: #FFF;
+cursor: pointer;
+display: inline-block;
+float: left;
+font-size: 1.25em;
+font-weight: 500;
+padding: 10px;
+text-transform: uppercase;
 }
 
-.img-ul-button:active span {
-  position: relative;
+.img-ul-button:active span {  
   display: block;
+  position: relative;
   top: 1px;
 }
 
@@ -70,35 +70,35 @@ label.img-ul-button input[type=file] {
 }
 
 .img-ul-image {
-  float: left;
-  display: inline-block;
-  margin: 6px;
-  width: 86px;
-  height: 86px;
-  background: center center no-repeat;
   background-size: contain;
-  position: relative;
+background: center center no-repeat;
+display: inline-block;
+float: left;
+height: 86px;
+margin: 6px;
+position: relative;
+width: 86px;
 }
 
 .img-ul-x-mark {
-  width: 20px;
-  height: 20px;
-  text-align: center;
-  cursor: pointer;
-  border-radius: 2px;
-  float: right;
-  background-color: #000;
-  opacity: .7;
-  color: #FFF;
-  margin: 2px;
+ background-color: #000;
+border-radius: 2px;
+color: #FFF;
+cursor: pointer;
+float: right;
+height: 20px;
+margin: 2px;
+opacity: .7;
+text-align: center;
+width: 20px;
 }
 
 .img-ul-close {
-  width: 20px;
-  height: 20px;
-  opacity: .7;
-  position: relative;
-  padding-right: 3px;
+ height: 20px;
+opacity: .7;
+padding-right: 3px;
+position: relative;
+width: 20px;
 }
 
 .img-ul-x-mark:hover .img-ul-close {
@@ -106,13 +106,13 @@ label.img-ul-button input[type=file] {
 }
 
 .img-ul-close:before, .img-ul-close:after {
-  border-radius: 2px;
-  position: absolute;
-  content: '';
-  height: 16px;
-  width: 2px;
-  top: 2px;
-  background-color: #FFF;
+ background-color: #FFF;
+border-radius: 2px;
+content: '';
+height: 16px;
+position: absolute;
+top: 2px;
+width: 2px;
 }
 
 .img-ul-close:before {
@@ -124,30 +124,30 @@ label.img-ul-button input[type=file] {
 }
 
 .img-ul-loading-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  background-color: #000;
-  opacity: .7;
+ background-color: #000;
+bottom: 0;
+left: 0;
+opacity: .7;
+position: absolute;
+right: 0;
+top: 0;
 }
 
 .img-ul-spinning-circle {
-  height: 30px;
-  width: 30px;
-  margin: auto;
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  border-radius: 50%;
-  border: 3px solid rgba(255, 255, 255, 0);
-  border-top: 3px solid #FFF;
-  border-right: 3px solid #FFF;
   -webkit-animation: spinner 2s infinite cubic-bezier(0.085, 0.625, 0.855, 0.360);
-  animation: spinner 2s infinite cubic-bezier(0.085, 0.625, 0.855, 0.360);
+animation: spinner 2s infinite cubic-bezier(0.085, 0.625, 0.855, 0.360);
+border-radius: 50%;
+border-right: 3px solid #FFF;
+border-top: 3px solid #FFF;
+border: 3px solid rgba(255, 255, 255, 0);
+bottom: 0;
+height: 30px;
+left: 0;
+margin: auto;
+position: absolute;
+right: 0;
+top: 0;
+width: 30px;
 }
 
 .img-ul-file-too-large {
