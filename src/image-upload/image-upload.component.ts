@@ -1,15 +1,15 @@
 import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { Headers } from '@angular/http';
-import { UploadMetadata } from './before-upload.interface';
 
 import { ImageService } from './image.service';
+import { Style } from "./style";
+import { UploadMetadata } from './before-upload.interface';
 
 export class FileHolder {
   public pending: boolean = false;
   public serverResponse: { status: number, response: any };
 
-  constructor(public src: string, public file: File) {
-  }
+  constructor(public src: string, public file: File) { }
 }
 
 @Component({
@@ -34,6 +34,7 @@ export class ImageUploadComponent implements OnInit {
   @Input() maxFileSize: number;
   @Input() preview: boolean = true;
   @Input() partName: string;
+  @Input() style: Style;
   @Input('extensions') supportedExtensions: string[];
   @Input() url: string;
   @Input() withCredentials: boolean = false;
@@ -45,8 +46,7 @@ export class ImageUploadComponent implements OnInit {
   private inputElement: ElementRef;
   private pendingFilesCounter: number = 0;
 
-  constructor(private imageService: ImageService) {
-  }
+  constructor(private imageService: ImageService) { }
 
   ngOnInit() {
     if (!this.fileTooLargeMessage) {
@@ -138,11 +138,11 @@ export class ImageUploadComponent implements OnInit {
       this.imageService
         .postImage(this.url, fileHolder.file, this.headers, this.partName, this.withCredentials)
         .subscribe(
-          response => this.onResponse(response, fileHolder),
-          error => {
-            this.onResponse(error, fileHolder);
-            this.deleteFile(fileHolder);
-          });
+        response => this.onResponse(response, fileHolder),
+        error => {
+          this.onResponse(error, fileHolder);
+          this.deleteFile(fileHolder);
+        });
     } else {
       this.uploadFinished.emit(fileHolder);
     }
