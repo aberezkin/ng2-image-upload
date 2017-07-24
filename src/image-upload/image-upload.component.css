@@ -109,9 +109,9 @@ label.img-ul-button input[type=file] {
     background-color: #FFF;
     border-radius: 2px;
     content: '';
-    height: 16px;
+    height: 15px;
     position: absolute;
-    top: 2px;
+    top: 0;
     width: 2px;
 }
 
