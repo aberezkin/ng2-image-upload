@@ -66,6 +66,58 @@ you can use `[headers]` directive like this.
 
 `[clearButtonCaption]="'Clear'"` - Text shown on the "Clear" button. Default is "**Clear**".
 
+#### CSS Class
+
+`[class]="'customClass'"` - Set custom class for this component. It is set on parent level element `<image-upload>` which can be customized as follow :
+
+    .custom-class{    
+        background-color: #dd3;
+        border-radius: 5px;
+        margin:5px;
+        width: 500px;        
+    }
+    .custom-class .img-ul-upload{
+        background-color: #000 !important;
+    }
+    .custom-class .img-ul-clear{
+        background-color: #B819BB !important;
+    }
+    .custom-class .img-ul-drag-box-msg {
+        color: purple !important;
+    }
+    .custom-class .img-ul-container{
+        background-color: #FF6CAD !important;
+    }
+    
+**Note:** 
+- `.img-ul-*` is class overridden with new styles. 
+- Also set `encapsulation: ViewEncapsulation.Native/None` in your component.
+
+#### Custom Style
+
+
+`[style]="'customStyle'"` - Set custom style properties for this component. `customStyle` is typescript object defined in your component.
+
+    customStyle = {
+      selectButton: {
+        "color": "white",
+        "background-color": "purple",
+      },
+      clearButton: {
+        "color": "white",
+        "background-color": "yellow",
+      },
+      layout: {
+        "background-color": "black",
+        "color": "red",
+        "font-size": "15px",
+      },
+      previewPanel: {
+        "background-color": "red",
+      }
+
+**Note:** `selectButton`, `clearButton`, `layout` and `previewPanel` are optional properties.
+
 #### Events
 
 `(uploadFinished)="onUploadFinished($event)"`. If `[url]` is specified this event is fired when component gets a response from the server, also in this case event has field `serverResponse` which contains the status code and response from the server `{status, response}`. If `[url]` is not specified it's fired immediately after an image(s) dropped into file-drop zone of choosed in file browser. So what you can do, is not specify `[url]` to handle upload yourself, for exapmple send the image into firebase storage. To get file use `event.file`.
@@ -83,6 +135,7 @@ In the final state it should look something like this:
       [buttonCaption]="'Select Images!'"
       [dropBoxMessage]="'Drop your images here!'"
       [extensions]="['jpg','png','gif']"
+      [class]="'customClass'"      
       (removed)="onRemoved($event)"
       (uploadFinished)="onUploadFinished($event)"
       (uploadStateChanged)="onUploadStateChanged($event)">
