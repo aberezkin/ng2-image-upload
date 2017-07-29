@@ -26,7 +26,7 @@ export class ImageUploadComponent implements OnInit {
 
   @Input() beforeUpload: (UploadMetadata) => UploadMetadata | Promise<UploadMetadata> = data => data;
   @Input() buttonCaption: string = 'Select Images';
-  @Input('class') klass: string = 'img-ul';
+  @Input('class') cssClass: string = 'img-ul';
   @Input() clearButtonCaption: string = 'Clear';
   @Input() dropBoxMessage: string = 'Drop your images here!';
   @Input() fileTooLargeMessage: string;

@@ -33,7 +33,7 @@ export interface Style {
     *
     * ```    
     * layout: {
-    *    "border": " #d0d0d0 dashed 1px",
+    *    "border": "#d0d0d0 dashed 1px",
     *    "margin": "5px"
     * }
     * ```
