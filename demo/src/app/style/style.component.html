@@ -1,0 +1,61 @@
+<h4 class="mb-3 mt-5">Styles</h4>
+
+<h5 class="mb-3 mt-3">Custom CSS Class</h5>
+
+<image-upload url="https://httpbin.org/status/200" class="customClass"></image-upload>
+
+<pre><code class="language-markup"><![CDATA[<image-upload url="https://httpbin.org/status/200" class="customClass"></image-upload>]]></code></pre>
+
+<pre><code class="language-css"><![CDATA[.customClass{    
+    background-color: #dd3;
+    border-radius: 5px;
+    margin:5px;
+    width: 500px;        
+}
+.customClass .img-ul-upload{
+    background-color: #000 !important;
+}
+.customClass .img-ul-clear{
+    background-color: #B819BB !important;
+}
+.customClass .img-ul-drag-box-msg {
+    color: purple !important;
+}
+.customClass .img-ul-container{
+    background-color: #FF6CAD !important;
+}
+]]></code></pre>
+
+<h5 class="mb-3 mt-3">Custom Style</h5>
+
+<image-upload url="https://httpbin.org/status/200" [style]="customStyle"></image-upload>
+
+<pre><code class="language-markup"><![CDATA[<image-upload url="https://httpbin.org/status/200" [style]="customStyle"></image-upload>]]></code></pre>
+
+<pre><code class="language-typescript"><![CDATA[customStyle = {
+    selectButton: {
+      "background-color": "yellow",
+      "border-radius": "25px",
+      "color": "#000"
+    },
+    clearButton: {      
+      "background-color": "#FFF",
+      "border-radius": "25px",
+      "color": "#000",
+      "margin-left": "10px"
+    },
+    layout: {
+      "background-color": "purple",
+      "border-radius": "25px",
+      "color": "#FFF",
+      "font-size": "15px",
+      "margin": "10px",
+      "padding-top": "5px",
+      "width": "500px"
+    },
+    previewPanel: {      
+      "background-color": "#894489",
+      "border-radius": "0 0 25px 25px",
+    }
+  }
+]]></code></pre>

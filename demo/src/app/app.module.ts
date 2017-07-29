@@ -7,6 +7,7 @@ import { BasicExampleComponent } from './basic/basic.component';
 import { FilterExampleComponent } from './filter/filter.component';
 import { CustomiseComponent } from './customise/customise.component';
 import { EventsComponent } from './events/events.component';
+import { StyleComponent } from './style/style.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { EventsComponent } from './events/events.component';
     BasicExampleComponent,
     FilterExampleComponent,
     CustomiseComponent,
-    EventsComponent
+    EventsComponent,
+    StyleComponent
   ],
   imports: [
     BrowserModule,
