@@ -123,26 +123,26 @@ export class ImageUploadComponent implements OnInit {
       const reader = new FileReader();
       reader.addEventListener('load', (event: any) => {
         const fileHolder: FileHolder = new FileHolder(event.target.result, beforeUploadResult.file);
-        this.uploadSingleFile(fileHolder, beforeUploadResult.url);
+        this.uploadSingleFile(fileHolder, beforeUploadResult.url, beforeUploadResult.formData);
         this.files.push(fileHolder);
       }, false);
       reader.readAsDataURL(beforeUploadResult.file);
     }
   }
 
-  private uploadSingleFile(fileHolder: FileHolder, url = this.url) {
+  private uploadSingleFile(fileHolder: FileHolder, url = this.url, customForm?: { [name: string]: any }) {
     if (url) {
       this.pendingFilesCounter++;
       fileHolder.pending = true;
 
       this.imageService
-        .postImage(this.url, fileHolder.file, this.headers, this.partName, this.withCredentials)
+        .postImage(this.url, fileHolder.file, this.headers, this.partName, customForm, this.withCredentials)
         .subscribe(
-          response => this.onResponse(response, fileHolder),
-          error => {
-            this.onResponse(error, fileHolder);
-            this.deleteFile(fileHolder);
-          });
+        response => this.onResponse(response, fileHolder),
+        error => {
+          this.onResponse(error, fileHolder);
+          this.deleteFile(fileHolder);
+        });
     } else {
       this.uploadFinished.emit(fileHolder);
     }
