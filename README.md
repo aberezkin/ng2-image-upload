@@ -89,8 +89,7 @@ you can use `[headers]` directive like this.
         background-color: #FF6CAD;
     }
     
-**Note:** 
-- `.img-ul-*` is class overridden with new styles. 
+**Note:**  `.img-ul-*` classes which are overridden with new styles. 
 
 #### Custom Style
 
