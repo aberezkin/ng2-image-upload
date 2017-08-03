@@ -70,28 +70,27 @@ you can use `[headers]` directive like this.
 
 `[class]="'customClass'"` - Set custom class for this component. It is set on parent level element `<image-upload>` which can be customized as follow :
 
-    .custom-class{    
+    :host >>> .custom-class{    
         background-color: #dd3;
         border-radius: 5px;
         margin:5px;
         width: 500px;        
     }
-    .custom-class .img-ul-upload{
-        background-color: #000 !important;
+    :host >>> .custom-class .img-ul-upload{
+        background-color: #000;
     }
-    .custom-class .img-ul-clear{
-        background-color: #B819BB !important;
+    :host >>> .custom-class .img-ul-clear{
+        background-color: #B819BB;
     }
-    .custom-class .img-ul-drag-box-msg {
-        color: purple !important;
+    :host >>> .custom-class .img-ul-drag-box-msg {
+        color: purple;
     }
-    .custom-class .img-ul-container{
-        background-color: #FF6CAD !important;
+    :host >>> .custom-class .img-ul-container{
+        background-color: #FF6CAD;
     }
     
 **Note:** 
 - `.img-ul-*` is class overridden with new styles. 
-- Also set `encapsulation: ViewEncapsulation.Native/None` in your component.
 
 #### Custom Style
 
