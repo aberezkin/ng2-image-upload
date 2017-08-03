@@ -1,15 +1,15 @@
 import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { Headers } from '@angular/http';
-import { UploadMetadata } from './before-upload.interface';
 
 import { ImageService } from './image.service';
+import { Style } from "./style";
+import { UploadMetadata } from './before-upload.interface';
 
 export class FileHolder {
   public pending: boolean = false;
   public serverResponse: { status: number, response: any };
 
-  constructor(public src: string, public file: File) {
-  }
+  constructor(public src: string, public file: File) { }
 }
 
 @Component({
@@ -26,6 +26,7 @@ export class ImageUploadComponent implements OnInit {
 
   @Input() beforeUpload: (UploadMetadata) => UploadMetadata | Promise<UploadMetadata> = data => data;
   @Input() buttonCaption: string = 'Select Images';
+  @Input('class') cssClass: string = 'img-ul';
   @Input() clearButtonCaption: string = 'Clear';
   @Input() dropBoxMessage: string = 'Drop your images here!';
   @Input() fileTooLargeMessage: string;
@@ -34,6 +35,7 @@ export class ImageUploadComponent implements OnInit {
   @Input() maxFileSize: number;
   @Input() preview: boolean = true;
   @Input() partName: string;
+  @Input() style: Style;
   @Input('extensions') supportedExtensions: string[];
   @Input() url: string;
   @Input() withCredentials: boolean = false;
@@ -45,8 +47,7 @@ export class ImageUploadComponent implements OnInit {
   private inputElement: ElementRef;
   private pendingFilesCounter: number = 0;
 
-  constructor(private imageService: ImageService) {
-  }
+  constructor(private imageService: ImageService) { }
 
   ngOnInit() {
     if (!this.fileTooLargeMessage) {
