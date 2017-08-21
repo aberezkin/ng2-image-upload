@@ -30,7 +30,7 @@ import { ReadmeModule } from './readme/readme.module';
     }, {
       path: 'readme',
       component: ReadmeComponent
-    }])
+    }], { useHash: true })
   ],
   providers: [],
   bootstrap: [AppComponent]
