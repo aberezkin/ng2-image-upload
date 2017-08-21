@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Header } from '../../lib/image.service';
+import { Header } from '../../../../lib/image.service';
 
 @Component({
   selector: 'basic',
