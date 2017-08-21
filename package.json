@@ -4,7 +4,7 @@
   "description": "An angular component that uploads images using native browser upload or drag-n-drop.",
   "main": "index.js",
   "scripts": {
-    "build": "rm -rf lib .tmp demo/src/lib && gulp build",
+    "build": "gulp build",
     "release": "npm run build && npm run build:demo && git add docs && standard-version --commit-all",
     "publish": "git push --follow-tags origin master && npm publish",
     "install:demo": "cd demo && yarn",
@@ -54,5 +54,9 @@
     "rxjs": "^5.0.0-rc.2",
     "standard-version": "^4.2.0",
     "typescript": "2.1.5"
+  },
+  "dependencies": {
+    "firebase": "^4.2.0",
+    "uuid": "^3.1.0"
   }
 }
