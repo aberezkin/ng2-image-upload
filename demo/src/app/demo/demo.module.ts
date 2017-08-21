@@ -6,6 +6,7 @@ import { CustomiseComponent } from './components/customise/customise.component';
 import { DemoComponent } from './components/demo.component';
 import { EventsComponent } from './components/events/events.component';
 import { FilterExampleComponent } from './components/filter/filter.component';
+import { StyleComponent } from './components/style/style.component';
 
 @NgModule({
   declarations: [
@@ -13,7 +14,8 @@ import { FilterExampleComponent } from './components/filter/filter.component';
     BasicExampleComponent,
     FilterExampleComponent,
     CustomiseComponent,
-    EventsComponent
+    EventsComponent,
+    StyleComponent
   ],
   imports: [
     ImageUploadModule
