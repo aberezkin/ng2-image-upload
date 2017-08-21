@@ -11,6 +11,7 @@ h1.root-loading {
   top: 0;
   right: 0;
   margin: 10px;
+  z-index: 1;
 }
 
 .jumbotron {
