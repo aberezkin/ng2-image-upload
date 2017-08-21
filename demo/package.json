@@ -5,7 +5,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve --open local",
-    "build": "ng build --aot --prod --output-hashing none --base-href ng2-image-upload"
+    "build": "ng build --aot --prod --output-hashing none --base-href /ng2-image-upload/"
   },
   "private": true,
   "dependencies": {
