@@ -1,9 +1,9 @@
 .image-upload {
   --common-radius: 3px;
-  --active-color: #33CC99;
+  --active-color: white;
   position: relative;
   border-radius: var(--common-radius);
-  border: #d0d0d0 dashed 1px;
+  border: #777777 dashed 1px;
   font-family: sans-serif;
 }
 
@@ -20,7 +20,7 @@
 
 .file-upload {
   padding: 16px;
-  background-color: #f8f8f8;
+  background-color: white;
 }
 
 .drag-box-message {
@@ -45,15 +45,13 @@ label.button input[type=file] {
 .button {
   cursor: pointer;
   padding: 10px;
-  color: white;
-  font-size: 1.25em;
   font-weight: 500;
   text-transform: uppercase;
   display: inline-block;
   float: left;
-  -webkit-box-shadow: 2px 2px 4px 0px rgba(148, 148, 148, 0.6);
-  -moz-box-shadow: 2px 2px 4px 0px rgba(148, 148, 148, 0.6);
-  box-shadow: 2px 2px 4px 0px rgba(148, 148, 148, 0.6);
+  color: #777777;
+  font-size: 32px;
+  margin-left: 40px;
 }
 
 .button:active span {
