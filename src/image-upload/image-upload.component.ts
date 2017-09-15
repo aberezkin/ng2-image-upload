@@ -39,6 +39,7 @@ export class ImageUploadComponent implements OnInit {
   @Input('extensions') supportedExtensions: string[];
   @Input() url: string;
   @Input() withCredentials: boolean = false;
+  @Input() uploadedFiles: string[] | Array<{url:string, fileName:string,  blob?:Blob}> = [];
   @Output() removed: EventEmitter<FileHolder> = new EventEmitter<FileHolder>();
   @Output() uploadStateChanged: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Output() uploadFinished: EventEmitter<FileHolder> = new EventEmitter<FileHolder>();
@@ -54,6 +55,7 @@ export class ImageUploadComponent implements OnInit {
       this.fileTooLargeMessage = 'An image was too large and was not uploaded.' + (this.maxFileSize ? (' The maximum file size is ' + this.maxFileSize / 1024) + 'KiB.' : '');
     }
     this.supportedExtensions = this.supportedExtensions ? this.supportedExtensions.map((ext) => 'image/' + ext) : ['image/*'];
+    this.processUploadedFiles();
   }
 
   deleteAll() {
@@ -96,6 +98,29 @@ export class ImageUploadComponent implements OnInit {
 
     if (--this.pendingFilesCounter == 0) {
       this.uploadStateChanged.emit(false);
+    }
+  }
+
+  private processUploadedFiles(){
+
+    for(let i = 0; i < this.uploadedFiles.length;i++){
+      let data:any = this.uploadedFiles[i];
+
+      let fileBlob:Blob,
+        file:File,
+        fileUrl:string;
+
+      if(data instanceof Object){
+        fileUrl = data.url;
+        fileBlob = (data.blob) ? data.blob : new Blob([data]);
+        file = new File([fileBlob], data.fileName);
+      }else{
+        fileUrl = data;
+        fileBlob = new Blob([fileUrl]);
+        file = new File([fileBlob], fileUrl);
+      }
+
+      this.files.push(new FileHolder(fileUrl, file));
     }
   }
 
