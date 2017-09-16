@@ -1,4 +1,4 @@
-import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import {Component, ElementRef, EventEmitter, Input, OnChanges, OnInit, Output, ViewChild} from '@angular/core';
 import { Headers } from '@angular/http';
 
 import { ImageService } from './image.service';
@@ -17,7 +17,7 @@ export class FileHolder {
   templateUrl: './image-upload.component.html',
   styleUrls: ['./image-upload.component.css']
 })
-export class ImageUploadComponent implements OnInit {
+export class ImageUploadComponent implements OnInit, OnChanges {
 
   files: FileHolder[] = [];
   fileCounter: number = 0;
@@ -55,7 +55,6 @@ export class ImageUploadComponent implements OnInit {
       this.fileTooLargeMessage = 'An image was too large and was not uploaded.' + (this.maxFileSize ? (' The maximum file size is ' + this.maxFileSize / 1024) + 'KiB.' : '');
     }
     this.supportedExtensions = this.supportedExtensions ? this.supportedExtensions.map((ext) => 'image/' + ext) : ['image/*'];
-    this.processUploadedFiles();
   }
 
   deleteAll() {
@@ -71,6 +70,12 @@ export class ImageUploadComponent implements OnInit {
     this.fileCounter--;
     this.inputElement.nativeElement.value = '';
     this.removed.emit(file);
+  }
+
+  ngOnChanges(changes){
+    if(changes.uploadedFiles && changes.uploadedFiles.currentValue.length > 0){
+      this.processUploadedFiles();
+    }
   }
 
   onFileChange(files: FileList) {
