@@ -43,6 +43,8 @@ Content-Type. The query has a single field called `image`.
 
 `[extensions]="['jpg','png','gif']"` - upload images with specific extensions. Default all extensions `image/*` is allowed.
 
+`[uploadedFiles]="['http://example.com/path/to/my/file', {'fileName': 'fileName.jpg', url: 'http://example.com/path/to/my/file'}]"` - enters the uploaded files from the previous time.
+
 #### Custom headers
 
 If you need to send some headers with your request (for example `Authorization` headers), 
@@ -149,6 +151,7 @@ In the final state it should look something like this:
   [buttonCaption]="'Select Images!'"
   [dropBoxMessage]="'Drop your images here!'"
   [extensions]="['jpg','png','gif']"
+  [uploadedFiles]="['http://example.com/path/to/my/file']"
   [class]="'customClass'"      
   (removed)="onRemoved($event)"
   (uploadFinished)="onUploadFinished($event)"
@@ -160,3 +163,4 @@ In the final state it should look something like this:
 
 @aberezkin
 @UncleDave
+@sabrio
