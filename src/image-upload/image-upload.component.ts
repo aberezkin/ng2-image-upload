@@ -1,15 +1,16 @@
-import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
-import { Headers } from '@angular/http';
+import {Component, ElementRef, EventEmitter, Input, OnChanges, OnInit, Output, ViewChild} from '@angular/core';
+import {Headers} from '@angular/http';
 
-import { ImageService } from './image.service';
-import { Style } from "./style";
-import { UploadMetadata } from './before-upload.interface';
+import {ImageService} from './image.service';
+import {Style} from "./style";
+import {UploadMetadata} from './before-upload.interface';
 
 export class FileHolder {
   public pending: boolean = false;
   public serverResponse: { status: number, response: any };
 
-  constructor(public src: string, public file: File) { }
+  constructor(public src: string, public file: File) {
+  }
 }
 
 @Component({
@@ -17,7 +18,7 @@ export class FileHolder {
   templateUrl: './image-upload.component.html',
   styleUrls: ['./image-upload.component.css']
 })
-export class ImageUploadComponent implements OnInit {
+export class ImageUploadComponent implements OnInit, OnChanges {
 
   files: FileHolder[] = [];
   fileCounter: number = 0;
@@ -39,6 +40,7 @@ export class ImageUploadComponent implements OnInit {
   @Input('extensions') supportedExtensions: string[];
   @Input() url: string;
   @Input() withCredentials: boolean = false;
+  @Input() uploadedFiles: string[] | Array<{ url: string, fileName: string, blob?: Blob }> = [];
   @Output() removed: EventEmitter<FileHolder> = new EventEmitter<FileHolder>();
   @Output() uploadStateChanged: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Output() uploadFinished: EventEmitter<FileHolder> = new EventEmitter<FileHolder>();
@@ -47,7 +49,8 @@ export class ImageUploadComponent implements OnInit {
   private inputElement: ElementRef;
   private pendingFilesCounter: number = 0;
 
-  constructor(private imageService: ImageService) { }
+  constructor(private imageService: ImageService) {
+  }
 
   ngOnInit() {
     if (!this.fileTooLargeMessage) {
@@ -69,6 +72,12 @@ export class ImageUploadComponent implements OnInit {
     this.fileCounter--;
     this.inputElement.nativeElement.value = '';
     this.removed.emit(file);
+  }
+
+  ngOnChanges(changes) {
+    if (changes.uploadedFiles && changes.uploadedFiles.currentValue.length > 0) {
+      this.processUploadedFiles();
+    }
   }
 
   onFileChange(files: FileList) {
@@ -99,6 +108,28 @@ export class ImageUploadComponent implements OnInit {
     }
   }
 
+  private processUploadedFiles() {
+    for (let i = 0; i < this.uploadedFiles.length; i++) {
+      let data: any = this.uploadedFiles[i];
+
+      let fileBlob: Blob,
+        file: File,
+        fileUrl: string;
+
+      if (data instanceof Object) {
+        fileUrl = data.url;
+        fileBlob = (data.blob) ? data.blob : new Blob([data]);
+        file = new File([fileBlob], data.fileName);
+      } else {
+        fileUrl = data;
+        fileBlob = new Blob([fileUrl]);
+        file = new File([fileBlob], fileUrl);
+      }
+
+      this.files.push(new FileHolder(fileUrl, file));
+    }
+  }
+
   private async uploadFiles(files: FileList, filesToUploadNum: number) {
     for (let i = 0; i < filesToUploadNum; i++) {
       const file = files[i];
@@ -110,7 +141,7 @@ export class ImageUploadComponent implements OnInit {
         continue;
       }
 
-      const beforeUploadResult: UploadMetadata = await this.beforeUpload({ file, url: this.url, abort: false });
+      const beforeUploadResult: UploadMetadata = await this.beforeUpload({file, url: this.url, abort: false});
 
       if (beforeUploadResult.abort) {
         this.fileCounter--;
@@ -139,11 +170,11 @@ export class ImageUploadComponent implements OnInit {
       this.imageService
         .postImage(this.url, fileHolder.file, this.headers, this.partName, customForm, this.withCredentials)
         .subscribe(
-        response => this.onResponse(response, fileHolder),
-        error => {
-          this.onResponse(error, fileHolder);
-          this.deleteFile(fileHolder);
-        });
+          response => this.onResponse(response, fileHolder),
+          error => {
+            this.onResponse(error, fileHolder);
+            this.deleteFile(fileHolder);
+          });
     } else {
       this.uploadFinished.emit(fileHolder);
     }
