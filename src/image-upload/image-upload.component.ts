@@ -1,9 +1,9 @@
-import {Component, ElementRef, EventEmitter, Input, OnChanges, OnInit, Output, ViewChild} from '@angular/core';
-import {Headers} from '@angular/http';
+import { Component, ElementRef, EventEmitter, Input, OnChanges, OnInit, Output, ViewChild } from '@angular/core';
+import { Headers, Response } from '@angular/http';
+import { UploadMetadata } from './before-upload.interface';
 
-import {ImageService} from './image.service';
-import {Style} from "./style";
-import {UploadMetadata} from './before-upload.interface';
+import { ImageService } from './image.service';
+import { Style } from './style';
 
 export class FileHolder {
   public pending: boolean = false;
@@ -26,24 +26,24 @@ export class ImageUploadComponent implements OnInit, OnChanges {
   showFileTooLargeMessage: boolean = false;
 
   @Input() beforeUpload: (UploadMetadata) => UploadMetadata | Promise<UploadMetadata> = data => data;
-  @Input() buttonCaption: string = 'Select Images';
-  @Input('class') cssClass: string = 'img-ul';
-  @Input() clearButtonCaption: string = 'Clear';
-  @Input() dropBoxMessage: string = 'Drop your images here!';
-  @Input() fileTooLargeMessage: string;
+  @Input() buttonCaption = 'Select Images';
+  @Input('class') cssClass = 'img-ul';
+  @Input() clearButtonCaption = 'Clear';
+  @Input() dropBoxMessage = 'Drop your images here!';
+  @Input() fileTooLargeMessage;
   @Input() headers: Headers | { [name: string]: any };
-  @Input() max: number = 100;
+  @Input() max = 100;
   @Input() maxFileSize: number;
-  @Input() preview: boolean = true;
+  @Input() preview = true;
   @Input() partName: string;
   @Input() style: Style;
   @Input('extensions') supportedExtensions: string[];
   @Input() url: string;
-  @Input() withCredentials: boolean = false;
+  @Input() withCredentials = false;
   @Input() uploadedFiles: string[] | Array<{ url: string, fileName: string, blob?: Blob }> = [];
-  @Output() removed: EventEmitter<FileHolder> = new EventEmitter<FileHolder>();
-  @Output() uploadStateChanged: EventEmitter<boolean> = new EventEmitter<boolean>();
-  @Output() uploadFinished: EventEmitter<FileHolder> = new EventEmitter<FileHolder>();
+  @Output() removed = new EventEmitter<FileHolder>();
+  @Output() uploadStateChanged = new EventEmitter<boolean>();
+  @Output() uploadFinished = new EventEmitter<FileHolder>();
 
   @ViewChild('input')
   private inputElement: ElementRef;
@@ -97,8 +97,8 @@ export class ImageUploadComponent implements OnInit, OnChanges {
 
   private countRemainingSlots = () => this.max - this.fileCounter;
 
-  private onResponse(response, fileHolder: FileHolder) {
-    fileHolder.serverResponse = response;
+  private onResponse(response: Response, fileHolder: FileHolder) {
+    fileHolder.serverResponse = { status: response.status, response };
     fileHolder.pending = false;
 
     this.uploadFinished.emit(fileHolder);
@@ -141,7 +141,7 @@ export class ImageUploadComponent implements OnInit, OnChanges {
         continue;
       }
 
-      const beforeUploadResult: UploadMetadata = await this.beforeUpload({file, url: this.url, abort: false});
+      const beforeUploadResult: UploadMetadata = await this.beforeUpload({ file, url: this.url, abort: false });
 
       if (beforeUploadResult.abort) {
         this.fileCounter--;
