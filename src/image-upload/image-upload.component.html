@@ -8,7 +8,9 @@
      [ngStyle]="style?.layout"
 >
   <div class="img-ul-file-upload img-ul-hr-inline-group">    
-    <label class="img-ul-upload img-ul-button" [ngStyle]="style?.selectButton">
+    <label *ngIf="fileCounter != max"
+      class="img-ul-upload img-ul-button" 
+      [ngStyle]="style?.selectButton">
       <span [innerText]="buttonCaption"></span>
       <input
         type="file"
