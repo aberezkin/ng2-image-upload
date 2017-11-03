@@ -40,6 +40,11 @@ label.img-ul-button input[type=file] {
     background-color: #FF0000;
 }
 
+.img-ul-clear:disabled {
+    background-color: #FF6464;
+    cursor: default;
+}
+
 .img-ul-upload {
     background-color: var(--active-color);
 }
@@ -47,6 +52,7 @@ label.img-ul-button input[type=file] {
 .img-ul-button {
     -moz-box-shadow: 2px 2px 4px 0 rgba(148, 148, 148, 0.6);
     -webkit-box-shadow: 2px 2px 4px 0 rgba(148, 148, 148, 0.6);
+    border: none;
     box-shadow: 2px 2px 4px 0 rgba(148, 148, 148, 0.6);
     color: #FFF;
     cursor: pointer;
@@ -123,6 +129,10 @@ label.img-ul-button input[type=file] {
     transform: rotate(-45deg);
 }
 
+.img-ul-x-mark.img-ul-disabled {
+    display: none;
+}
+
 .img-ul-loading-overlay {
     background-color: #000;
     bottom: 0;
@@ -153,6 +163,15 @@ label.img-ul-button input[type=file] {
 .img-ul-file-too-large {
     color: red;
     padding: 0 15px;
+}
+
+.img-ul-upload.img-ul-disabled {
+    background-color: #86E9C9;
+    cursor: default;
+}
+
+.img-ul-upload.img-ul-disabled:active span {
+    top: 0px;
 }
 
 @-webkit-keyframes spinner {
