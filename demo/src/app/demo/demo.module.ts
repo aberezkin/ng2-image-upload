@@ -7,7 +7,8 @@ import { DemoComponent } from './components/demo.component';
 import { EventsComponent } from './components/events/events.component';
 import { FilterExampleComponent } from './components/filter/filter.component';
 import { StyleComponent } from './components/style/style.component';
-import {UploadedExampleComponent} from "./components/uploaded/uploaded.component";
+import { UploadedExampleComponent } from "./components/uploaded/uploaded.component";
+import { DisabledExampleComponent } from 'app/demo/components/disabled/disabled.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import {UploadedExampleComponent} from "./components/uploaded/uploaded.component
     CustomiseComponent,
     EventsComponent,
     StyleComponent,
-    UploadedExampleComponent
+    UploadedExampleComponent,
+    DisabledExampleComponent,
   ],
   imports: [
     ImageUploadModule
