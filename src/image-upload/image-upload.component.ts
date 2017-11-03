@@ -27,6 +27,7 @@ export class ImageUploadComponent implements OnInit, OnChanges {
 
   @Input() beforeUpload: (UploadMetadata) => UploadMetadata | Promise<UploadMetadata> = data => data;
   @Input() buttonCaption = 'Select Images';
+  @Input() disabled = false;
   @Input('class') cssClass = 'img-ul';
   @Input() clearButtonCaption = 'Clear';
   @Input() dropBoxMessage = 'Drop your images here!';
@@ -81,6 +82,8 @@ export class ImageUploadComponent implements OnInit, OnChanges {
   }
 
   onFileChange(files: FileList) {
+    if (this.disabled) return;
+
     let remainingSlots = this.countRemainingSlots();
     let filesToUploadNum = files.length > remainingSlots ? remainingSlots : files.length;
 
