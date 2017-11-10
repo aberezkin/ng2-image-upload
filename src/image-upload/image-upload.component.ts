@@ -25,7 +25,7 @@ export class ImageUploadComponent implements OnInit, OnChanges {
   fileOver: boolean = false;
   showFileTooLargeMessage: boolean = false;
 
-  @Input() beforeUpload: (UploadMetadata) => UploadMetadata | Promise<UploadMetadata> = data => data;
+  @Input() beforeUpload: (UploadMetadata: any) => UploadMetadata | Promise<UploadMetadata> = data => data;
   @Input() buttonCaption = 'Select Images';
   @Input() disabled = false;
   @Input('class') cssClass = 'img-ul';
