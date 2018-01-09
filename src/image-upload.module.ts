@@ -11,7 +11,21 @@ import { ImageService } from './image-upload/image.service';
 //   declarations: [ImageUploadComponent, FileDropDirective],
 //   exports: [ImageUploadComponent]
 // })
-export declare class ImageUploadModule {
-    constructor(parentModule: ImageUploadModule);
-    static forRoot(config?: Partial<any>): ModuleWithProviders;
+// export declare class ImageUploadModule {
+//     constructor(parentModule: ImageUploadModule);
+//     static forRoot(config?: Partial<any>): ModuleWithProviders;
+// }
+
+@NgModule({
+  imports: [CommonModule, HttpModule],
+  declarations: [ImageUploadComponent, FileDropDirective],
+  exports: [ImageUploadComponent]
+})
+export class ImageUploadModule {
+  static forRoot(): ModuleWithProviders {
+    return {
+      ngModule: ImageUploadModule,
+      providers: [ImageService]
+    }
+  }
 }
