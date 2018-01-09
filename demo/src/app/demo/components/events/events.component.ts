@@ -7,14 +7,14 @@ import { FileHolder } from '../../../../lib/image-upload/image-upload.component'
 })
 export class EventsComponent {
   onUploadFinished(file: FileHolder) {
-    console.log(JSON.stringify(file.serverResponse));
+    console.log(file);
   }
 
   onRemoved(file: FileHolder) {
-    // do some stuff with the removed file.
+    console.log(file);
   }
 
   onUploadStateChanged(state: boolean) {
-    console.log(JSON.stringify(state));
+    console.log(state);
   }
 }
