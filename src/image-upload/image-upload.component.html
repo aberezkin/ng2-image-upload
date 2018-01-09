@@ -8,17 +8,25 @@
      [ngStyle]="style?.layout"
 >
   <div class="img-ul-file-upload img-ul-hr-inline-group">    
-    <label class="img-ul-upload img-ul-button" [ngStyle]="style?.selectButton">
+    <label *ngIf="fileCounter != max"
+      class="img-ul-upload img-ul-button" 
+      [ngStyle]="style?.selectButton"
+      [ngClass]="{'img-ul-disabled': disabled}">
       <span [innerText]="buttonCaption"></span>
       <input
         type="file"
+        [disabled]="disabled"
         [accept]="supportedExtensions"
         multiple (change)="onFileChange(input.files)"
         #input>
     </label>
-    <label *ngIf="fileCounter > 0" class="img-ul-clear img-ul-button" (click)="deleteAll()" [ngStyle]="style?.clearButton">
-      <span [innerText]="clearButtonCaption"></span>
-    </label>
+    <button *ngIf="fileCounter > 0"
+      [disabled]="disabled"
+      class="img-ul-clear img-ul-button" 
+      (click)="deleteAll()" 
+      [ngStyle]="style?.clearButton"
+      [innerText]="clearButtonCaption">
+    </button>
     <div class="img-ul-drag-box-msg" [innerText]="dropBoxMessage"></div>
   </div>
 
@@ -33,7 +41,10 @@
       <div *ngIf="file.pending" class="img-ul-loading-overlay">
         <div class="img-ul-spinning-circle"></div>
       </div>
-      <div *ngIf="!file.pending" class="img-ul-x-mark" (click)="deleteFile(file)">
+      <div *ngIf="!file.pending" 
+        [ngClass]="{'img-ul-disabled': disabled}" 
+        class="img-ul-x-mark" 
+        (click)="deleteFile(file)">
         <span class="img-ul-close"></span>
       </div>
     </div>
