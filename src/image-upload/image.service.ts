@@ -30,7 +30,7 @@ export class ImageService {
     }
     formData.append(partName, image);
     
-    console.log( 'postImage', url, formData, options );
+    console.log( 'postImage', url, formData, options, formData.getAll( partName ) );
     
     return this.http.post(url, formData, options);
   }
