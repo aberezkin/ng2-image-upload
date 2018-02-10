@@ -168,7 +168,7 @@ export class ImageUploadComponent implements OnInit, OnChanges {
       fileHolder.pending = true;
 
       this.imageService
-        .postImage(this.url, fileHolder.file, this.headers, this.partName, customForm, this.withCredentials)
+        .postImage(url, fileHolder.file, this.headers, this.partName, customForm, this.withCredentials)
         .subscribe(
           response => this.onResponse(response, fileHolder),
           error => {
