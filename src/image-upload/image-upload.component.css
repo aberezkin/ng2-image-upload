@@ -2,7 +2,7 @@
     --active-color: #3C9;
     --common-radius: 3px;
     background-color: #f8f8f8;
-    border-radius: var(--common-radius);
+    border-radius:  3px;
     border: #d0d0d0 dashed 1px;
     font-family: sans-serif;
     position: relative;
@@ -10,7 +10,7 @@
 }
 
 .img-ul-file-is-over {
-    border: var(--active-color) solid;
+    border:  #3C9 solid;
 }
 
 .img-ul-hr-inline-group:after {
@@ -46,7 +46,7 @@ label.img-ul-button input[type=file] {
 }
 
 .img-ul-upload {
-    background-color: var(--active-color);
+    background-color:  #3C9;
 }
 
 .img-ul-button {
