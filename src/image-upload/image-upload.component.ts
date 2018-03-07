@@ -45,6 +45,7 @@ export class ImageUploadComponent implements OnInit, OnChanges {
   @Output() removed = new EventEmitter<FileHolder>();
   @Output() uploadStateChanged = new EventEmitter<boolean>();
   @Output() uploadFinished = new EventEmitter<FileHolder>();
+  @Output() previewClicked = new EventEmitter<FileHolder>();
 
   @ViewChild('input')
   private inputElement: ElementRef;
@@ -73,6 +74,10 @@ export class ImageUploadComponent implements OnInit, OnChanges {
     this.fileCounter--;
     this.inputElement.nativeElement.value = '';
     this.removed.emit(file);
+  }
+
+  previewFileClicked(file: FileHolder) {
+    this.previewClicked.emit(file);
   }
 
   ngOnChanges(changes) {
