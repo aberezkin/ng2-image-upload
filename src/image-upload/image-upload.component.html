@@ -36,6 +36,7 @@
     <div
       class="img-ul-image"
       *ngFor="let file of files"
+      (click)="clickedFile(file)"
       [ngStyle]="{'background-image': 'url('+ file.src +')'}"
     >
       <div *ngIf="file.pending" class="img-ul-loading-overlay">
