@@ -37,7 +37,7 @@
       class="img-ul-image"
       *ngFor="let file of files"
       (click)="previewFileClicked(file)"
-      [ngStyle]="{'background-image': 'url('+ file.src +')'}"
+      [ngStyle]="{'background-image': 'url(\"+ file.src +\")'}"
     >
       <div *ngIf="file.pending" class="img-ul-loading-overlay">
         <div class="img-ul-spinning-circle"></div>
