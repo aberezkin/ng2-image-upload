@@ -13,15 +13,15 @@
   (uploadStateChanged)="onUploadStateChanged($event)">
 </image-upload>]]></code></pre>
 
-<pre><code class="language-typescript"><![CDATA[imageFinishedUploading(file: FileHolder) {
-  console.log(JSON.stringify(file.serverResponse));
+<pre><code class="language-typescript"><![CDATA[onUploadFinished(file: FileHolder) {
+  console.log(file);
 }
 
 onRemoved(file: FileHolder) {
-  // do some stuff with the removed file.
+  console.log(file);
 }
 
 onUploadStateChanged(state: boolean) {
-  console.log(JSON.stringify(state));
+  console.log(state);
 }]]>
 </code></pre>
