@@ -33,7 +33,9 @@ You can use bindings to configure this element for your needs.
 `[max]="100"` - is the maximum number of pictures that can be uploaded through this element. Default is 100.
 
 `[url]="'example.com/images/upload'"` - this is the url which can handle POST queries with `multipart/form-data` 
-Content-Type. The query has a single field called `image`.
+Content-Type. The query has a single field called `image`. 
+
+`[partName]="'your-field-name'"` - if you need to customize the default POST field `image`
 
 **Note:** images are sent individually one by one!
 
