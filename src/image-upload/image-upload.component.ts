@@ -150,6 +150,7 @@ export class ImageUploadComponent implements OnInit, OnChanges {
         this.fileCounter--;
         this.inputElement.nativeElement.value = '';
         this.showFileTooLargeMessage = true;
+        this.uploadStateChanged.emit(false)
         continue;
       }
 
