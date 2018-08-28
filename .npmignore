@@ -3,10 +3,8 @@ node_modules
 .editorconfig
 *.tgz
 .tmp/
-gulpfile.js
 package-lock.json
 yarn.lock
-src/tsconfig.json
 .npmignore
 demo/
 docs/
