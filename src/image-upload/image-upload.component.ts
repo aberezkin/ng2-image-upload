@@ -31,6 +31,7 @@ export class ImageUploadComponent implements OnInit, OnChanges {
   @Input('class') cssClass = 'img-ul';
   @Input() clearButtonCaption = 'Clear';
   @Input() dropBoxMessage = 'Drop your images here!';
+  @Input() dropBoxClickable = false;
   @Input() fileTooLargeMessage;
   @Input() headers: Headers | { [name: string]: any };
   @Input() max = 100;
@@ -65,14 +66,18 @@ export class ImageUploadComponent implements OnInit, OnChanges {
     this.files.forEach(f => this.removed.emit(f));
     this.files = [];
     this.fileCounter = 0;
-    this.inputElement.nativeElement.value = '';
+    if (this.inputElement) {
+      this.inputElement.nativeElement.value = '';
+    }
   }
 
   deleteFile(file: FileHolder): void {
     let index = this.files.indexOf(file);
     this.files.splice(index, 1);
     this.fileCounter--;
-    this.inputElement.nativeElement.value = '';
+    if (this.inputElement) {
+      this.inputElement.nativeElement.value = '';
+    }
     this.removed.emit(file);
   }
 
@@ -146,6 +151,7 @@ export class ImageUploadComponent implements OnInit, OnChanges {
         this.fileCounter--;
         this.inputElement.nativeElement.value = '';
         this.showFileTooLargeMessage = true;
+        this.uploadStateChanged.emit(false)
         continue;
       }
 
