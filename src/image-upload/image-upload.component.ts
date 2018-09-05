@@ -31,6 +31,7 @@ export class ImageUploadComponent implements OnInit, OnChanges {
   @Input('class') cssClass = 'img-ul';
   @Input() clearButtonCaption = 'Clear';
   @Input() dropBoxMessage = 'Drop your images here!';
+  @Input() dropBoxClickable = false;
   @Input() fileTooLargeMessage;
   @Input() headers: Headers | { [name: string]: any };
   @Input() max = 100;

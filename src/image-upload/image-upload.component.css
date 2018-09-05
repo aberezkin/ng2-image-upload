@@ -36,6 +36,16 @@ label.img-ul-button input[type=file] {
     top: -99999px;
 }
 
+label.img-ul-drag-box-msg input[type=file]{
+    display: none;
+}
+
+.dropbox-class{
+    display: none;
+    position: fixed;
+    top: -99999px;
+}
+
 .img-ul-clear {
     background-color: #FF0000;
 }
