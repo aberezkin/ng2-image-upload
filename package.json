@@ -1,58 +1,34 @@
 {
-  "name": "angular2-image-upload",
-  "version": "1.0.0-rc.1",
-  "description": "An angular component that uploads images using native browser upload or drag-n-drop.",
-  "main": "index.js",
+  "name": "ng2-image-upload",
+  "version": "0.0.0",
   "scripts": {
-    "build": "rm -rf lib .tmp demo/src/lib && gulp build",
-    "release": "npm run build && npm run build:demo && git add docs && standard-version --commit-all",
-    "publish": "git push --follow-tags origin master && npm publish",
-    "install:demo": "cd demo && yarn",
-    "demo": "cd demo && npm start",
-    "build:demo": "cd demo && npm run build"
+    "ng": "ng",
+    "start": "ng serve",
+    "build": "ng build",
+    "lint": "ng lint"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/aberezkin/ng2-image-upload"
-  },
-  "keywords": [
-    "image",
-    "upload",
-    "angular",
-    "ng",
-    "image",
-    "preview",
-    "file",
-    "upload",
-    "drag",
-    "drop",
-    "drag&drop"
-  ],
-  "author": "Arkadii Berezkin",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/aberezkin/image-upload/issues"
-  },
-  "homepage": "https://github.com/aberezkin/image-upload#readme",
-  "peerDependencies": {
-    "@angular/common": "^2.4.9 || ^4.0.0",
-    "@angular/core": "^2.4.9 || ^4.0.0",
-    "@angular/http": "^2.4.9 || ^4.0.0",
-    "rxjs": "^5.0.0-rc.2"
-  },
+  "private": true,
   "devDependencies": {
-    "@angular/common": "^4.0.0",
-    "@angular/compiler": "^4.0.0",
-    "@angular/compiler-cli": "^4.0.0",
-    "@angular/core": "^4.0.0",
-    "@angular/http": "^4.0.0",
-    "@angular/language-service": "^4.0.0",
-    "@types/core-js": "^0.9.34",
-    "gulp": "github:gulpjs/gulp#4.0",
-    "gulp-inline-ng2-template": "^4.0.0",
-    "gulp-ngc": "^0.3.2",
-    "rxjs": "^5.0.0-rc.2",
-    "standard-version": "^4.2.0",
-    "typescript": "2.1.5"
+    "@angular-devkit/build-angular": "~0.10.0",
+    "@angular-devkit/build-ng-packagr": "~0.10.0",
+    "@angular/cli": "~7.0.2",
+    "@angular/common": "~7.0.0",
+    "@angular/compiler": "~7.0.0",
+    "@angular/compiler-cli": "~7.0.0",
+    "@angular/core": "~7.0.0",
+    "@angular/language-service": "~7.0.0",
+    "@angular/platform-browser": "~7.0.0",
+    "@angular/platform-browser-dynamic": "~7.0.0",
+    "@types/node": "~8.9.4",
+    "codelyzer": "^4.5.0",
+    "core-js": "^2.5.4",
+    "ng-packagr": "^4.2.0",
+    "rxjs": "~6.3.3",
+    "ts-node": "~7.0.0",
+    "tsickle": ">=0.29.0",
+    "tslib": "^1.9.0",
+    "tslint": "~5.11.0",
+    "typescript": "~3.1.1",
+    "zone.js": "~0.8.26"
   }
 }
