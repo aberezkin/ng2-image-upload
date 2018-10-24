@@ -6,15 +6,15 @@ import { Style } from '../style';
 import { UploadMetadata } from '../upload-metadata';
 
 @Component({
-  selector: 'ng2iu-image-upload',
+  selector: 'image-upload',
   templateUrl: './image-upload.component.html',
   styleUrls: ['./image-upload.component.css']
 })
 export class ImageUploadComponent implements OnInit, OnChanges {
   files: FileHolder[] = [];
-  fileCounter: number = 0;
-  fileOver: boolean = false;
-  showFileTooLargeMessage: boolean = false;
+  fileCounter = 0;
+  fileOver = false;
+  showFileTooLargeMessage = false;
 
   @Input() beforeUpload: (metadata: UploadMetadata) => UploadMetadata | Promise<UploadMetadata> = metadata => metadata;
   @Input() buttonCaption = 'Select Images';
@@ -22,7 +22,7 @@ export class ImageUploadComponent implements OnInit, OnChanges {
   @Input('class') cssClass = 'img-ul';
   @Input() clearButtonCaption = 'Clear';
   @Input() dropBoxMessage = 'Drop your images here!';
-  @Input() fileTooLargeMessage;
+  @Input() fileTooLargeMessage: string;
   @Input() headers: HttpHeaders | { [name: string]: string | string[] };
   @Input() max = 100;
   @Input() maxFileSize: number;
@@ -40,7 +40,7 @@ export class ImageUploadComponent implements OnInit, OnChanges {
 
   @ViewChild('input')
   private inputElement: ElementRef;
-  private pendingFilesCounter: number = 0;
+  private pendingFilesCounter = 0;
 
   constructor(private imageService: ImageUploadService) {
   }
@@ -62,7 +62,7 @@ export class ImageUploadComponent implements OnInit, OnChanges {
   }
 
   deleteFile(file: FileHolder): void {
-    let index = this.files.indexOf(file);
+    const index = this.files.indexOf(file);
     this.files.splice(index, 1);
     this.fileCounter--;
     if (this.inputElement) {
@@ -84,10 +84,10 @@ export class ImageUploadComponent implements OnInit, OnChanges {
   onFileChange(files: FileList) {
     if (this.disabled) return;
 
-    let remainingSlots = this.countRemainingSlots();
-    let filesToUploadNum = files.length > remainingSlots ? remainingSlots : files.length;
+    const remainingSlots = this.max - this.fileCounter;
+    const filesToUploadNum = files.length > remainingSlots ? remainingSlots : files.length;
 
-    if (this.url && filesToUploadNum != 0) {
+    if (this.url && filesToUploadNum !== 0) {
       this.uploadStateChanged.emit(true);
     }
 
@@ -98,22 +98,20 @@ export class ImageUploadComponent implements OnInit, OnChanges {
 
   onFileOver = (isOver) => this.fileOver = isOver;
 
-  private countRemainingSlots = () => this.max - this.fileCounter;
-
   private onResponse(response: HttpResponse<any>, fileHolder: FileHolder) {
     fileHolder.serverResponse = { status: response.status, response };
     fileHolder.pending = false;
 
     this.uploadFinished.emit(fileHolder);
 
-    if (--this.pendingFilesCounter == 0) {
+    if (--this.pendingFilesCounter === 0) {
       this.uploadStateChanged.emit(false);
     }
   }
 
   private processUploadedFiles() {
     for (let i = 0; i < this.uploadedFiles.length; i++) {
-      let data: any = this.uploadedFiles[i];
+      const data: any = this.uploadedFiles[i];
 
       let fileBlob: Blob,
         file: File,
@@ -141,7 +139,7 @@ export class ImageUploadComponent implements OnInit, OnChanges {
         this.fileCounter--;
         this.inputElement.nativeElement.value = '';
         this.showFileTooLargeMessage = true;
-        this.uploadStateChanged.emit(false)
+        this.uploadStateChanged.emit(false);
         continue;
       }
 

@@ -19,8 +19,10 @@ export class ImageUploadService {
 
     const formData = new FormData();
 
-    for (const key of Object.keys(customFormData)) {
-      formData.append(key, customFormData[key]);
+    if (customFormData) {
+      for (const key of Object.keys(customFormData)) {
+        formData.append(key, customFormData[key]);
+      }
     }
 
     formData.append(partName, image);

@@ -7,7 +7,6 @@
       "root": "projects/ng2-image-upload",
       "sourceRoot": "projects/ng2-image-upload/src",
       "projectType": "library",
-      "prefix": "ng2iu",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-ng-packagr:build",
@@ -33,7 +32,6 @@
       "root": "projects/ng2-image-upload-demo/",
       "sourceRoot": "projects/ng2-image-upload-demo/src",
       "projectType": "application",
-      "prefix": "app",
       "schematics": {},
       "architect": {
         "build": {
@@ -49,6 +47,9 @@
               "projects/ng2-image-upload-demo/src/assets"
             ],
             "styles": [
+              "node_modules/bootstrap/dist/css/bootstrap.css",
+              "node_modules/prismjs/themes/prism.css",
+              "node_modules/prismjs/themes/prism-okaidia.css",
               "projects/ng2-image-upload-demo/src/styles.css"
             ],
             "scripts": []

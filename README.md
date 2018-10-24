@@ -1,27 +1,42 @@
-# Ng2ImageUpload
+# Image Upload Module
+[![Build Status](https://travis-ci.org/aberezkin/ng2-image-upload.svg?branch=master)](https://travis-ci.org/aberezkin/ng2-image-upload)
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.0.2.
+This angular library provides a light-weight component that handles file-drop, image previewing and image uploading.
 
-## Development server
+### [Demo & Readme](https://aberezkin.github.io/ng2-image-upload/)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+### Install
 
-## Code scaffolding
+````
+npm install angular2-image-upload --save
+````
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+or
 
-## Build
+````
+yarn add angular2-image-upload
+````
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+### Usage
 
-## Running unit tests
+In your `app.module.ts` import it using `@NgModule` decorator.
+  
+````typescript
+import { ImageUploadModule } from "angular2-image-upload";
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+@NgModule({
+    imports: [
+        ...,
+        ImageUploadModule.forRoot(),
+        ...
+    ]
+})
+````
 
-## Running end-to-end tests
+Now you have `image-upload` declaration and you can use it in your html code.
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+`<image-upload></image-upload>`
 
-## Further help
+You can use bindings to configure this element for your needs.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+See the demo for more detailed instructions.
