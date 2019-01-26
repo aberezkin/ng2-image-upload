@@ -1,9 +1,9 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([["styles"],{
 
 /***/ "../../node_modules/@angular-devkit/build-angular/src/angular-cli-files/plugins/raw-css-loader.js!../../node_modules/postcss-loader/lib/index.js?!../../node_modules/bootstrap/dist/css/bootstrap.css":
-/*!*********************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** F:/Projects/ng2-image-upload/node_modules/@angular-devkit/build-angular/src/angular-cli-files/plugins/raw-css-loader.js!F:/Projects/ng2-image-upload/node_modules/postcss-loader/lib??embedded!F:/Projects/ng2-image-upload/node_modules/bootstrap/dist/css/bootstrap.css ***!
-  \*********************************************************************************************************************************************************************************************************************************************************************************/
+/*!***************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** /Users/aberezkin/Projects/ng2-image-upload/node_modules/@angular-devkit/build-angular/src/angular-cli-files/plugins/raw-css-loader.js!/Users/aberezkin/Projects/ng2-image-upload/node_modules/postcss-loader/lib??embedded!/Users/aberezkin/Projects/ng2-image-upload/node_modules/bootstrap/dist/css/bootstrap.css ***!
+  \***************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -12,9 +12,9 @@ module.exports = [[module.i, "/*!\n * Bootstrap v4.1.3 (https://getbootstrap.com
 /***/ }),
 
 /***/ "../../node_modules/@angular-devkit/build-angular/src/angular-cli-files/plugins/raw-css-loader.js!../../node_modules/postcss-loader/lib/index.js?!../../node_modules/prismjs/themes/prism-okaidia.css":
-/*!*********************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** F:/Projects/ng2-image-upload/node_modules/@angular-devkit/build-angular/src/angular-cli-files/plugins/raw-css-loader.js!F:/Projects/ng2-image-upload/node_modules/postcss-loader/lib??embedded!F:/Projects/ng2-image-upload/node_modules/prismjs/themes/prism-okaidia.css ***!
-  \*********************************************************************************************************************************************************************************************************************************************************************************/
+/*!***************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** /Users/aberezkin/Projects/ng2-image-upload/node_modules/@angular-devkit/build-angular/src/angular-cli-files/plugins/raw-css-loader.js!/Users/aberezkin/Projects/ng2-image-upload/node_modules/postcss-loader/lib??embedded!/Users/aberezkin/Projects/ng2-image-upload/node_modules/prismjs/themes/prism-okaidia.css ***!
+  \***************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -23,9 +23,9 @@ module.exports = [[module.i, "/**\n * okaidia theme for JavaScript, CSS and HTML
 /***/ }),
 
 /***/ "../../node_modules/@angular-devkit/build-angular/src/angular-cli-files/plugins/raw-css-loader.js!../../node_modules/postcss-loader/lib/index.js?!../../node_modules/prismjs/themes/prism.css":
-/*!*************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** F:/Projects/ng2-image-upload/node_modules/@angular-devkit/build-angular/src/angular-cli-files/plugins/raw-css-loader.js!F:/Projects/ng2-image-upload/node_modules/postcss-loader/lib??embedded!F:/Projects/ng2-image-upload/node_modules/prismjs/themes/prism.css ***!
-  \*************************************************************************************************************************************************************************************************************************************************************************/
+/*!*******************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** /Users/aberezkin/Projects/ng2-image-upload/node_modules/@angular-devkit/build-angular/src/angular-cli-files/plugins/raw-css-loader.js!/Users/aberezkin/Projects/ng2-image-upload/node_modules/postcss-loader/lib??embedded!/Users/aberezkin/Projects/ng2-image-upload/node_modules/prismjs/themes/prism.css ***!
+  \*******************************************************************************************************************************************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -34,20 +34,20 @@ module.exports = [[module.i, "/**\n * prism.js default theme for JavaScript, CSS
 /***/ }),
 
 /***/ "../../node_modules/@angular-devkit/build-angular/src/angular-cli-files/plugins/raw-css-loader.js!../../node_modules/postcss-loader/lib/index.js?!./src/styles.css":
-/*!***********************************************************************************************************************************************************************************************************************!*\
-  !*** F:/Projects/ng2-image-upload/node_modules/@angular-devkit/build-angular/src/angular-cli-files/plugins/raw-css-loader.js!F:/Projects/ng2-image-upload/node_modules/postcss-loader/lib??embedded!./src/styles.css ***!
-  \***********************************************************************************************************************************************************************************************************************/
+/*!***************************************************************************************************************************************************************************************************************************************************!*\
+  !*** /Users/aberezkin/Projects/ng2-image-upload/node_modules/@angular-devkit/build-angular/src/angular-cli-files/plugins/raw-css-loader.js!/Users/aberezkin/Projects/ng2-image-upload/node_modules/postcss-loader/lib??embedded!./src/styles.css ***!
+  \***************************************************************************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = [[module.i, "h1.root-loading {\r\n  visibility: visible !important;\r\n  position: fixed;\r\n  top: 50%;\r\n  left: 50%;\r\n  -webkit-transform: translate(-50%, -50%);\r\n          transform: translate(-50%, -50%);\r\n}\r\n\r\n.github-star-button {\r\n  position: fixed;\r\n  top: 0;\r\n  right: 0;\r\n  margin: 10px;\r\n  z-index: 1;\r\n}\r\n\r\n.jumbotron {\r\n  margin-bottom: 1rem;\r\n}\r\n\r\n.token.operator {\r\n  background: none !important;\r\n}\r\n\r\n.customClass {\r\n  background-color: #dd3;\r\n  border-radius: 5px;\r\n  margin: 5px;\r\n  width: 500px;\r\n}\r\n\r\n.customClass .img-ul-upload {\r\n  background-color: #000 !important;\r\n}\r\n\r\n.customClass .img-ul-clear {\r\n  background-color: #B819BB !important;\r\n}\r\n\r\n.customClass .img-ul-drag-box-msg {\r\n  color: purple !important;\r\n}\r\n\r\n.customClass .img-ul-container {\r\n  background-color: #FF6CAD !important;\r\n}\r\n\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInByb2plY3RzL25nMi1pbWFnZS11cGxvYWQtZGVtby9zcmMvc3R5bGVzLmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLCtCQUErQjtFQUMvQixnQkFBZ0I7RUFDaEIsU0FBUztFQUNULFVBQVU7RUFDVix5Q0FBaUM7VUFBakMsaUNBQWlDO0NBQ2xDOztBQUVEO0VBQ0UsZ0JBQWdCO0VBQ2hCLE9BQU87RUFDUCxTQUFTO0VBQ1QsYUFBYTtFQUNiLFdBQVc7Q0FDWjs7QUFFRDtFQUNFLG9CQUFvQjtDQUNyQjs7QUFFRDtFQUNFLDRCQUE0QjtDQUM3Qjs7QUFFRDtFQUNFLHVCQUF1QjtFQUN2QixtQkFBbUI7RUFDbkIsWUFBWTtFQUNaLGFBQWE7Q0FDZDs7QUFFRDtFQUNFLGtDQUFrQztDQUNuQzs7QUFFRDtFQUNFLHFDQUFxQztDQUN0Qzs7QUFFRDtFQUNFLHlCQUF5QjtDQUMxQjs7QUFFRDtFQUNFLHFDQUFxQztDQUN0QyIsImZpbGUiOiJwcm9qZWN0cy9uZzItaW1hZ2UtdXBsb2FkLWRlbW8vc3JjL3N0eWxlcy5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyJoMS5yb290LWxvYWRpbmcge1xyXG4gIHZpc2liaWxpdHk6IHZpc2libGUgIWltcG9ydGFudDtcclxuICBwb3NpdGlvbjogZml4ZWQ7XHJcbiAgdG9wOiA1MCU7XHJcbiAgbGVmdDogNTAlO1xyXG4gIHRyYW5zZm9ybTogdHJhbnNsYXRlKC01MCUsIC01MCUpO1xyXG59XHJcblxyXG4uZ2l0aHViLXN0YXItYnV0dG9uIHtcclxuICBwb3NpdGlvbjogZml4ZWQ7XHJcbiAgdG9wOiAwO1xyXG4gIHJpZ2h0OiAwO1xyXG4gIG1hcmdpbjogMTBweDtcclxuICB6LWluZGV4OiAxO1xyXG59XHJcblxyXG4uanVtYm90cm9uIHtcclxuICBtYXJnaW4tYm90dG9tOiAxcmVtO1xyXG59XHJcblxyXG4udG9rZW4ub3BlcmF0b3Ige1xyXG4gIGJhY2tncm91bmQ6IG5vbmUgIWltcG9ydGFudDtcclxufVxyXG5cclxuLmN1c3RvbUNsYXNzIHtcclxuICBiYWNrZ3JvdW5kLWNvbG9yOiAjZGQzO1xyXG4gIGJvcmRlci1yYWRpdXM6IDVweDtcclxuICBtYXJnaW46IDVweDtcclxuICB3aWR0aDogNTAwcHg7XHJcbn1cclxuXHJcbi5jdXN0b21DbGFzcyAuaW1nLXVsLXVwbG9hZCB7XHJcbiAgYmFja2dyb3VuZC1jb2xvcjogIzAwMCAhaW1wb3J0YW50O1xyXG59XHJcblxyXG4uY3VzdG9tQ2xhc3MgLmltZy11bC1jbGVhciB7XHJcbiAgYmFja2dyb3VuZC1jb2xvcjogI0I4MTlCQiAhaW1wb3J0YW50O1xyXG59XHJcblxyXG4uY3VzdG9tQ2xhc3MgLmltZy11bC1kcmFnLWJveC1tc2cge1xyXG4gIGNvbG9yOiBwdXJwbGUgIWltcG9ydGFudDtcclxufVxyXG5cclxuLmN1c3RvbUNsYXNzIC5pbWctdWwtY29udGFpbmVyIHtcclxuICBiYWNrZ3JvdW5kLWNvbG9yOiAjRkY2Q0FEICFpbXBvcnRhbnQ7XHJcbn1cclxuIl19 */", '', '']]
+module.exports = [[module.i, "h1.root-loading {\n  visibility: visible !important;\n  position: fixed;\n  top: 50%;\n  left: 50%;\n  -webkit-transform: translate(-50%, -50%);\n          transform: translate(-50%, -50%);\n}\n\n.github-star-button {\n  position: fixed;\n  top: 0;\n  right: 0;\n  margin: 10px;\n  z-index: 1;\n}\n\n.jumbotron {\n  margin-bottom: 1rem;\n}\n\n.token.operator {\n  background: none !important;\n}\n\n.customClass {\n  background-color: #dd3;\n  border-radius: 5px;\n  margin: 5px;\n  width: 500px;\n}\n\n.customClass .img-ul-upload {\n  background-color: #000 !important;\n}\n\n.customClass .img-ul-clear {\n  background-color: #B819BB !important;\n}\n\n.customClass .img-ul-drag-box-msg {\n  color: purple !important;\n}\n\n.customClass .img-ul-container {\n  background-color: #FF6CAD !important;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInByb2plY3RzL25nMi1pbWFnZS11cGxvYWQtZGVtby9zcmMvc3R5bGVzLmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLCtCQUErQjtFQUMvQixnQkFBZ0I7RUFDaEIsU0FBUztFQUNULFVBQVU7RUFDVix5Q0FBaUM7VUFBakMsaUNBQWlDO0NBQ2xDOztBQUVEO0VBQ0UsZ0JBQWdCO0VBQ2hCLE9BQU87RUFDUCxTQUFTO0VBQ1QsYUFBYTtFQUNiLFdBQVc7Q0FDWjs7QUFFRDtFQUNFLG9CQUFvQjtDQUNyQjs7QUFFRDtFQUNFLDRCQUE0QjtDQUM3Qjs7QUFFRDtFQUNFLHVCQUF1QjtFQUN2QixtQkFBbUI7RUFDbkIsWUFBWTtFQUNaLGFBQWE7Q0FDZDs7QUFFRDtFQUNFLGtDQUFrQztDQUNuQzs7QUFFRDtFQUNFLHFDQUFxQztDQUN0Qzs7QUFFRDtFQUNFLHlCQUF5QjtDQUMxQjs7QUFFRDtFQUNFLHFDQUFxQztDQUN0QyIsImZpbGUiOiJwcm9qZWN0cy9uZzItaW1hZ2UtdXBsb2FkLWRlbW8vc3JjL3N0eWxlcy5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyJoMS5yb290LWxvYWRpbmcge1xuICB2aXNpYmlsaXR5OiB2aXNpYmxlICFpbXBvcnRhbnQ7XG4gIHBvc2l0aW9uOiBmaXhlZDtcbiAgdG9wOiA1MCU7XG4gIGxlZnQ6IDUwJTtcbiAgdHJhbnNmb3JtOiB0cmFuc2xhdGUoLTUwJSwgLTUwJSk7XG59XG5cbi5naXRodWItc3Rhci1idXR0b24ge1xuICBwb3NpdGlvbjogZml4ZWQ7XG4gIHRvcDogMDtcbiAgcmlnaHQ6IDA7XG4gIG1hcmdpbjogMTBweDtcbiAgei1pbmRleDogMTtcbn1cblxuLmp1bWJvdHJvbiB7XG4gIG1hcmdpbi1ib3R0b206IDFyZW07XG59XG5cbi50b2tlbi5vcGVyYXRvciB7XG4gIGJhY2tncm91bmQ6IG5vbmUgIWltcG9ydGFudDtcbn1cblxuLmN1c3RvbUNsYXNzIHtcbiAgYmFja2dyb3VuZC1jb2xvcjogI2RkMztcbiAgYm9yZGVyLXJhZGl1czogNXB4O1xuICBtYXJnaW46IDVweDtcbiAgd2lkdGg6IDUwMHB4O1xufVxuXG4uY3VzdG9tQ2xhc3MgLmltZy11bC11cGxvYWQge1xuICBiYWNrZ3JvdW5kLWNvbG9yOiAjMDAwICFpbXBvcnRhbnQ7XG59XG5cbi5jdXN0b21DbGFzcyAuaW1nLXVsLWNsZWFyIHtcbiAgYmFja2dyb3VuZC1jb2xvcjogI0I4MTlCQiAhaW1wb3J0YW50O1xufVxuXG4uY3VzdG9tQ2xhc3MgLmltZy11bC1kcmFnLWJveC1tc2cge1xuICBjb2xvcjogcHVycGxlICFpbXBvcnRhbnQ7XG59XG5cbi5jdXN0b21DbGFzcyAuaW1nLXVsLWNvbnRhaW5lciB7XG4gIGJhY2tncm91bmQtY29sb3I6ICNGRjZDQUQgIWltcG9ydGFudDtcbn1cbiJdfQ== */", '', '']]
 
 /***/ }),
 
 /***/ "../../node_modules/bootstrap/dist/css/bootstrap.css":
-/*!**********************************************************************************!*\
-  !*** F:/Projects/ng2-image-upload/node_modules/bootstrap/dist/css/bootstrap.css ***!
-  \**********************************************************************************/
+/*!************************************************************************************************!*\
+  !*** /Users/aberezkin/Projects/ng2-image-upload/node_modules/bootstrap/dist/css/bootstrap.css ***!
+  \************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -75,9 +75,9 @@ if(false) {}
 /***/ }),
 
 /***/ "../../node_modules/prismjs/themes/prism-okaidia.css":
-/*!**********************************************************************************!*\
-  !*** F:/Projects/ng2-image-upload/node_modules/prismjs/themes/prism-okaidia.css ***!
-  \**********************************************************************************/
+/*!************************************************************************************************!*\
+  !*** /Users/aberezkin/Projects/ng2-image-upload/node_modules/prismjs/themes/prism-okaidia.css ***!
+  \************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -105,9 +105,9 @@ if(false) {}
 /***/ }),
 
 /***/ "../../node_modules/prismjs/themes/prism.css":
-/*!**************************************************************************!*\
-  !*** F:/Projects/ng2-image-upload/node_modules/prismjs/themes/prism.css ***!
-  \**************************************************************************/
+/*!****************************************************************************************!*\
+  !*** /Users/aberezkin/Projects/ng2-image-upload/node_modules/prismjs/themes/prism.css ***!
+  \****************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -135,9 +135,9 @@ if(false) {}
 /***/ }),
 
 /***/ "../../node_modules/style-loader/lib/addStyles.js":
-/*!*******************************************************************************!*\
-  !*** F:/Projects/ng2-image-upload/node_modules/style-loader/lib/addStyles.js ***!
-  \*******************************************************************************/
+/*!*********************************************************************************************!*\
+  !*** /Users/aberezkin/Projects/ng2-image-upload/node_modules/style-loader/lib/addStyles.js ***!
+  \*********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -542,9 +542,9 @@ function updateLink (link, options, obj) {
 /***/ }),
 
 /***/ "../../node_modules/style-loader/lib/urls.js":
-/*!**************************************************************************!*\
-  !*** F:/Projects/ng2-image-upload/node_modules/style-loader/lib/urls.js ***!
-  \**************************************************************************/
+/*!****************************************************************************************!*\
+  !*** /Users/aberezkin/Projects/ng2-image-upload/node_modules/style-loader/lib/urls.js ***!
+  \****************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -672,16 +672,16 @@ if(false) {}
 /***/ }),
 
 /***/ 2:
-/*!*******************************************************************************************************************************************************************************************************************************************************!*\
-  !*** multi F:/Projects/ng2-image-upload/node_modules/bootstrap/dist/css/bootstrap.css F:/Projects/ng2-image-upload/node_modules/prismjs/themes/prism.css F:/Projects/ng2-image-upload/node_modules/prismjs/themes/prism-okaidia.css ./src/styles.css ***!
-  \*******************************************************************************************************************************************************************************************************************************************************/
+/*!*************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** multi /Users/aberezkin/Projects/ng2-image-upload/node_modules/bootstrap/dist/css/bootstrap.css /Users/aberezkin/Projects/ng2-image-upload/node_modules/prismjs/themes/prism.css /Users/aberezkin/Projects/ng2-image-upload/node_modules/prismjs/themes/prism-okaidia.css ./src/styles.css ***!
+  \*************************************************************************************************************************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! F:\Projects\ng2-image-upload\node_modules\bootstrap\dist\css\bootstrap.css */"../../node_modules/bootstrap/dist/css/bootstrap.css");
-__webpack_require__(/*! F:\Projects\ng2-image-upload\node_modules\prismjs\themes\prism.css */"../../node_modules/prismjs/themes/prism.css");
-__webpack_require__(/*! F:\Projects\ng2-image-upload\node_modules\prismjs\themes\prism-okaidia.css */"../../node_modules/prismjs/themes/prism-okaidia.css");
-module.exports = __webpack_require__(/*! F:\Projects\ng2-image-upload\projects\ng2-image-upload-demo\src\styles.css */"./src/styles.css");
+__webpack_require__(/*! /Users/aberezkin/Projects/ng2-image-upload/node_modules/bootstrap/dist/css/bootstrap.css */"../../node_modules/bootstrap/dist/css/bootstrap.css");
+__webpack_require__(/*! /Users/aberezkin/Projects/ng2-image-upload/node_modules/prismjs/themes/prism.css */"../../node_modules/prismjs/themes/prism.css");
+__webpack_require__(/*! /Users/aberezkin/Projects/ng2-image-upload/node_modules/prismjs/themes/prism-okaidia.css */"../../node_modules/prismjs/themes/prism-okaidia.css");
+module.exports = __webpack_require__(/*! /Users/aberezkin/Projects/ng2-image-upload/projects/ng2-image-upload-demo/src/styles.css */"./src/styles.css");
 
 
 /***/ })
