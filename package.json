@@ -1,6 +1,6 @@
 {
   "name": "angular2-image-upload",
-  "version": "1.0.0-rc1",
+  "version": "1.0.0-rc1.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve ng2-image-upload-demo",
