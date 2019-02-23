@@ -17,7 +17,8 @@
         type="file"
         [disabled]="disabled"
         [accept]="supportedExtensions"
-        multiple (change)="onFileChange(input.files)"
+        [multiple]="max > 1"
+        (change)="onFileChange(input.files)"
         #input>
     </label>
     <button *ngIf="fileCounter > 0"
