@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 
 # compiled output
@@ -30,10 +29,10 @@
 /connect.lock
 /coverage
 /libpeerconnection.log
-=======
+
 node_modules/
 .idea/
->>>>>>> Commit lib
+
 npm-debug.log
 yarn-error.log
 testem.log
