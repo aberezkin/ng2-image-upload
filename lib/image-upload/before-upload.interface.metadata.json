@@ -1,0 +1,17 @@
+[{
+  "__symbolic": "module",
+  "version": 3,
+  "metadata": {
+    "UploadMetadata": {
+      "__symbolic": "interface"
+    }
+  }
+}, {
+  "__symbolic": "module",
+  "version": 1,
+  "metadata": {
+    "UploadMetadata": {
+      "__symbolic": "interface"
+    }
+  }
+}]
