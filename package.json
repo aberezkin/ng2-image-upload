@@ -48,9 +48,6 @@
     "@angular/http": "^4.0.0",
     "@angular/language-service": "^4.0.0",
     "@types/core-js": "^0.9.34",
-    "gulp": "4.0",
-    "gulp-inline-ng2-template": "^4.0.0",
-    "gulp-ngc": "^0.3.2",
     "rxjs": "^5.0.0-rc.2",
     "standard-version": "^4.2.0",
     "typescript": "2.1.5"
