@@ -35,7 +35,7 @@ export class ImageUploadComponent implements OnInit, OnChanges {
   @Input() dropBoxMessage = 'Drop your images here!'
   @Input() dropBoxClickable = false
   @Input() fileTooLargeMessage
-  @Input() headers: Headers | { [name: string]: any }
+  @Input() headers: HttpHeaders | { [name: string]: any }
   @Input() max = 100
   @Input() maxFileSize: number
   @Input() preview = true
