@@ -1,6 +1,22 @@
 {
-  "name": "angular2-image-upload",
-  "version": "1.0.0-rc.2",
+  "name": "backbone-ng2-image-upload",
+  "version": "1.0.0",
+  "description": "[![Build Status](https://travis-ci.org/aberezkin/ng2-image-upload.svg?branch=master)](https://travis-ci.org/aberezkin/ng2-image-upload)",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs",
+    "lib": "lib"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Backbone-PLM/ng2-image-upload.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Backbone-PLM/ng2-image-upload/issues"
+  },
+  "homepage": "https://github.com/Backbone-PLM/ng2-image-upload#readme",
   "scripts": {
     "ng": "ng",
     "start": "ng serve ng2-image-upload-demo",
@@ -10,7 +26,6 @@
     "release": "npm run build && npm run build:demo && git add docs && standard-version --commit-all",
     "publish": "git push --follow-tags origin master && npm publish dist"
   },
-  "private": true,
   "dependencies": {
     "@angular/common": "~7.0.0",
     "@angular/core": "~7.0.0",
