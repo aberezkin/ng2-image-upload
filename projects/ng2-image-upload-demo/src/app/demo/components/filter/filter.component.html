@@ -1,0 +1,25 @@
+<h4 class="mb-3 mt-5">Limit and filter images</h4>
+
+<image-upload url="http://mockbin.org/request" [max]="2" [extensions]="['jpeg','png']"></image-upload>
+
+<pre><code class="language-markup"><![CDATA[<image-upload url="http://mockbin.org/request" [max]="2" [extensions]="['jpeg','png']"></image-upload>]]></code></pre>
+
+<h5 class="mb-3 mt-3">Manual filtering and editing</h5>
+
+<image-upload url="http://mockbin.org/request" [beforeUpload]="onBeforeUpload"></image-upload>
+
+<pre><code class="language-markup"><![CDATA[<image-upload url="http://mockbin.org/request" [beforeUpload]="onBeforeUpload"></image-upload>]]></code></pre>
+
+<pre><code class="language-typescript"><![CDATA[private fileCounter = 0;
+
+onBeforeUpload = (metadata: UploadMetadata) => {
+  if (this.fileCounter % 2 === 0) {
+    metadata.abort = true;
+  } else {
+    // mutate the file or replace it entirely - metadata.file
+    metadata.url = 'http://somewhereelse.com'
+  }
+
+  this.fileCounter++;
+  return metadata;
+};]]></code></pre>

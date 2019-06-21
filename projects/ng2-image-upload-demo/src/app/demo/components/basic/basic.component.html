@@ -1,0 +1,17 @@
+<h4 class="mb-3 mt-3">Basic Usage</h4>
+
+<image-upload url="http://mockbin.org/request"></image-upload>
+
+<pre><code class="language-markup"><![CDATA[<image-upload url="http://mockbin.org/request"></image-upload>]]></code></pre>
+
+<h5 class="mb-3 mt-3">With headers</h5>
+
+<image-upload url="http://mockbin.org/request" [headers]="myHeaders"></image-upload>
+
+<pre><code class="language-markup"><![CDATA[<image-upload url="http://mockbin.org/request" [headers]="myHeaders"></image-upload>]]></code></pre>
+
+<pre><code class="language-typescript"><![CDATA[myHeaders: { [header: string]: string | string[] } = {
+  'Authorization': 'MyToken',
+  'Another-Header': 'AnotherValue'
+};]]>
+</code></pre>

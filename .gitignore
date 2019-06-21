@@ -1,6 +1,10 @@
 node_modules/
 .idea/
 npm-debug.log
-*.tgz
-.tmp/
-package-lock.json
+yarn-error.log
+testem.log
+/typings
+
+# System Files
+.DS_Store
+Thumbs.db
