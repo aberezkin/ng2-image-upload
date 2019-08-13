@@ -135,7 +135,7 @@ export class ImageUploadComponent implements OnInit, OnChanges {
     for (let i = 0; i < filesToUploadNum; i++) {
       const file = files[i];
 
-      if (this.maxFileSize && file.size > this.maxFileSize) {
+      if (this.maxFileSize && file && file.size > this.maxFileSize) {
         this.fileCounter--;
         this.inputElement.nativeElement.value = '';
         this.showFileTooLargeMessage = true;
