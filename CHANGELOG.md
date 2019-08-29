@@ -8,7 +8,7 @@ All notable changes to this project will be documented in this file. See [standa
 
 ### Bug Fixes
 
-* include error information on the uploadStateChanged event ([#237](https://github.com/aberezkin/ng2-image-upload/issues/237)) (TODO - Include commit info)
+* include error information on the uploadStateChanged event ([#237](https://github.com/aberezkin/ng2-image-upload/issues/237)) ([6bc3aae8ab724460830edb81bc42f1b0069130ea](https://github.com/hugobarona/ng2-image-upload/commit/6bc3aae8ab724460830edb81bc42f1b0069130ea))
 * delete image error ([#211](https://github.com/aberezkin/ng2-image-upload/issues/211)) ([47c6099](https://github.com/aberezkin/ng2-image-upload/commit/47c6099))
 * emit uploadStateChanged when file upload fails due to size ([#212](https://github.com/aberezkin/ng2-image-upload/issues/212)) ([30e5f37](https://github.com/aberezkin/ng2-image-upload/commit/30e5f37))
 * fixed FileHolder.serverResponse not being set correctly ([59017db](https://github.com/aberezkin/ng2-image-upload/commit/59017db)), closes [#142](https://github.com/aberezkin/ng2-image-upload/issues/142)
