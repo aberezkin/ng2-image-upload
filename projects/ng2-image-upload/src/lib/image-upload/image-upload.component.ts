@@ -88,7 +88,7 @@ export class ImageUploadComponent implements OnInit, OnChanges {
     const filesToUploadNum = files.length > remainingSlots ? remainingSlots : files.length;
 
     if (this.url && filesToUploadNum !== 0) {
-      this.uploadStateChanged.emit({state:true, error:false, errorMessage:''});
+      this.uploadStateChanged.emit({state:true, error:false, errorMessage:'', fileName:''});
     }
 
     this.fileCounter += filesToUploadNum;
@@ -105,7 +105,7 @@ export class ImageUploadComponent implements OnInit, OnChanges {
     this.uploadFinished.emit(fileHolder);
 
     if (--this.pendingFilesCounter === 0) {
-      this.uploadStateChanged.emit({state:false, error:false, errorMessage:''});
+      this.uploadStateChanged.emit({state:false, error:false, errorMessage:'', fileName: fileHolder.file.name});
     }
   }
 
@@ -139,7 +139,7 @@ export class ImageUploadComponent implements OnInit, OnChanges {
         this.fileCounter--;
         this.inputElement.nativeElement.value = '';
         this.showFileTooLargeMessage = true;
-        this.uploadStateChanged.emit({state:false, error:true, errorMessage:this.fileTooLargeMessage});
+        this.uploadStateChanged.emit({state:false, error:true, errorMessage:this.fileTooLargeMessage, fileName: file.name});
         continue;
       }
 
