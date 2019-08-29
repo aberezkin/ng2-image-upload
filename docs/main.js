@@ -355,7 +355,7 @@ var ImageUploadComponent = /** @class */ (function () {
         /** @type {?} */
         var filesToUploadNum = files.length > remainingSlots ? remainingSlots : files.length;
         if (this.url && filesToUploadNum !== 0) {
-            this.uploadStateChanged.emit(true);
+            this.uploadStateChanged.emit({state:true, error:false, errorMessage:''});
         }
         this.fileCounter += filesToUploadNum;
         this.showFileTooLargeMessage = false;
@@ -376,7 +376,8 @@ var ImageUploadComponent = /** @class */ (function () {
         fileHolder.pending = false;
         this.uploadFinished.emit(fileHolder);
         if (--this.pendingFilesCounter === 0) {
-            this.uploadStateChanged.emit(false);
+            let errorStatus = response.status == 200;
+            this.uploadStateChanged.emit({state:false, error:errorStatus, errorMessage:errorStatus? response.response:''});
         }
     };
     /**
@@ -435,7 +436,7 @@ var ImageUploadComponent = /** @class */ (function () {
                                             this_1.fileCounter--;
                                             this_1.inputElement.nativeElement.value = '';
                                             this_1.showFileTooLargeMessage = true;
-                                            this_1.uploadStateChanged.emit(false);
+                                            this_1.uploadStateChanged.emit({state:false, error:true, errorMessage:this_1.fileTooLargeMessage});
                                             return [2 /*return*/, "continue"];
                                         }
                                         return [4 /*yield*/, this_1.beforeUpload({ file: file, url: this_1.url, abort: false })];
