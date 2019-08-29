@@ -17,7 +17,7 @@ yarn add angular2-image-upload
 ### Usage
 
 In your `app.module.ts` import it using `@NgModule` decorator.
-  
+
 ````typescript
 import { ImageUploadModule } from "angular2-image-upload";
 
@@ -40,8 +40,8 @@ You can use bindings to configure this element for your needs.
 
 `[max]="100"` - is the maximum number of pictures that can be uploaded through this element. Default is 100.
 
-`[url]="'example.com/images/upload'"` - this is the url which can handle POST queries with `multipart/form-data` 
-Content-Type. The query has a single field called `image`. 
+`[url]="'example.com/images/upload'"` - this is the url which can handle POST queries with `multipart/form-data`
+Content-Type. The query has a single field called `image`.
 
 `[partName]="'your-field-name'"` - if you need to customize the default POST field `image`
 
@@ -57,11 +57,11 @@ Content-Type. The query has a single field called `image`.
 
 #### Custom headers
 
-If you need to send some headers with your request (for example `Authorization` headers), 
+If you need to send some headers with your request (for example `Authorization` headers),
 you can use `[headers]` directive like this.
 
 ````html
-<image-upload 
+<image-upload
   [url]="'my-url.com'"
   [headers]="{Authorization: 'MyToken'}">
 </image-upload>
@@ -112,8 +112,8 @@ you can use `[headers]` directive like this.
 **The class must be accessible to the ImageUploadComponent**, so either pop it in your global stylesheet, or if you need to put it in a scoped stylesheet prefix with `/deep/`:
 
 `/deep/ .customClass { ... }`
-    
-**Note:**  `.img-ul-*` classes which are overridden with new styles. 
+
+**Note:**  `.img-ul-*` classes which are overridden with new styles.
 
 #### Custom Style
 
@@ -140,7 +140,7 @@ customStyle = {
   }
 };
 ````
-      
+
 **Note:** `selectButton`, `clearButton`, `layout` and `previewPanel` are optional properties.
 
 #### Events
@@ -149,7 +149,7 @@ customStyle = {
 
 `(removed)="onRemoved($event)"` - this event is fired when remove or clear button was clicked and the image preview was removed. *Note that this library doesn't handle deletion from server so you should do it yourself*. Event passed as the argument is the exact same object that was passed to the `(imageUploaded)` callback when image was added so you can access `serverResponse` to get a key to delete your image from server.
 
-`(uploadStateChanged)="onUploadStateChanged($event)"` - this event is fired when image upload state was changed. Event is just a boolean that represents the uploading state. Image upload state is `true` when and only when component awaits the response from the server, and `false` otherwise. You can use it, for example, to disable send button in your form until all images are uploaded.
+`(uploadStateChanged)="onUploadStateChanged($event)"` - this event is fired when image upload state was changed. Event is just a boolean that represents the uploading state. Image upload state is `true` when and only when component awaits the response from the server, and `false` otherwise. You can use it, for example, to disable send button in your form until all images are uploaded. In case occurs any error while uploading the message, the $error state boolean is `true` and the $errorMessage is filled with the error message.
 
 In the final state it should look something like this:
 
@@ -162,7 +162,7 @@ In the final state it should look something like this:
   [dropBoxMessage]="'Drop your images here!'"
   [extensions]="['jpg','png','gif']"
   [uploadedFiles]="['http://example.com/path/to/my/file']"
-  [class]="'customClass'"      
+  [class]="'customClass'"
   (removed)="onRemoved($event)"
   (uploadFinished)="onUploadFinished($event)"
   (uploadStateChanged)="onUploadStateChanged($event)">
