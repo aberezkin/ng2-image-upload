@@ -22,12 +22,14 @@
     "rxjs": "^6.6.7"
   },
   "devDependencies": {
-    "@angular-devkit/build-ng-packagr": "^0.1002.0",
     "@angular-devkit/build-angular": "^0.1102.11",
+    "@angular-devkit/build-ng-packagr": "^0.1002.0",
     "@angular/cli": "~11.2.0",
     "@angular/compiler": "~11.2.0",
     "@angular/compiler-cli": "~11.2.0",
     "@angular/language-service": "~11.2.0",
-    "ng-packagr": "^11.2.4"
+    "ng-packagr": "^11.2.4",
+    "ngx-md": "^8.1.6",
+    "zone.js": "^0.11.4"
   }
 }
